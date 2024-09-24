@@ -87,17 +87,17 @@ class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol,
     }
     
     private func configureLargeTitleStyle() {
-        titleLabel.font = .nanumMyeongjo(ofSize: 30.0, weight: .bold)
+        titleLabel.font = .nanumMyeongjo(ofSize: 28.0, weight: .bold)
         
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(25)
+            make.left.equalToSuperview().inset(30)
             make.bottom.equalTo(contentView.snp.top).offset(-10)
         }
         
         view.addSubview(rightButton)
         rightButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(25)
+            make.right.equalToSuperview().inset(30)
             make.centerY.equalTo(titleLabel.snp.centerY)
         }
     }
@@ -113,13 +113,13 @@ class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol,
         
         view.addSubview(leftButton)
         leftButton.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(25)
+            make.left.equalToSuperview().inset(30)
             make.centerY.equalTo(titleLabel.snp.centerY)
         }
         
         view.addSubview(rightButton)
         rightButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().inset(25)
+            make.right.equalToSuperview().inset(30)
             make.centerY.equalTo(titleLabel.snp.centerY)
         }
     }
