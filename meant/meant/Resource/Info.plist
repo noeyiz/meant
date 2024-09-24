@@ -2,8 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NanumSquareNeo-cBd.otf</string>
+		<string>NanumSquareNeo-dEb.otf</string>
+		<string>NanumSquareNeo-eHv.otf</string>
+		<string>NanumSquareNeo-aLt.otf</string>
+		<string>NanumSquareNeo-bRg.otf</string>
+		<string>NanumMyeongjoOTF.otf</string>
+		<string>NanumMyeongjoOTFBold.otf</string>
+		<string>NanumMyeongjoOTFExtraBold.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
+		<false/>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>
