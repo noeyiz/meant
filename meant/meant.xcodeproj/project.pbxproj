@@ -17,6 +17,12 @@
 		90311CF82CA2F2A200D2EAB7 /* NanumSquareNeo-cBd.otf in Resources */ = {isa = PBXBuildFile; fileRef = 90311CF02CA2EC3D00D2EAB7 /* NanumSquareNeo-cBd.otf */; };
 		90311CFA2CA2F43800D2EAB7 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311CF92CA2F43800D2EAB7 /* UIFont+.swift */; };
 		90311CFC2CA2F52A00D2EAB7 /* MeantFontWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311CFB2CA2F52A00D2EAB7 /* MeantFontWeight.swift */; };
+		90311D012CA2FF1A00D2EAB7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D002CA2FF1A00D2EAB7 /* BaseViewController.swift */; };
+		90311D032CA2FF2300D2EAB7 /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D022CA2FF2300D2EAB7 /* NavigationBarStyle.swift */; };
+		90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D042CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift */; };
+		90311D082CA3018500D2EAB7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 90311D072CA3018500D2EAB7 /* SnapKit */; };
+		90311D0F2CA3059600D2EAB7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D0E2CA3059600D2EAB7 /* View.swift */; };
+		90311D112CA3073300D2EAB7 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 90311D102CA3073300D2EAB7 /* texture.png */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914512CA2CB130094162D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E914502CA2CB130094162D /* ViewController.swift */; };
@@ -34,6 +40,11 @@
 		90311CF22CA2EC3D00D2EAB7 /* NanumSquareNeo-bRg.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeo-bRg.otf"; sourceTree = "<group>"; };
 		90311CF92CA2F43800D2EAB7 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		90311CFB2CA2F52A00D2EAB7 /* MeantFontWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeantFontWeight.swift; sourceTree = "<group>"; };
+		90311D002CA2FF1A00D2EAB7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		90311D022CA2FF2300D2EAB7 /* NavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
+		90311D042CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarProtocol.swift; sourceTree = "<group>"; };
+		90311D0E2CA3059600D2EAB7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		90311D102CA3073300D2EAB7 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90311D082CA3018500D2EAB7 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +94,24 @@
 				90311CF22CA2EC3D00D2EAB7 /* NanumSquareNeo-bRg.otf */,
 			);
 			path = NanumSquareNeo;
+			sourceTree = "<group>";
+		};
+		90311CFF2CA2FF0F00D2EAB7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				90311D002CA2FF1A00D2EAB7 /* BaseViewController.swift */,
+				90311D022CA2FF2300D2EAB7 /* NavigationBarStyle.swift */,
+				90311D042CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		90311D0B2CA304F300D2EAB7 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				90311D102CA3073300D2EAB7 /* texture.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		90E914402CA2CB130094162D = {
@@ -125,6 +155,7 @@
 		90E914632CA2D2480094162D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				90311D0B2CA304F300D2EAB7 /* Images */,
 				90311CE52CA2EBD800D2EAB7 /* Fonts */,
 				90E914552CA2CB150094162D /* Assets.xcassets */,
 				90E9145A2CA2CB150094162D /* Info.plist */,
@@ -135,7 +166,9 @@
 		90E914642CA2D24F0094162D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				90311CFF2CA2FF0F00D2EAB7 /* Common */,
 				90E914502CA2CB130094162D /* ViewController.swift */,
+				90311D0E2CA3059600D2EAB7 /* View.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -195,6 +228,9 @@
 			dependencies = (
 			);
 			name = meant;
+			packageProductDependencies = (
+				90311D072CA3018500D2EAB7 /* SnapKit */,
+			);
 			productName = meant;
 			productReference = 90E914492CA2CB130094162D /* meant.app */;
 			productType = "com.apple.product-type.application";
@@ -223,6 +259,9 @@
 				Base,
 			);
 			mainGroup = 90E914402CA2CB130094162D;
+			packageReferences = (
+				90311D062CA3018500D2EAB7 /* XCRemoteSwiftPackageReference "snapkit" */,
+			);
 			productRefGroup = 90E9144A2CA2CB130094162D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,6 +281,7 @@
 				90311CEC2CA2EC1300D2EAB7 /* NanumMyeongjoOTFExtraBold.otf in Resources */,
 				90311CEB2CA2EC1300D2EAB7 /* NanumMyeongjoOTFBold.otf in Resources */,
 				90311CF32CA2EC3D00D2EAB7 /* NanumSquareNeo-eHv.otf in Resources */,
+				90311D112CA3073300D2EAB7 /* texture.png in Resources */,
 				90311CF72CA2EC3D00D2EAB7 /* NanumSquareNeo-bRg.otf in Resources */,
 				90311CF82CA2F2A200D2EAB7 /* NanumSquareNeo-cBd.otf in Resources */,
 				90311CEA2CA2EC1300D2EAB7 /* NanumMyeongjoOTF.otf in Resources */,
@@ -260,7 +300,11 @@
 				90E914512CA2CB130094162D /* ViewController.swift in Sources */,
 				90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */,
 				90311CFC2CA2F52A00D2EAB7 /* MeantFontWeight.swift in Sources */,
+				90311D032CA2FF2300D2EAB7 /* NavigationBarStyle.swift in Sources */,
+				90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */,
 				90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */,
+				90311D0F2CA3059600D2EAB7 /* View.swift in Sources */,
+				90311D012CA2FF1A00D2EAB7 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +514,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		90311D062CA3018500D2EAB7 /* XCRemoteSwiftPackageReference "snapkit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/snapkit/snapkit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		90311D072CA3018500D2EAB7 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 90311D062CA3018500D2EAB7 /* XCRemoteSwiftPackageReference "snapkit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 90E914412CA2CB130094162D /* Project object */;
 }

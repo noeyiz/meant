@@ -7,14 +7,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: BaseViewController<View> {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        view.backgroundColor = .systemBackground
+        contentView.backgroundColor = .blue03
+        setupNavigationBar()
     }
 
-
+    private func setupNavigationBar() {
+        setNavigationBarStyle(.largeTitleWithRightButton)
+        setNavigationBarTitle("meant")
+        setNavigationBarRightButtonIcon("gearshape")
+        
+//        setNavigationBarStyle(.normalTitleWithBothButtons)
+//        setNavigationBarTitle("털어놓기")
+//        setNavigationBarLeftButtonIcon("xmark")
+//        setNavigationBarRightButtonIcon("checkmark")
+    }
 }
 
