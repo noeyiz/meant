@@ -47,6 +47,7 @@
 		90311D522CA48D7800D2EAB7 /* RecordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D512CA48D7800D2EAB7 /* RecordRepository.swift */; };
 		90311D542CA48F1B00D2EAB7 /* RecordRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D532CA48F1B00D2EAB7 /* RecordRepositoryProtocol.swift */; };
 		90311D562CA48FCB00D2EAB7 /* Record+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D552CA48FCB00D2EAB7 /* Record+.swift */; };
+		90311D582CA4901B00D2EAB7 /* RecordError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D572CA4901B00D2EAB7 /* RecordError.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -90,6 +91,7 @@
 		90311D512CA48D7800D2EAB7 /* RecordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepository.swift; sourceTree = "<group>"; };
 		90311D532CA48F1B00D2EAB7 /* RecordRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepositoryProtocol.swift; sourceTree = "<group>"; };
 		90311D552CA48FCB00D2EAB7 /* Record+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+.swift"; sourceTree = "<group>"; };
+		90311D572CA4901B00D2EAB7 /* RecordError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordError.swift; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				90311D4D2CA48C6500D2EAB7 /* Record.swift */,
 				90311D272CA4253100D2EAB7 /* RecordType.swift */,
 				90311D532CA48F1B00D2EAB7 /* RecordRepositoryProtocol.swift */,
+				90311D572CA4901B00D2EAB7 /* RecordError.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */,
 				90311D202CA41F8600D2EAB7 /* UICollectionView+Reusable.swift in Sources */,
 				90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */,
+				90311D582CA4901B00D2EAB7 /* RecordError.swift in Sources */,
 				90311D402CA4487A00D2EAB7 /* MeantTextView.swift in Sources */,
 				90311D262CA4216200D2EAB7 /* BaseCollectionViewCell.swift in Sources */,
 				90311D522CA48D7800D2EAB7 /* RecordRepository.swift in Sources */,

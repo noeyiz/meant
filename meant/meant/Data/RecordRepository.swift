@@ -24,38 +24,38 @@ class RecordRepository: RecordRepositoryInterface {
     }
     
     func saveRecord(_ record: Record) throws {
-        guard let realm = realm else { throw NSError(domain: "RealmError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Realm not initialized"]) }
+        guard let realm = realm else { throw RecordError.realmNotInitialized }
         do {
             try realm.write {
                 let recordEntity = RecordEntity(record)
                 realm.add(recordEntity)
             }
         } catch {
-            throw error
+            throw RecordError.failedToSave
         }
     }
     
     func updateRecord(_ record: Record) throws {
-        guard let realm = realm else { throw NSError(domain: "RealmError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Realm not initialized"]) }
+        guard let realm = realm else { throw RecordError.realmNotInitialized }
         do {
             try realm.write {
                 let recordEntity = RecordEntity(record)
                 realm.add(recordEntity, update: .modified)
             }
         } catch {
-            throw error
+            throw RecordError.failedToUpdate
         }
     }
     
     func deleteRecord(_ record: Record) throws {
-        guard let realm = realm else { throw NSError(domain: "RealmError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Realm not initialized"]) }
+        guard let realm = realm else { throw RecordError.realmNotInitialized }
         do {
             try realm.write {
                 let recordEntity = RecordEntity(record)
                 realm.delete(recordEntity)
             }
         } catch {
-            throw error
+            throw RecordError.failedToDelete
         }
     }
 }
