@@ -12,6 +12,7 @@ final class HomeViewController: BaseViewController<HomeView> {
     private let viewModel: HomeViewModel
     private let recordCellViewModels = RecordType.allCases
     private var cancellables = Set<AnyCancellable>()
+    private var dataSource: UITableViewDiffableDataSource<String, RecordCellViewModel>!
     
     // MARK: - Init
     
@@ -32,7 +33,8 @@ final class HomeViewController: BaseViewController<HomeView> {
         super.viewDidLoad()
         
         setupNavigationBar()
-        setupDelegate()
+        setupRecordCardView()
+        setupMyRecordView()
         bind()
     }
     
@@ -50,9 +52,25 @@ final class HomeViewController: BaseViewController<HomeView> {
         setNavigationBarRightButtonIcon("gearshape")
     }
     
-    private func setupDelegate() {
-        recordCollectionView.delegate = self
-        recordCollectionView.dataSource = self
+    private func setupRecordCardView() {
+        recordCardView.delegate = self
+        recordCardView.dataSource = self
+    }
+    
+    private func setupMyRecordView() {
+        configureDataSource()
+        myRecordView.delegate = self
+    }
+    
+    private func configureDataSource() {
+        dataSource = UITableViewDiffableDataSource<String, RecordCellViewModel>(
+            tableView: myRecordView,
+            cellProvider: { (tableView, indexPath, cellViewModel) -> UITableViewCell? in
+                let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RecordCell.self)
+                cell.configure(with: cellViewModel)
+                return cell
+            }
+        )
     }
     
     // MARK: - Bind
@@ -60,8 +78,39 @@ final class HomeViewController: BaseViewController<HomeView> {
     private func bind() {
         viewModel.$records
             .sink { [weak self] records in
-                print(records)
-            }.store(in: &cancellables)
+                guard let self = self else { return }
+                emptyLabel.isHidden = !records.isEmpty
+                applySnapshot(with: records)
+            }
+            .store(in: &cancellables)
+    }
+    
+    // MARK: - Snapshot Application
+    
+    private func applySnapshot(with records: [RecordSectionViewModel]) {
+        var snapshot = NSDiffableDataSourceSnapshot<String, RecordCellViewModel>()
+        
+        records.forEach { section in
+            snapshot.appendSections([section.month])
+            snapshot.appendItems(section.cellViewModels, toSection: section.month)
+        }
+        
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = dataSource.snapshot().sectionIdentifiers[section]
+        label.font = .nanumSquareNeo(ofSize: 12.0, weight: .bold)
+        label.textColor = .gray02
+        let view = UIView()
+        view.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
+        return view
     }
 }
 
@@ -105,14 +154,22 @@ extension HomeViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: RecordCell.self)
+        let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: RecordCardCell.self)
         cell.configure(with: recordCellViewModels[indexPath.row])
         return cell
     }
 }
 
 private extension HomeViewController {
-    var recordCollectionView: UICollectionView {
-        contentView.recordCollectionView
+    var recordCardView: UICollectionView {
+        contentView.recordCardView
+    }
+    
+    var myRecordView: UITableView {
+        contentView.myRecordView
+    }
+    
+    var emptyLabel: UIView {
+        contentView.emptyLabel
     }
 }

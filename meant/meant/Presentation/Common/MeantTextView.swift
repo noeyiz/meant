@@ -21,7 +21,9 @@ class MeantTextView: UITextView {
         
         font = .nanumSquareNeo(ofSize: 12.0)
         textColor = .gray03
-        
+        backgroundColor = .clear
+        autocorrectionType = .no
+        autocapitalizationType = .none
         layoutManager.allowsNonContiguousLayout = false
         
         updateTextStyle()
