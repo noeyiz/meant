@@ -143,13 +143,13 @@ final class RecordView: UIView {
             withDuration: 0.8,
             delay: 0.3,
             usingSpringWithDamping: 0.9,
-            initialSpringVelocity: 0.2,
+            initialSpringVelocity: 0.5,
             options: .curveEaseIn
         ) {
             self.messageContainerHeightConstraint?.update(offset: 70)
+            self.textView.becomeFirstResponder()
             self.layoutIfNeeded()
         } completion: { _ in
-            self.textView.becomeFirstResponder()
         }
     }
 }
