@@ -8,10 +8,12 @@
 import UIKit
 
 final class RecordViewController: BaseViewController<RecordView> {
+    private let viewModel: RecordViewModel
     private let recordType: RecordType
     // MARK: - Init
     
-    init(recordType: RecordType) {
+    init(viewModel: RecordViewModel, recordType: RecordType) {
+        self.viewModel = viewModel
         self.recordType = recordType
         
         super.init(nibName: nil, bundle: nil)
@@ -67,6 +69,7 @@ final class RecordViewController: BaseViewController<RecordView> {
         if textView.text.isEmpty {
             showAlert(message: "내용이 없으면 저장할 수 없어요.", actionText: "계속 작성하기")
         } else {
+            viewModel.saveRecord(content: textView.text, recordType: recordType)
             navigationController?.popViewController(animated: true)
         }
     }

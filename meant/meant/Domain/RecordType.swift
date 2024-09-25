@@ -18,20 +18,6 @@ enum RecordType: String, CaseIterable {
         }
     }
     
-    var color01: UIColor {
-        switch self {
-        case .confide:  .blue01
-        case .gather:   .green01
-        }
-    }
-    
-    var color02: UIColor {
-        switch self {
-        case .confide:  .blue03
-        case .gather:   .green03
-        }
-    }
-    
     var message: String {
         switch self {
         case .confide:  "오늘 하루는 어땠나요?\n사용자님의 이야기를 들려주세요."

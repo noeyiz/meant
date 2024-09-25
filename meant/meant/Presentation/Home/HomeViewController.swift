@@ -5,10 +5,26 @@
 //  Created by 지연 on 9/25/24.
 //
 
+import Combine
 import UIKit
 
 final class HomeViewController: BaseViewController<HomeView> {
+    private let viewModel: HomeViewModel
     private let recordCellViewModels = RecordType.allCases
+    private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Init
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     
@@ -16,14 +32,36 @@ final class HomeViewController: BaseViewController<HomeView> {
         super.viewDidLoad()
         
         setupNavigationBar()
-        recordCollectionView.delegate = self
-        recordCollectionView.dataSource = self
+        setupDelegate()
+        bind()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.fetchRecords()
+    }
+    
+    // MARK: - Setup Methods
     
     private func setupNavigationBar() {
         setNavigationBarStyle(.largeTitleWithRightButton)
         setNavigationBarTitle("meant")
         setNavigationBarRightButtonIcon("gearshape")
+    }
+    
+    private func setupDelegate() {
+        recordCollectionView.delegate = self
+        recordCollectionView.dataSource = self
+    }
+    
+    // MARK: - Bind
+    
+    private func bind() {
+        viewModel.$records
+            .sink { [weak self] records in
+                print(records)
+            }.store(in: &cancellables)
     }
 }
 
@@ -44,8 +82,12 @@ extension HomeViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
+        let recordViewModel = DIContainer.shared.makeRecordViewModel()
         let type = recordCellViewModels[indexPath.row]
-        let recordViewController = RecordViewController(recordType: type)
+        let recordViewController = RecordViewController(
+            viewModel: recordViewModel,
+            recordType: type
+        )
         generateHaptic()
         navigationController?.pushViewController(recordViewController, animated: true)
     }
