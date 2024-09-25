@@ -38,6 +38,7 @@
 		90311D3A2CA441D400D2EAB7 /* HapticFeedbackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D392CA441D400D2EAB7 /* HapticFeedbackable.swift */; };
 		90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D3D2CA4420700D2EAB7 /* UIViewController+.swift */; };
 		90311D402CA4487A00D2EAB7 /* MeantTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D3F2CA4487A00D2EAB7 /* MeantTextView.swift */; };
+		90311D422CA4616700D2EAB7 /* MeantAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D412CA4616700D2EAB7 /* MeantAlertViewController.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		90311D392CA441D400D2EAB7 /* HapticFeedbackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackable.swift; sourceTree = "<group>"; };
 		90311D3D2CA4420700D2EAB7 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		90311D3F2CA4487A00D2EAB7 /* MeantTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeantTextView.swift; sourceTree = "<group>"; };
+		90311D412CA4616700D2EAB7 /* MeantAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeantAlertViewController.swift; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				90311D042CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift */,
 				90311D252CA4216200D2EAB7 /* BaseCollectionViewCell.swift */,
 				90311D3F2CA4487A00D2EAB7 /* MeantTextView.swift */,
+				90311D412CA4616700D2EAB7 /* MeantAlertViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				90311CFA2CA2F43800D2EAB7 /* UIFont+.swift in Sources */,
 				90311D3A2CA441D400D2EAB7 /* HapticFeedbackable.swift in Sources */,
 				90311D1E2CA41F5D00D2EAB7 /* Reusable.swift in Sources */,
+				90311D422CA4616700D2EAB7 /* MeantAlertViewController.swift in Sources */,
 				90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */,
 				90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */,
 				90311D162CA320C300D2EAB7 /* HomeViewController.swift in Sources */,
