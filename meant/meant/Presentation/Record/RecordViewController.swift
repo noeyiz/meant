@@ -56,7 +56,7 @@ final class RecordViewController: BaseViewController<RecordView> {
         showAlert(
             message: recordType == .confide ?
             "오늘의 이야기가 아직 끝나지 않은 것 같아요.\n정말로 나가시겠어요?" :
-            "조각을 모으지 않으면 잊혀질지도 몰라요.\n정말로 나가시겠어요?",
+            "조각을 모아두지 않으면 잊혀질지도 몰라요.\n정말로 나가시겠어요?",
             leftActionText: "머무르기",
             rightActionText: "나가기",
             rightActionCompletion: { [weak self] in

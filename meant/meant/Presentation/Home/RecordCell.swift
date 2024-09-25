@@ -79,7 +79,7 @@ final class RecordCell: UITableViewCell, Reusable {
     
     func configure(with viewModel: RecordCellViewModel) {
         dateLabel.text = viewModel.date
-        contentLabel.setTextWithLineHeight(viewModel.content, lineHeight: 15.0)
+        contentLabel.setTextWithLineHeight(viewModel.content, lineHeight: 17.0)
         containerView.backgroundColor = viewModel.backgroundColor
     }
 }
