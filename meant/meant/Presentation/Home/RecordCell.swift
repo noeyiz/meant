@@ -12,9 +12,16 @@ import SnapKit
 final class RecordCell: UITableViewCell, Reusable {
     // MARK: - UI Components
     
+    private let containerView = {
+        let view = UIView()
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 15
+        return view
+    }()
+    
     private let dateLabel = {
         let label = UILabel()
-        label.font = .nanumSquareNeo(ofSize: 10.0)
+        label.font = .nanumSquareNeo(ofSize: 8.5)
         label.textColor = .gray02
         return label
     }()
@@ -23,6 +30,7 @@ final class RecordCell: UITableViewCell, Reusable {
         let label = UILabel()
         label.font = .nanumSquareNeo(ofSize: 10.5)
         label.textColor = .gray03
+        label.numberOfLines = 0
         return label
     }()
     
@@ -44,18 +52,22 @@ final class RecordCell: UITableViewCell, Reusable {
     
     private func setupCell() {
         selectionStyle = .none
-        clipsToBounds = true
-        layer.cornerRadius = 15
     }
     
     private func setupLayout() {
-        contentView.addSubview(dateLabel)
+        contentView.addSubview(containerView)
+        containerView.snp.makeConstraints { make in
+            make.verticalEdges.equalToSuperview().inset(5)
+            make.horizontalEdges.equalToSuperview()
+        }
+        
+        containerView.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(20)
             make.left.equalToSuperview().inset(25)
         }
         
-        contentView.addSubview(contentLabel)
+        containerView.addSubview(contentLabel)
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(dateLabel.snp.bottom).offset(10)
             make.left.right.equalToSuperview().inset(25)
@@ -67,7 +79,7 @@ final class RecordCell: UITableViewCell, Reusable {
     
     func configure(with viewModel: RecordCellViewModel) {
         dateLabel.text = viewModel.date
-        contentLabel.text = viewModel.content
-        backgroundColor = viewModel.backgroundColor
+        contentLabel.setTextWithLineHeight(viewModel.content, lineHeight: 15.0)
+        containerView.backgroundColor = viewModel.backgroundColor
     }
 }

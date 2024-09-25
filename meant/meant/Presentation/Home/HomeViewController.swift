@@ -78,6 +78,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.$records
             .sink { [weak self] records in
                 guard let self = self else { return }
+                emptyLabel.isHidden = !records.isEmpty
                 applySnapshot(with: records)
             }
             .store(in: &cancellables)
