@@ -51,11 +51,24 @@ final class RecordViewController: BaseViewController<RecordView> {
     // MARK: - Action Methods
     
     @objc private func handleCancelButtonTap() {
-        navigationController?.popViewController(animated: true)
+        showAlert(
+            message: recordType == .confide ?
+            "오늘의 이야기가 아직 끝나지 않은 것 같아요.\n정말로 나가시겠어요?" :
+            "조각을 모으지 않으면 잊혀질지도 몰라요.\n정말로 나가시겠어요?",
+            leftActionText: "머무르기",
+            rightActionText: "나가기",
+            rightActionCompletion: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
+        )
     }
     
     @objc private func handleDoneButtonTap() {
-        navigationController?.popViewController(animated: true)
+        if textView.text.isEmpty {
+            showAlert(message: "내용이 없으면 저장할 수 없어요.", actionText: "계속 작성하기")
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
