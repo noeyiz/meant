@@ -35,6 +35,8 @@
 		90311D332CA4303C00D2EAB7 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D322CA4303C00D2EAB7 /* RecordViewController.swift */; };
 		90311D362CA4344300D2EAB7 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D352CA4344300D2EAB7 /* UILabel+.swift */; };
 		90311D382CA4387900D2EAB7 /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D372CA4387900D2EAB7 /* Date+.swift */; };
+		90311D3A2CA441D400D2EAB7 /* HapticFeedbackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D392CA441D400D2EAB7 /* HapticFeedbackable.swift */; };
+		90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D3D2CA4420700D2EAB7 /* UIViewController+.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		90311D322CA4303C00D2EAB7 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		90311D352CA4344300D2EAB7 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		90311D372CA4387900D2EAB7 /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		90311D392CA441D400D2EAB7 /* HapticFeedbackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticFeedbackable.swift; sourceTree = "<group>"; };
+		90311D3D2CA4420700D2EAB7 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,10 +257,10 @@
 			isa = PBXGroup;
 			children = (
 				90311CF92CA2F43800D2EAB7 /* UIFont+.swift */,
-				90311D1D2CA41F5D00D2EAB7 /* Reusable.swift */,
 				90311D1F2CA41F8600D2EAB7 /* UICollectionView+Reusable.swift */,
 				90311D352CA4344300D2EAB7 /* UILabel+.swift */,
 				90311D372CA4387900D2EAB7 /* Date+.swift */,
+				90311D3D2CA4420700D2EAB7 /* UIViewController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -265,6 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				90311CFB2CA2F52A00D2EAB7 /* MeantFontWeight.swift */,
+				90311D392CA441D400D2EAB7 /* HapticFeedbackable.swift */,
+				90311D1D2CA41F5D00D2EAB7 /* Reusable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -356,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90311CFA2CA2F43800D2EAB7 /* UIFont+.swift in Sources */,
+				90311D3A2CA441D400D2EAB7 /* HapticFeedbackable.swift in Sources */,
 				90311D1E2CA41F5D00D2EAB7 /* Reusable.swift in Sources */,
 				90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */,
 				90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */,
@@ -367,6 +374,7 @@
 				90311D382CA4387900D2EAB7 /* Date+.swift in Sources */,
 				90311D332CA4303C00D2EAB7 /* RecordViewController.swift in Sources */,
 				90311D032CA2FF2300D2EAB7 /* NavigationBarStyle.swift in Sources */,
+				90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */,
 				90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */,
 				90311D202CA41F8600D2EAB7 /* UICollectionView+Reusable.swift in Sources */,
 				90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */,

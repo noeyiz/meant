@@ -46,6 +46,7 @@ extension HomeViewController: UICollectionViewDelegate {
     ) {
         let type = recordCellViewModels[indexPath.row]
         let recordViewController = RecordViewController(recordType: type)
+        generateHaptic()
         navigationController?.pushViewController(recordViewController, animated: true)
     }
 }
