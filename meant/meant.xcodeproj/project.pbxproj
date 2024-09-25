@@ -31,6 +31,8 @@
 		90311D242CA420FF00D2EAB7 /* confide.png in Resources */ = {isa = PBXBuildFile; fileRef = 90311D222CA420FF00D2EAB7 /* confide.png */; };
 		90311D262CA4216200D2EAB7 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D252CA4216200D2EAB7 /* BaseCollectionViewCell.swift */; };
 		90311D282CA4253100D2EAB7 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D272CA4253100D2EAB7 /* RecordType.swift */; };
+		90311D312CA4302A00D2EAB7 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D302CA4302A00D2EAB7 /* RecordView.swift */; };
+		90311D332CA4303C00D2EAB7 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D322CA4303C00D2EAB7 /* RecordViewController.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -60,6 +62,8 @@
 		90311D222CA420FF00D2EAB7 /* confide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confide.png; sourceTree = "<group>"; };
 		90311D252CA4216200D2EAB7 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		90311D272CA4253100D2EAB7 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
+		90311D302CA4302A00D2EAB7 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		90311D322CA4303C00D2EAB7 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,9 +141,25 @@
 				90311D132CA320AE00D2EAB7 /* HomeView.swift */,
 				90311D152CA320C300D2EAB7 /* HomeViewController.swift */,
 				90311D1B2CA41F2200D2EAB7 /* RecordCell.swift */,
-				90311D272CA4253100D2EAB7 /* RecordType.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		90311D2F2CA4301800D2EAB7 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				90311D302CA4302A00D2EAB7 /* RecordView.swift */,
+				90311D322CA4303C00D2EAB7 /* RecordViewController.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		90311D342CA4308000D2EAB7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90311D272CA4253100D2EAB7 /* RecordType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		90E914402CA2CB130094162D = {
@@ -194,6 +214,8 @@
 		90E914642CA2D24F0094162D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				90311D342CA4308000D2EAB7 /* Model */,
+				90311D2F2CA4301800D2EAB7 /* Record */,
 				90311D122CA320A300D2EAB7 /* Home */,
 				90311CFF2CA2FF0F00D2EAB7 /* Common */,
 			);
@@ -332,8 +354,10 @@
 				90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */,
 				90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */,
 				90311D162CA320C300D2EAB7 /* HomeViewController.swift in Sources */,
+				90311D312CA4302A00D2EAB7 /* RecordView.swift in Sources */,
 				90311D1C2CA41F2200D2EAB7 /* RecordCell.swift in Sources */,
 				90311CFC2CA2F52A00D2EAB7 /* MeantFontWeight.swift in Sources */,
+				90311D332CA4303C00D2EAB7 /* RecordViewController.swift in Sources */,
 				90311D032CA2FF2300D2EAB7 /* NavigationBarStyle.swift in Sources */,
 				90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */,
 				90311D202CA41F8600D2EAB7 /* UICollectionView+Reusable.swift in Sources */,

@@ -45,7 +45,8 @@ extension HomeViewController: UICollectionViewDelegate {
         didSelectItemAt indexPath: IndexPath
     ) {
         let type = recordCellViewModels[indexPath.row]
-        print("🌟 \(type.title)")
+        let recordViewController = RecordViewController(recordType: type)
+        navigationController?.pushViewController(recordViewController, animated: true)
     }
 }
 
