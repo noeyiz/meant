@@ -20,7 +20,7 @@ final class RecordCell: BaseCollectionViewCell {
     
     private let titleLabel = {
         let label = UILabel()
-        label.font = .nanumSquareNeo(ofSize: 10.5, weight: .regular)
+        label.font = .nanumSquareNeo(ofSize: 10.5)
         label.textColor = .gray03
         return label
     }()
