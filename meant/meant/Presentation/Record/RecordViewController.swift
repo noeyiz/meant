@@ -59,6 +59,14 @@ final class RecordViewController: BaseViewController<RecordView> {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        contentView.endEditing(true)
+        if !textView.text.isEmpty {
+            textView.endEditing(true)
+        }
+    }
+}
+
+private extension RecordViewController {
+    var textView: MeantTextView {
+        contentView.textView
     }
 }
