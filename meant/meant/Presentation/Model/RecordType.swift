@@ -18,10 +18,17 @@ enum RecordType: String, CaseIterable {
         }
     }
     
-    var color: UIColor {
+    var color01: UIColor {
         switch self {
         case .confide:  .blue01
         case .gather:   .green01
+        }
+    }
+    
+    var color02: UIColor {
+        switch self {
+        case .confide:  .blue03
+        case .gather:   .green03
         }
     }
     

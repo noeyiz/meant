@@ -12,7 +12,7 @@ protocol HapticFeedbackable {
 }
 
 extension HapticFeedbackable {
-    func generateHaptic(style: UIImpactFeedbackGenerator.FeedbackStyle = .light) {
+    func generateHaptic(style: UIImpactFeedbackGenerator.FeedbackStyle = .medium) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.prepare()
         generator.impactOccurred()

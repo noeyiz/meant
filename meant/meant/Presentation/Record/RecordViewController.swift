@@ -57,4 +57,8 @@ final class RecordViewController: BaseViewController<RecordView> {
     @objc private func handleDoneButtonTap() {
         navigationController?.popViewController(animated: true)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        contentView.endEditing(true)
+    }
 }
