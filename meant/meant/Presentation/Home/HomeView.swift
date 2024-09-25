@@ -14,7 +14,7 @@ final class HomeView: UIView {
     
     private lazy var recordLabel = createLabel(with: "기록하기")
     
-    let recordCardView = UIView()
+    lazy var recordCollectionView = createRecordCollectionView()
     
     // TODO: "나" 사용자 이름으로 변경하기
     private lazy var myRecordLabel = createLabel(with: "나의 기록")
@@ -52,17 +52,16 @@ final class HomeView: UIView {
             make.left.equalToSuperview().inset(30)
         }
         
-        recordCardView.backgroundColor = .blue02
-        addSubview(recordCardView)
-        recordCardView.snp.makeConstraints { make in
+        addSubview(recordCollectionView)
+        recordCollectionView.snp.makeConstraints { make in
             make.top.equalTo(recordLabel.snp.bottom).offset(10)
             make.left.right.equalToSuperview().inset(30)
-            make.height.equalTo(80)
+            make.height.equalTo(70)
         }
         
         addSubview(myRecordLabel)
         myRecordLabel.snp.makeConstraints { make in
-            make.top.equalTo(recordCardView.snp.bottom).offset(25)
+            make.top.equalTo(recordCollectionView.snp.bottom).offset(25)
             make.left.equalToSuperview().inset(30)
         }
         
@@ -91,6 +90,13 @@ private extension HomeView {
         label.textColor = .gray03
         label.font = .nanumSquareNeo(ofSize: 14.0, weight: .bold)
         return label
+    }
+    
+    func createRecordCollectionView() -> UICollectionView {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(cellType: RecordCell.self)
+        return collectionView
     }
     
     func setGradientView() {
