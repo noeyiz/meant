@@ -59,6 +59,7 @@ final class HomeViewController: BaseViewController<HomeView> {
     
     private func setupMyRecordView() {
         configureDataSource()
+        myRecordView.delegate = self
     }
     
     private func configureDataSource() {
@@ -95,6 +96,21 @@ final class HomeViewController: BaseViewController<HomeView> {
         }
         
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = dataSource.snapshot().sectionIdentifiers[section]
+        label.font = .nanumSquareNeo(ofSize: 12.0, weight: .bold)
+        label.textColor = .gray02
+        let view = UIView()
+        view.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(5)
+        }
+        return view
     }
 }
 

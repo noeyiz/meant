@@ -25,10 +25,14 @@ final class HomeView: UIView {
     private lazy var myRecordLabel = createTitleLabel(with: "나의 기록")
     
     let myRecordView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(cellType: RecordCell.self)
         tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderTopPadding = 0
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        tableView.showsVerticalScrollIndicator = false
         return tableView
     }()
     
