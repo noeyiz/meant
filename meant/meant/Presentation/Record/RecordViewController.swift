@@ -15,6 +15,8 @@ final class RecordViewController: BaseViewController<RecordView> {
         self.recordType = recordType
         
         super.init(nibName: nil, bundle: nil)
+        
+        contentView.configure(with: recordType)
     }
     
     @available(*, unavailable)
@@ -29,6 +31,7 @@ final class RecordViewController: BaseViewController<RecordView> {
         
         setupNavigationBar()
         setupAction()
+        contentView.animateMessageAppearance()
     }
     
     // MARK: - Setup Methods
