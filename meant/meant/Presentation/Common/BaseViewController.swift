@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol, UIGestureRecognizerDelegate {
+class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol {
     // MARK: - UI Components
     
     lazy var titleLabel = createLabel()
@@ -66,8 +66,6 @@ class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol,
     
     private func setupViewController() {
         navigationController?.setNavigationBarHidden(true, animated: false)
-        navigationController?.interactivePopGestureRecognizer?.delegate = self
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         view.backgroundColor = .white
         
         setupLayout()
