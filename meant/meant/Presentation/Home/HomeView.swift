@@ -14,17 +14,23 @@ final class HomeView: UIView {
     
     private lazy var recordLabel = createTitleLabel(with: "기록하기")
     
-    lazy var recordCollectionView = {
+    lazy var recordCardView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(cellType: RecordCell.self)
+        collectionView.register(cellType: RecordCardCell.self)
         return collectionView
     }()
     
     // TODO: "나" 사용자 이름으로 변경하기
     private lazy var myRecordLabel = createTitleLabel(with: "나의 기록")
     
-    let myRecordView = UIView()
+    let myRecordView = {
+        let tableView = UITableView()
+        tableView.register(cellType: RecordCell.self)
+        tableView.separatorStyle = .none
+        tableView.rowHeight = UITableView.automaticDimension
+        return tableView
+    }()
     
     // TODO: "사용자" 사용자 이름으로 변경하기
     lazy var emptyLabel = {
@@ -66,8 +72,8 @@ final class HomeView: UIView {
             make.left.equalToSuperview().inset(30)
         }
         
-        addSubview(recordCollectionView)
-        recordCollectionView.snp.makeConstraints { make in
+        addSubview(recordCardView)
+        recordCardView.snp.makeConstraints { make in
             make.top.equalTo(recordLabel.snp.bottom).offset(10)
             make.left.right.equalToSuperview().inset(30)
             make.height.equalTo(70)
@@ -75,7 +81,7 @@ final class HomeView: UIView {
         
         addSubview(myRecordLabel)
         myRecordLabel.snp.makeConstraints { make in
-            make.top.equalTo(recordCollectionView.snp.bottom).offset(25)
+            make.top.equalTo(recordCardView.snp.bottom).offset(25)
             make.left.equalToSuperview().inset(30)
         }
         

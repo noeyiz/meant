@@ -24,7 +24,7 @@
 		90311D112CA3073300D2EAB7 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 90311D102CA3073300D2EAB7 /* texture.png */; };
 		90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D132CA320AE00D2EAB7 /* HomeView.swift */; };
 		90311D162CA320C300D2EAB7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D152CA320C300D2EAB7 /* HomeViewController.swift */; };
-		90311D1C2CA41F2200D2EAB7 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D1B2CA41F2200D2EAB7 /* RecordCell.swift */; };
+		90311D1C2CA41F2200D2EAB7 /* RecordCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D1B2CA41F2200D2EAB7 /* RecordCardCell.swift */; };
 		90311D1E2CA41F5D00D2EAB7 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D1D2CA41F5D00D2EAB7 /* Reusable.swift */; };
 		90311D202CA41F8600D2EAB7 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D1F2CA41F8600D2EAB7 /* UICollectionView+Reusable.swift */; };
 		90311D232CA420FF00D2EAB7 /* gather.png in Resources */ = {isa = PBXBuildFile; fileRef = 90311D212CA420FF00D2EAB7 /* gather.png */; };
@@ -51,6 +51,10 @@
 		90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */; };
 		90AD1AC52CA493C00063DDC6 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC42CA493C00063DDC6 /* DIContainer.swift */; };
 		90AD1AC72CA494650063DDC6 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC62CA494650063DDC6 /* RecordViewModel.swift */; };
+		90AD1AC92CA4989F0063DDC6 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC82CA4989F0063DDC6 /* RecordCell.swift */; };
+		90AD1ACB2CA498AF0063DDC6 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1ACA2CA498AF0063DDC6 /* UITableView+Reusable.swift */; };
+		90AD1ACD2CA49B670063DDC6 /* RecordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1ACC2CA49B670063DDC6 /* RecordCellViewModel.swift */; };
+		90AD1ACF2CA49BCC0063DDC6 /* RecordSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1ACE2CA49BCC0063DDC6 /* RecordSectionViewModel.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -73,7 +77,7 @@
 		90311D102CA3073300D2EAB7 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
 		90311D132CA320AE00D2EAB7 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		90311D152CA320C300D2EAB7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		90311D1B2CA41F2200D2EAB7 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		90311D1B2CA41F2200D2EAB7 /* RecordCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCardCell.swift; sourceTree = "<group>"; };
 		90311D1D2CA41F5D00D2EAB7 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		90311D1F2CA41F8600D2EAB7 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
 		90311D212CA420FF00D2EAB7 /* gather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gather.png; sourceTree = "<group>"; };
@@ -98,6 +102,10 @@
 		90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		90AD1AC42CA493C00063DDC6 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		90AD1AC62CA494650063DDC6 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		90AD1AC82CA4989F0063DDC6 /* RecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
+		90AD1ACA2CA498AF0063DDC6 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		90AD1ACC2CA49B670063DDC6 /* RecordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCellViewModel.swift; sourceTree = "<group>"; };
+		90AD1ACE2CA49BCC0063DDC6 /* RecordSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSectionViewModel.swift; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,8 +186,9 @@
 			children = (
 				90311D132CA320AE00D2EAB7 /* HomeView.swift */,
 				90311D152CA320C300D2EAB7 /* HomeViewController.swift */,
-				90311D1B2CA41F2200D2EAB7 /* RecordCell.swift */,
+				90311D1B2CA41F2200D2EAB7 /* RecordCardCell.swift */,
 				90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */,
+				90AD1AC82CA4989F0063DDC6 /* RecordCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -198,6 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				90311D552CA48FCB00D2EAB7 /* Record+.swift */,
+				90AD1ACC2CA49B670063DDC6 /* RecordCellViewModel.swift */,
+				90AD1ACE2CA49BCC0063DDC6 /* RecordSectionViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +311,7 @@
 				90311D352CA4344300D2EAB7 /* UILabel+.swift */,
 				90311D372CA4387900D2EAB7 /* Date+.swift */,
 				90311D3D2CA4420700D2EAB7 /* UIViewController+.swift */,
+				90AD1ACA2CA498AF0063DDC6 /* UITableView+Reusable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -410,16 +422,20 @@
 				90311D1E2CA41F5D00D2EAB7 /* Reusable.swift in Sources */,
 				90311D422CA4616700D2EAB7 /* MeantAlertViewController.swift in Sources */,
 				90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */,
+				90AD1ACB2CA498AF0063DDC6 /* UITableView+Reusable.swift in Sources */,
+				90AD1ACF2CA49BCC0063DDC6 /* RecordSectionViewModel.swift in Sources */,
 				90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */,
 				90311D162CA320C300D2EAB7 /* HomeViewController.swift in Sources */,
+				90AD1ACD2CA49B670063DDC6 /* RecordCellViewModel.swift in Sources */,
 				90311D312CA4302A00D2EAB7 /* RecordView.swift in Sources */,
 				90311D362CA4344300D2EAB7 /* UILabel+.swift in Sources */,
-				90311D1C2CA41F2200D2EAB7 /* RecordCell.swift in Sources */,
+				90311D1C2CA41F2200D2EAB7 /* RecordCardCell.swift in Sources */,
 				90311CFC2CA2F52A00D2EAB7 /* MeantFontWeight.swift in Sources */,
 				90311D382CA4387900D2EAB7 /* Date+.swift in Sources */,
 				90311D332CA4303C00D2EAB7 /* RecordViewController.swift in Sources */,
 				90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */,
 				90311D032CA2FF2300D2EAB7 /* NavigationBarStyle.swift in Sources */,
+				90AD1AC92CA4989F0063DDC6 /* RecordCell.swift in Sources */,
 				90311D562CA48FCB00D2EAB7 /* Record+.swift in Sources */,
 				90311D4E2CA48C6500D2EAB7 /* Record.swift in Sources */,
 				90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */,
