@@ -21,11 +21,7 @@ final class HomeView: UIView {
     
     let myRecordView = UIView()
     
-    private let gradientView = {
-        let view = UIView()
-        view.setGradient(color1: .blue, color2: .red)
-        return view
-    }()
+    private let gradientView = UIView()
     
     // MARK: - Init
     
@@ -40,12 +36,19 @@ final class HomeView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // gradientView의 레이아웃이 잡힌 후 gradientLayer의 frame을 정할 수 있음
+        setGradientView()
+    }
+    
     // MARK: - Setup Methods
     
     private func setupLayout() {
         addSubview(recordLabel)
         recordLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(20)
+            make.top.equalToSuperview().inset(15)
             make.left.equalToSuperview().inset(30)
         }
         
@@ -59,7 +62,7 @@ final class HomeView: UIView {
         
         addSubview(myRecordLabel)
         myRecordLabel.snp.makeConstraints { make in
-            make.top.equalTo(recordCardView.snp.bottom).offset(30)
+            make.top.equalTo(recordCardView.snp.bottom).offset(25)
             make.left.equalToSuperview().inset(30)
         }
         
@@ -74,10 +77,12 @@ final class HomeView: UIView {
         addSubview(gradientView)
         gradientView.snp.makeConstraints { make in
             make.left.bottom.right.equalToSuperview()
-            make.height.equalTo(60)
+            make.height.equalTo(80)
         }
     }
 }
+
+// MARK: - Private Methods
 
 private extension HomeView {
     func createLabel(with text: String) -> UILabel {
@@ -86,5 +91,16 @@ private extension HomeView {
         label.textColor = .gray03
         label.font = .nanumSquareNeo(ofSize: 14.0, weight: .bold)
         return label
+    }
+    
+    func setGradientView() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.white.withAlphaComponent(0.0).cgColor,
+                                UIColor.white.withAlphaComponent(1.0).cgColor]
+        gradientLayer.frame = gradientView.bounds
+        gradientLayer.locations = [0.0, 0.5]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientView.layer.addSublayer(gradientLayer)
     }
 }
