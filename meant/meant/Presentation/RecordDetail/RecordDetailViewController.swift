@@ -81,6 +81,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
     // MARK: - Action Methods
     
     @objc private func handleDeleteButtonTap() {
+        generateHaptic()
         showAlert(
             message: "정말로 삭제하시겠어요?",
             leftActionText: "그만두기",
@@ -94,6 +95,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
     }
     
     @objc private func handleRightButtonTap() {
+        generateHaptic()
         viewModel.toggleMode()
     }
 }

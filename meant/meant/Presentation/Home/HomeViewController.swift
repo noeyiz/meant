@@ -125,6 +125,7 @@ final class HomeViewController: BaseViewController<HomeView> {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
         let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
         let recordDetailViewController = RecordDetailViewController(viewModel: recordDetailViewModel)

@@ -52,6 +52,7 @@ final class RecordCell: UITableViewCell, Reusable {
     
     private func setupCell() {
         selectionStyle = .none
+        backgroundColor = .clear
     }
     
     private func setupLayout() {

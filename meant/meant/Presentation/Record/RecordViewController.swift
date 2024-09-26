@@ -53,6 +53,7 @@ final class RecordViewController: BaseViewController<RecordView> {
     // MARK: - Action Methods
     
     @objc private func handleCancelButtonTap() {
+        generateHaptic()
         showAlert(
             message: recordType == .confide ?
             "오늘의 이야기가 아직 끝나지 않은 것 같아요.\n정말로 나가시겠어요?" :
@@ -66,6 +67,7 @@ final class RecordViewController: BaseViewController<RecordView> {
     }
     
     @objc private func handleDoneButtonTap() {
+        generateHaptic()
         if textView.text.isEmpty {
             showAlert(message: "내용이 없으면 저장할 수 없어요.", actionText: "계속 작성하기")
         } else {

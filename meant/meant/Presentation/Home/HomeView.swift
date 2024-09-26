@@ -18,6 +18,7 @@ final class HomeView: UIView {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(cellType: RecordCardCell.self)
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
