@@ -14,16 +14,12 @@ final class RecordDetailViewModel {
     }
     
     private let recordRepository: RecordRepositoryInterface
-    private var record: Record
+    var record: Record
     @Published var mode: RecordDetailMode = .viewing
     
     init(recordRepository: RecordRepositoryInterface, recordID: UUID) {
         self.recordRepository = recordRepository
         self.record = recordRepository.fetchRecords().first(where: { $0.id == recordID })!
-    }
-    
-    func getContent() -> String {
-        return record.content
     }
     
     func toggleMode() {
@@ -34,6 +30,7 @@ final class RecordDetailViewModel {
         record.content = content
         do {
             try recordRepository.updateRecord(record)
+            NotificationCenter.default.post(name: .recordsDidUpdate, object: nil)
         } catch {
             print("수정 실패")
         }
@@ -42,6 +39,7 @@ final class RecordDetailViewModel {
     func deleteRecord() {
         do {
             try recordRepository.deleteRecord(record)
+            NotificationCenter.default.post(name: .recordsDidUpdate, object: nil)
         } catch {
             print("삭제 실패")
         }

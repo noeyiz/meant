@@ -51,7 +51,8 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
     }
     
     private func bind() {
-        textView.text = viewModel.getContent()
+        textView.text = viewModel.record.content
+        textView.tintColor = RecordType(rawValue: viewModel.record.type)!.color02
         
         viewModel.$mode
             .sink { [weak self] mode in

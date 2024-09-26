@@ -27,12 +27,17 @@ final class HomeViewController: BaseViewController<HomeView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        removeNotificationObserver()
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
+        setupNotificationObserver()
         setupRecordCardView()
         setupMyRecordView()
         bind()
@@ -50,6 +55,19 @@ final class HomeViewController: BaseViewController<HomeView> {
         setNavigationBarStyle(.largeTitleWithRightButton)
         setNavigationBarTitle("meant")
         setNavigationBarRightButtonIcon("gearshape")
+    }
+    
+    private func setupNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleRecordsDidUpdate),
+            name: .recordsDidUpdate,
+            object: nil
+        )
+    }
+    
+    private func removeNotificationObserver() {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setupRecordCardView() {
@@ -96,6 +114,12 @@ final class HomeViewController: BaseViewController<HomeView> {
         }
         
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    // MARK: - Action Methods
+    
+    @objc private func handleRecordsDidUpdate() {
+        viewModel.fetchRecords()
     }
 }
 
