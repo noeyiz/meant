@@ -36,4 +36,8 @@ final class DIContainer {
     func makeNameViewModel() -> NameViewModel {
         return NameViewModel(userSettingsRepository: userSettingsRepository)
     }
+    
+    func makeNotificationViewModel() -> NotificationViewModel {
+        return NotificationViewModel(userSettingsRepository: userSettingsRepository)
+    }
 }

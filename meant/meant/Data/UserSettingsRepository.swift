@@ -14,6 +14,9 @@ final class UserSettingsRepository: UserSettingsRepositoryInterface {
     @UserDefaultsData(key: "notificationEnabled", defaultValue: false)
     var notificationEnabled: Bool
     
-    @UserDefaultsData(key: "notificatinTime", defaultValue: Date())
-    var notificatinTime: Date
+    @UserDefaultsData(key: "notificationTime", defaultValue: Date().date(from: "21:00"))
+    var notificationTime: Date
+    
+    @UserDefaultsData(key: "notificationMessage", defaultValue: "하루를 마무리할 시간이에요. 🍃")
+    var notificationMessage: String
 }

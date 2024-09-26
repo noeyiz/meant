@@ -10,5 +10,6 @@ import Foundation
 protocol UserSettingsRepositoryInterface {
     var username: String { get set }
     var notificationEnabled: Bool { get set }
-    var notificatinTime: Date { get set }
+    var notificationTime: Date { get set }
+    var notificationMessage: String { get set }
 }

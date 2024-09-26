@@ -10,7 +10,7 @@ import UIKit
 
 final class SettingsViewController: BaseViewController<SettingsView>, UIGestureRecognizerDelegate {
     private let viewModel: SettingsViewModel
-    private let settings = SettingsType.allCases
+    private var settings: [SettingsCellViewModel] = []
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
@@ -27,6 +27,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +35,12 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
         setupAction()
         setupTableView()
         bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.fetchSettings()
     }
     
     // MARK: - Setup Methods
@@ -65,12 +72,37 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
     // MARK: - Bind
     
     private func bind() {
-        viewModel.$notificationEnabled
-            .dropFirst()
-            .sink { [weak self] isEnabled in
-                guard let self = self, isEnabled else { return }
-                let notificationViewController = NotificationViewController()
+        viewModel.$showNotificationSettings
+            .sink { [weak self] show in
+                guard let self = self, show else { return }
+                let notificationViewModel = DIContainer.shared.makeNotificationViewModel()
+                let notificationViewController = NotificationViewController(
+                    viewModel: notificationViewModel
+                )
                 navigationController?.pushViewController(notificationViewController, animated: true)
+            }.store(in: &cancellables)
+        
+        viewModel.$showSettingsApp
+            .sink { [weak self] show in
+                guard let self = self, show else { return }
+                showAlert(
+                    message: "알림 설정을 위해 권한이 필요합니다.\n언제든지 이를 변경할 수 있어요.",
+                    leftActionText: "그만두기",
+                    rightActionText: "이동하기",
+                    leftActionCompletion: {
+                        self.viewModel.fetchSettings()
+                    },
+                    rightActionCompletion: {
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                )
+            }.store(in: &cancellables)
+        
+        viewModel.$settings
+            .sink { [weak self] settings in
+                guard let self = self else { return }
+                self.settings = settings
+                tableView.reloadData()
             }.store(in: &cancellables)
     }
 }
@@ -78,10 +110,10 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setting = settings[indexPath.row]
-        guard setting.mode == .description else { return }
+        guard setting.type.mode == .description else { return }
         
         generateHaptic()
-        switch setting {
+        switch setting.type {
         case .name:
             let nameViewModel = DIContainer.shared.makeNameViewModel()
             let nameViewController = NameViewController(viewModel: nameViewModel)
@@ -104,7 +136,7 @@ extension SettingsViewController: UITableViewDataSource {
         let setting = settings[indexPath.row]
         cell.configure(with: setting)
         cell.switchValueChangedHandler = { [weak self] newValue in
-            self?.handleSwitchValueChange(for: setting, newValue: newValue)
+            self?.handleSwitchValueChange(for: setting.type, newValue: newValue)
         }
         return cell
     }
