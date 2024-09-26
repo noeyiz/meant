@@ -130,9 +130,14 @@ final class RecordView: UIView {
     
     // MARK: - Configure
     
-    func configure(with type: RecordType) {
+    func configure(with type: RecordType, _ username: String) {
         messageContainer.backgroundColor = type.color01
-        messageLabel.setTextWithLineHeight(type.message)
+        var message: String?
+        switch type {
+        case .confide:  message = "오늘 하루는 어땠나요?\n\(username)님의 이야기를 들려주세요."
+        case .gather:   message = "\(username)님이 만난 반짝이는 문장,\n마음을 울린 순간을 기록해보세요."
+        }
+        messageLabel.setTextWithLineHeight(message!)
         textView.tintColor = type.color02
     }
     

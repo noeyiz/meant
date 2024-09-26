@@ -10,14 +10,29 @@ import Foundation
 
 final class SettingsViewModel {
     private var userSettingsRepository: UserSettingsRepositoryInterface
-    @Published var notificationEnabled: Bool
+    @Published var settings = [SettingsCellViewModel]()
+    @Published var showNotificationSettings: Bool = false
     
     init(userSettingsRepository: UserSettingsRepositoryInterface) {
         self.userSettingsRepository = userSettingsRepository
-        notificationEnabled = userSettingsRepository.notificationEnabled
+        fetchSettings()
+    }
+    
+    func fetchSettings() {
+        settings = [
+            SettingsCellViewModel(type: .name),
+            SettingsCellViewModel(type: .notification, isOn: userSettingsRepository.notificationEnabled),
+            SettingsCellViewModel(type: .instragram),
+        ]
     }
     
     func setNotificationStatus(isOn: Bool) {
-        notificationEnabled = isOn
+        if isOn {
+            showNotificationSettings = true
+        } else {
+            userSettingsRepository.notificationEnabled = false
+            UserNotificationManager.shared.disableNotification()
+            fetchSettings()
+        }
     }
 }

@@ -72,6 +72,11 @@
 		90AD1AEF2CA542F40063DDC6 /* UserSettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AEE2CA542F40063DDC6 /* UserSettingsRepository.swift */; };
 		90AD1AF12CA5447B0063DDC6 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AF02CA5447B0063DDC6 /* NotificationView.swift */; };
 		90AD1AF52CA544990063DDC6 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AF42CA544990063DDC6 /* NotificationViewController.swift */; };
+		90AD1AF92CA5719C0063DDC6 /* NameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AF82CA5719C0063DDC6 /* NameViewModel.swift */; };
+		90AD1AFB2CA57BE90063DDC6 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AFA2CA57BE90063DDC6 /* NotificationViewModel.swift */; };
+		90AD1AFD2CA5841C0063DDC6 /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AFC2CA5841C0063DDC6 /* SettingsCellViewModel.swift */; };
+		90AD1AFF2CA58AA20063DDC6 /* UserNotificationManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */; };
+		90AD1B012CA58AB20063DDC6 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -140,6 +145,11 @@
 		90AD1AEE2CA542F40063DDC6 /* UserSettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsRepository.swift; sourceTree = "<group>"; };
 		90AD1AF02CA5447B0063DDC6 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		90AD1AF42CA544990063DDC6 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		90AD1AF82CA5719C0063DDC6 /* NameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewModel.swift; sourceTree = "<group>"; };
+		90AD1AFA2CA57BE90063DDC6 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
+		90AD1AFC2CA5841C0063DDC6 /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
+		90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManaging.swift; sourceTree = "<group>"; };
+		90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +254,7 @@
 				90AD1ACC2CA49B670063DDC6 /* RecordCellViewModel.swift */,
 				90AD1ACE2CA49BCC0063DDC6 /* RecordSectionViewModel.swift */,
 				90AD1AE02CA5307C0063DDC6 /* SettingsType.swift */,
+				90AD1AFC2CA5841C0063DDC6 /* SettingsCellViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +280,8 @@
 				90AD1AE82CA53CB80063DDC6 /* SettingsViewModel.swift */,
 				90AD1AF02CA5447B0063DDC6 /* NotificationView.swift */,
 				90AD1AF42CA544990063DDC6 /* NotificationViewController.swift */,
+				90AD1AF82CA5719C0063DDC6 /* NameViewModel.swift */,
+				90AD1AFA2CA57BE90063DDC6 /* NotificationViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -343,6 +356,7 @@
 				90311D532CA48F1B00D2EAB7 /* RecordRepositoryInterface.swift */,
 				90311D572CA4901B00D2EAB7 /* RecordError.swift */,
 				90AD1AEA2CA541D50063DDC6 /* UserSettingsRepositoryInterface.swift */,
+				90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -355,6 +369,7 @@
 				90311D4F2CA48D4800D2EAB7 /* RealmManager.swift */,
 				90311D512CA48D7800D2EAB7 /* RecordRepository.swift */,
 				90AD1AEE2CA542F40063DDC6 /* UserSettingsRepository.swift */,
+				90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -484,9 +499,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				90AD1AED2CA542160063DDC6 /* UserDefaultsData.swift in Sources */,
+				90AD1AFB2CA57BE90063DDC6 /* NotificationViewModel.swift in Sources */,
 				90311CFA2CA2F43800D2EAB7 /* UIFont+.swift in Sources */,
 				90AD1AC52CA493C00063DDC6 /* DIContainer.swift in Sources */,
 				90AD1AF12CA5447B0063DDC6 /* NotificationView.swift in Sources */,
+				90AD1B012CA58AB20063DDC6 /* UserNotificationManager.swift in Sources */,
 				90AD1AE32CA5369F0063DDC6 /* NameView.swift in Sources */,
 				90311D3A2CA441D400D2EAB7 /* HapticFeedbackable.swift in Sources */,
 				90311D1E2CA41F5D00D2EAB7 /* Reusable.swift in Sources */,
@@ -506,7 +523,9 @@
 				90311D362CA4344300D2EAB7 /* UILabel+.swift in Sources */,
 				90AD1AE72CA5389D0063DDC6 /* InstagramLinkHandler.swift in Sources */,
 				90311D1C2CA41F2200D2EAB7 /* RecordCardCell.swift in Sources */,
+				90AD1AF92CA5719C0063DDC6 /* NameViewModel.swift in Sources */,
 				90311CFC2CA2F52A00D2EAB7 /* MeantFontWeight.swift in Sources */,
+				90AD1AFF2CA58AA20063DDC6 /* UserNotificationManaging.swift in Sources */,
 				90311D382CA4387900D2EAB7 /* Date+.swift in Sources */,
 				90311D332CA4303C00D2EAB7 /* RecordViewController.swift in Sources */,
 				90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */,
@@ -532,6 +551,7 @@
 				90AD1AC72CA494650063DDC6 /* RecordViewModel.swift in Sources */,
 				90AD1AE92CA53CB80063DDC6 /* SettingsViewModel.swift in Sources */,
 				90311D542CA48F1B00D2EAB7 /* RecordRepositoryInterface.swift in Sources */,
+				90AD1AFD2CA5841C0063DDC6 /* SettingsCellViewModel.swift in Sources */,
 				90AD1AF52CA544990063DDC6 /* NotificationViewController.swift in Sources */,
 				90311D502CA48D4800D2EAB7 /* RealmManager.swift in Sources */,
 				90311D012CA2FF1A00D2EAB7 /* BaseViewController.swift in Sources */,

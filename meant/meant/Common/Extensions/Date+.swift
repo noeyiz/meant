@@ -19,4 +19,16 @@ extension Date {
         dateFormatter.dateFormat = "dd (EEE)"
         return dateFormatter.string(from: self)
     }
+    
+    func formatAsTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.string(from: self)
+    }
+    
+    func date(from format: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter.date(from: format)!
+    }
 }

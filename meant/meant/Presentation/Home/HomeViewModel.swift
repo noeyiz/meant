@@ -10,10 +10,17 @@ import Foundation
 
 final class HomeViewModel {
     private let recordRepository: RecordRepositoryInterface
+    private let userSettingsRepository: UserSettingsRepositoryInterface
+    @Published var username = ""
     @Published var records = [RecordSectionViewModel]()
     
-    init(recordRepository: RecordRepositoryInterface) {
+    init(
+        recordRepository: RecordRepositoryInterface,
+        userSettingsRepository: UserSettingsRepositoryInterface
+    ) {
         self.recordRepository = recordRepository
+        self.userSettingsRepository = userSettingsRepository
+        updateUsername()
         fetchRecords()
     }
     
@@ -43,5 +50,9 @@ final class HomeViewModel {
         
         // 월별로 정렬 (내림차순)
         self.records = sectionedRecords.sorted { $0.month > $1.month }
+    }
+    
+    func updateUsername() {
+        username = userSettingsRepository.username
     }
 }

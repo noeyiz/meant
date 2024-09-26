@@ -38,7 +38,6 @@ final class NotificationView: UIView {
     
     let timeLabel = {
         let label = UILabel()
-        label.text = "19:02"
         label.font = .systemFont(ofSize: 11.5)
         label.textColor = .systemGray
         return label
@@ -46,7 +45,6 @@ final class NotificationView: UIView {
     
     let messageLabel = {
         let label = UILabel()
-        label.text = "하루를 마무리할 시간이에요."
         label.font = .systemFont(ofSize: 11.5)
         label.textColor = .black
         label.lineBreakMode = .byTruncatingTail
@@ -61,7 +59,6 @@ final class NotificationView: UIView {
         picker.datePickerMode = .time
         picker.locale = Locale(identifier: "ko_KR")
         picker.minuteInterval = 15
-//        picker.timeZone = TimeZone(identifier: "Asia/Seoul")
         picker.preferredDatePickerStyle = .wheels
         picker.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         return picker
@@ -72,8 +69,7 @@ final class NotificationView: UIView {
     let messageTextfield = {
         let textField = UITextField()
         textField.font = .nanumSquareNeo(ofSize: 12.0)
-        textField.placeholder = "사용자님만의 알림 메시지를 만들어보세요."
-        textField.text = "하루를 마무리할 시간이에요."
+        textField.placeholder = "매일 어떤 문장으로 알려드릴까요?"
         textField.textColor = .gray03
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no

@@ -10,12 +10,14 @@ import UIKit
 
 final class RecordDetailViewController: BaseViewController<RecordDetailView> {
     private let viewModel: RecordDetailViewModel
+    private let username: String
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
-    init(viewModel: RecordDetailViewModel) {
+    init(viewModel: RecordDetailViewModel, username: String) {
         self.viewModel = viewModel
+        self.username = username
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,8 +41,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
     
     private func setupNavigationBar() {
         setNavigationBarStyle(.normalTitleWithBothButtons)
-        // TODO: "나" 사용자 이름으로 바꾸기
-        setNavigationBarTitle("나의 기록")
+        setNavigationBarTitle("\(username)의 기록")
         setNavigationBarLeftButtonIcon("trash")
         setNavigationBarRightButtonIcon("pencil.line")
     }

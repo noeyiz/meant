@@ -12,13 +12,13 @@ final class RecordViewController: BaseViewController<RecordView> {
     private let recordType: RecordType
     // MARK: - Init
     
-    init(viewModel: RecordViewModel, recordType: RecordType) {
+    init(viewModel: RecordViewModel, recordType: RecordType, username: String) {
         self.viewModel = viewModel
         self.recordType = recordType
         
         super.init(nibName: nil, bundle: nil)
         
-        contentView.configure(with: recordType)
+        contentView.configure(with: recordType, username)
     }
     
     @available(*, unavailable)

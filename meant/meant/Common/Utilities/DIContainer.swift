@@ -15,7 +15,10 @@ final class DIContainer {
     private init() {}
     
     func makeHomeViewModel() -> HomeViewModel {
-        return HomeViewModel(recordRepository: recordRepository)
+        return HomeViewModel(
+            recordRepository: recordRepository,
+            userSettingsRepository: userSettingsRepository
+        )
     }
     
     func makeRecordViewModel() -> RecordViewModel {
@@ -28,5 +31,13 @@ final class DIContainer {
     
     func makeSettingsViewModel() -> SettingsViewModel {
         return SettingsViewModel(userSettingsRepository: userSettingsRepository)
+    }
+    
+    func makeNameViewModel() -> NameViewModel {
+        return NameViewModel(userSettingsRepository: userSettingsRepository)
+    }
+    
+    func makeNotificationViewModel() -> NotificationViewModel {
+        return NotificationViewModel(userSettingsRepository: userSettingsRepository)
     }
 }

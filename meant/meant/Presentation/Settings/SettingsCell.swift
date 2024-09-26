@@ -51,6 +51,14 @@ final class SettingsCell: UITableViewCell, Reusable {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        switchValueChangedHandler = nil
+        chevronImageView.isHidden = false
+        switchControl.isHidden = false
+    }
+    
     // MARK: - Setup Methods
     
     private func setupCell() {
@@ -82,13 +90,14 @@ final class SettingsCell: UITableViewCell, Reusable {
     
     // MARK: - Configure
     
-    func configure(with type: SettingsType) {
-        titleLabel.text = type.title
-        switch type.mode {
+    func configure(with viewModel: SettingsCellViewModel) {
+        titleLabel.text = viewModel.type.title
+        switch viewModel.type.mode {
         case .description:
             switchControl.isHidden = true
         case .switchControl:
             chevronImageView.isHidden = true
+            switchControl.isOn = viewModel.isOn!
             switchControl.addTarget(
                 self,
                 action: #selector(handleSwitchValueChanged),
