@@ -10,6 +10,7 @@ import Foundation
 final class DIContainer {
     static let shared = DIContainer()
     private let recordRepository = RecordRepository()
+    private let userSettingsRepository = UserSettingsRepository()
     
     private init() {}
     
@@ -23,5 +24,9 @@ final class DIContainer {
     
     func makeRecordDetailViewModel(for id: UUID) -> RecordDetailViewModel {
         return RecordDetailViewModel(recordRepository: recordRepository, recordID: id)
+    }
+    
+    func makeSettingsViewModel() -> SettingsViewModel {
+        return SettingsViewModel(userSettingsRepository: userSettingsRepository)
     }
 }

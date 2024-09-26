@@ -47,6 +47,13 @@ class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol 
         rightButton.configuration?.image = UIImage(systemName: systemName)
     }
     
+    func setNavigationBarRightButtonTitle(_ title: String) {
+        rightButton.configuration?.attributedTitle = .init(
+            title,
+            attributes: .init([.font: UIFont.nanumSquareNeo(ofSize: 14.0)])
+        )
+    }
+    
     // MARK: - Private Methods
     
     private func createLabel() -> UILabel {
@@ -101,7 +108,7 @@ class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol 
     }
     
     private func configureNormalTitleStyle() {
-        titleLabel.font = .nanumSquareNeo(ofSize: 14.0, weight: .regular)
+        titleLabel.font = .nanumSquareNeo(ofSize: 14.0, weight: .bold)
         
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
