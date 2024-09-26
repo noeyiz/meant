@@ -77,8 +77,10 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        generateHaptic()
         let setting = settings[indexPath.row]
+        guard setting.mode == .description else { return }
+        
+        generateHaptic()
         switch setting {
         case .name:
             let nameViewController = NameViewController()
