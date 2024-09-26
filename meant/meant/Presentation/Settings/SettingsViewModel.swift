@@ -21,7 +21,6 @@ final class SettingsViewModel {
     
     func setNotificationStatus(isOn: Bool) {
         notificationEnabled = isOn
-        userSettingsRepository.notificationEnabled = isOn
     }
     
     func setLockStatus(isOn: Bool) {

@@ -81,13 +81,13 @@ final class NameView: UIView {
         
         addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().inset(30)
         }
         
         addSubview(textField)
         textField.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(30)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(25)
             make.left.right.equalToSuperview().inset(35)
             make.height.equalTo(40)
         }

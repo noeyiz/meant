@@ -108,7 +108,7 @@ class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol 
     }
     
     private func configureNormalTitleStyle() {
-        titleLabel.font = .nanumSquareNeo(ofSize: 14.0, weight: .regular)
+        titleLabel.font = .nanumSquareNeo(ofSize: 14.0, weight: .bold)
         
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in

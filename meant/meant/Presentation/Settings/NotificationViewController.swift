@@ -37,4 +37,26 @@ final class NotificationViewController: BaseViewController<NotificationView>, UI
         generateHaptic()
         navigationController?.popViewController(animated: true)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        messageTextField.endEditing(true)
+    }
+}
+
+private extension NotificationViewController {
+    var timeLabel: UILabel {
+        contentView.timeLabel
+    }
+    
+    var messageLabel: UILabel {
+        contentView.messageLabel
+    }
+    
+    var timePicker: UIDatePicker {
+        contentView.timePicker
+    }
+    
+    var messageTextField: UITextField {
+        contentView.messageTextfield
+    }
 }
