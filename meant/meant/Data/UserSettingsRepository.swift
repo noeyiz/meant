@@ -8,6 +8,9 @@
 import Foundation
 
 final class UserSettingsRepository: UserSettingsRepositoryInterface {
+    @UserDefaultsData(key: "onboardingCompleted", defaultValue: false)
+    var onboardingCompleted: Bool
+    
     @UserDefaultsData(key: "username", defaultValue: "지연")
     var username: String
     

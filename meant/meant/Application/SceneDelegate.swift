@@ -29,10 +29,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UNUserNotificationCenter.current().delegate = self
         
         window = UIWindow(windowScene: windowScene)
-        let homeViewModel = DIContainer.shared.makeHomeViewModel()
-        window?.rootViewController = UINavigationController(
-            rootViewController: HomeViewController(viewModel: homeViewModel)
-        )
+        
+        // 온보딩 완료 여부에 따라
+        if userSettingsRepository.onboardingCompleted {
+            let homeViewModel = DIContainer.shared.makeHomeViewModel()
+            window?.rootViewController = UINavigationController(
+                rootViewController: HomeViewController(viewModel: homeViewModel)
+            )
+        } else {
+            window?.rootViewController = OnboardingViewController(
+                userSettingsRepository: userSettingsRepository
+            )
+        }
+        
         window?.makeKeyAndVisible()
     }
 
