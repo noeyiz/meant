@@ -5,10 +5,26 @@
 //  Created by 지연 on 9/26/24.
 //
 
+import Combine
 import UIKit
 
 final class SettingsViewController: BaseViewController<SettingsView>, UIGestureRecognizerDelegate {
+    private let viewModel: SettingsViewModel
     private let settings = SettingsType.allCases
+    private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Init
+    
+    init(viewModel: SettingsViewModel) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -17,6 +33,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
         setupNavigationBar()
         setupAction()
         setupTableView()
+        bind()
     }
     
     // MARK: - Setup Methods
@@ -43,6 +60,24 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
     @objc private func handleBackButtonTap() {
         navigationController?.popViewController(animated: true)
     }
+    
+    // MARK: - Bind
+    
+    private func bind() {
+        viewModel.$notificationEnabled
+            .sink { [weak self] isEnabled in
+                guard let self = self, isEnabled else { return }
+                let notificationViewController = NotificationViewController()
+                navigationController?.pushViewController(notificationViewController, animated: true)
+            }.store(in: &cancellables)
+        
+        viewModel.$lockEnabled
+            .sink { [weak self] isEnabled in
+                guard let self = self, isEnabled else { return }
+                let lockViewController = LockViewController()
+                navigationController?.pushViewController(lockViewController, animated: true)
+            }.store(in: &cancellables)
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate {
@@ -67,8 +102,23 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: SettingsCell.self)
-        cell.configure(with: settings[indexPath.row])
+        let setting = settings[indexPath.row]
+        cell.configure(with: setting)
+        cell.switchValueChangedHandler = { [weak self] newValue in
+            self?.handleSwitchValueChange(for: setting, newValue: newValue)
+        }
         return cell
+    }
+    
+    private func handleSwitchValueChange(for setting: SettingsType, newValue: Bool) {
+        switch setting {
+        case .notification:
+            viewModel.setNotificationStatus(isOn: newValue)
+        case .lock:
+            viewModel.setLockStatus(isOn: newValue)
+        default:
+            break
+        }
     }
 }
 

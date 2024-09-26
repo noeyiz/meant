@@ -10,6 +10,8 @@ import UIKit
 import SnapKit
 
 final class SettingsCell: UITableViewCell, Reusable {
+    var switchValueChangedHandler: ((Bool) -> Void)?
+    
     // MARK: - UI Components
     
     private let titleLabel = {
@@ -35,7 +37,7 @@ final class SettingsCell: UITableViewCell, Reusable {
         return imageView
     }()
     
-    private let switchControl = {
+    let switchControl = {
         let view = UISwitch()
         view.onTintColor = .blue02
         view.contentMode = .scaleAspectFit
@@ -101,6 +103,15 @@ final class SettingsCell: UITableViewCell, Reusable {
         case .switchControl:
             descriptionLabel.isHidden = true
             chevronImageView.isHidden = true
+            switchControl.addTarget(
+                self,
+                action: #selector(handleSwitchValueChanged),
+                for: .valueChanged
+            )
         }
+    }
+    
+    @objc private func handleSwitchValueChanged(_ sender: UISwitch) {
+        switchValueChangedHandler?(sender.isOn)
     }
 }
