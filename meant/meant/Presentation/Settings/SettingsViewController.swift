@@ -58,6 +58,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
     // MARK: - Action Methods
     
     @objc private func handleBackButtonTap() {
+        generateHaptic()
         navigationController?.popViewController(animated: true)
     }
     
@@ -65,6 +66,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
     
     private func bind() {
         viewModel.$notificationEnabled
+            .dropFirst()
             .sink { [weak self] isEnabled in
                 guard let self = self, isEnabled else { return }
                 let notificationViewController = NotificationViewController()
@@ -72,6 +74,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
             }.store(in: &cancellables)
         
         viewModel.$lockEnabled
+            .dropFirst()
             .sink { [weak self] isEnabled in
                 guard let self = self, isEnabled else { return }
                 let lockViewController = LockViewController()
@@ -82,6 +85,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        generateHaptic()
         let setting = settings[indexPath.row]
         switch setting {
         case .name:

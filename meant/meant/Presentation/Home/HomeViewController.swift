@@ -128,6 +128,7 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     @objc private func handleSettingsButtonTap() {
+        generateHaptic()
         let settingsViewModel = DIContainer.shared.makeSettingsViewModel()
         let settingsViewController = SettingsViewController(viewModel: settingsViewModel)
         navigationController?.pushViewController(settingsViewController, animated: true)

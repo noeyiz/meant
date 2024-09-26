@@ -47,6 +47,13 @@ class BaseViewController<View: UIView>: UIViewController, NavigationBarProtocol 
         rightButton.configuration?.image = UIImage(systemName: systemName)
     }
     
+    func setNavigationBarRightButtonTitle(_ title: String) {
+        rightButton.configuration?.attributedTitle = .init(
+            title,
+            attributes: .init([.font: UIFont.nanumSquareNeo(ofSize: 14.0)])
+        )
+    }
+    
     // MARK: - Private Methods
     
     private func createLabel() -> UILabel {

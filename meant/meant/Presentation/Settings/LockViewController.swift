@@ -34,6 +34,7 @@ final class LockViewController: BaseViewController<LockView>, UIGestureRecognize
     // MARK: - Action Methods
     
     @objc private func handleBackButtonTap() {
+        generateHaptic()
         navigationController?.popViewController(animated: true)
     }
 }

@@ -21,7 +21,7 @@ final class NotificationViewController: BaseViewController<NotificationView>, UI
     
     private func setupNavigationBar() {
         setNavigationBarStyle(.normalTitleWithBothButtons)
-        setNavigationBarTitle("잠금 설정")
+        setNavigationBarTitle("알림 설정")
         setNavigationBarLeftButtonIcon("chevron.left")
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -34,6 +34,7 @@ final class NotificationViewController: BaseViewController<NotificationView>, UI
     // MARK: - Action Methods
     
     @objc private func handleBackButtonTap() {
+        generateHaptic()
         navigationController?.popViewController(animated: true)
     }
 }

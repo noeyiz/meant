@@ -16,15 +16,8 @@ final class SettingsCell: UITableViewCell, Reusable {
     
     private let titleLabel = {
         let label = UILabel()
-        label.font = .nanumSquareNeo(ofSize: 12.0)
+        label.font = .nanumSquareNeo(ofSize: 13.0)
         label.textColor = .gray03
-        return label
-    }()
-    
-    private let descriptionLabel = {
-        let label = UILabel()
-        label.font = .nanumSquareNeo(ofSize: 11.0)
-        label.textColor = .gray02
         return label
     }()
     
@@ -78,12 +71,6 @@ final class SettingsCell: UITableViewCell, Reusable {
             make.centerY.equalToSuperview()
         }
         
-        contentView.addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints { make in
-            make.right.equalTo(chevronImageView.snp.left).offset(-10)
-            make.centerY.equalToSuperview()
-        }
-        
         contentView.addSubview(switchControl)
         switchControl.snp.makeConstraints { make in
             make.width.equalTo(50)
@@ -101,7 +88,6 @@ final class SettingsCell: UITableViewCell, Reusable {
         case .description:
             switchControl.isHidden = true
         case .switchControl:
-            descriptionLabel.isHidden = true
             chevronImageView.isHidden = true
             switchControl.addTarget(
                 self,

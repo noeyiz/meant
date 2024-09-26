@@ -15,6 +15,7 @@ final class NameViewController: BaseViewController<NameView>, UIGestureRecognize
         
         setupNavigationBar()
         setupAction()
+        textField.becomeFirstResponder()
     }
     
     // MARK: - Setup Methods
@@ -23,17 +24,35 @@ final class NameViewController: BaseViewController<NameView>, UIGestureRecognize
         setNavigationBarStyle(.normalTitleWithBothButtons)
         setNavigationBarTitle("이름 설정")
         setNavigationBarLeftButtonIcon("chevron.left")
+        setNavigationBarRightButtonTitle("저장")
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     private func setupAction() {
         leftButton.addTarget(self, action: #selector(handleBackButtonTap), for: .touchUpInside)
+        rightButton.addTarget(self, action: #selector(handleSaveButtonTap), for: .touchUpInside)
     }
     
     // MARK: - Action Methods
     
     @objc private func handleBackButtonTap() {
+        generateHaptic()
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func handleSaveButtonTap() {
+        generateHaptic()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        textField.endEditing(true)
+    }
+}
+
+private extension NameViewController {
+    var textField: UITextField {
+        return contentView.textField
     }
 }
