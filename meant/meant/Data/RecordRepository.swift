@@ -51,8 +51,14 @@ class RecordRepository: RecordRepositoryInterface {
         guard let realm = realm else { throw RecordError.realmNotInitialized }
         do {
             try realm.write {
-                let recordEntity = RecordEntity(record)
-                realm.delete(recordEntity)
+                if let existingRecord = realm.object(
+                    ofType: RecordEntity.self,
+                    forPrimaryKey: record.id
+                ) {
+                    realm.delete(existingRecord)
+                } else {
+                    throw RecordError.recordNotFound
+                }
             }
         } catch {
             throw RecordError.failedToDelete

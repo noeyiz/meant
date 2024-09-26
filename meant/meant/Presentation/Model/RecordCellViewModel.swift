@@ -8,6 +8,7 @@
 import UIKit
 
 struct RecordCellViewModel: Hashable {
+    let id: UUID
     let date: String
     let content: String
     let backgroundColor: UIColor

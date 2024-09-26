@@ -32,6 +32,7 @@ final class HomeViewModel {
         let sectionedRecords = groupedRecords.map { (month, records) in
             let cellViewModels = records.map { record in
                 RecordCellViewModel(
+                    id: record.id,
                     date: record.date.formatAsDayWeekday(),
                     content: record.content,
                     backgroundColor: RecordType(rawValue: record.type)!.color01

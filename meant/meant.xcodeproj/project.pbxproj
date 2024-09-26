@@ -55,6 +55,9 @@
 		90AD1ACB2CA498AF0063DDC6 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1ACA2CA498AF0063DDC6 /* UITableView+Reusable.swift */; };
 		90AD1ACD2CA49B670063DDC6 /* RecordCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1ACC2CA49B670063DDC6 /* RecordCellViewModel.swift */; };
 		90AD1ACF2CA49BCC0063DDC6 /* RecordSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1ACE2CA49BCC0063DDC6 /* RecordSectionViewModel.swift */; };
+		90AD1AD12CA4ABFF0063DDC6 /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AD02CA4ABFF0063DDC6 /* RecordDetailView.swift */; };
+		90AD1AD42CA4AC1E0063DDC6 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AD32CA4AC1E0063DDC6 /* RecordDetailViewController.swift */; };
+		90AD1AD62CA514D80063DDC6 /* RecordDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AD52CA514D80063DDC6 /* RecordDetailViewModel.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -106,6 +109,9 @@
 		90AD1ACA2CA498AF0063DDC6 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		90AD1ACC2CA49B670063DDC6 /* RecordCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCellViewModel.swift; sourceTree = "<group>"; };
 		90AD1ACE2CA49BCC0063DDC6 /* RecordSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordSectionViewModel.swift; sourceTree = "<group>"; };
+		90AD1AD02CA4ABFF0063DDC6 /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
+		90AD1AD32CA4AC1E0063DDC6 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		90AD1AD52CA514D80063DDC6 /* RecordDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewModel.swift; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +219,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		90AD1AD22CA4AC0F0063DDC6 /* RecordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				90AD1AD02CA4ABFF0063DDC6 /* RecordDetailView.swift */,
+				90AD1AD32CA4AC1E0063DDC6 /* RecordDetailViewController.swift */,
+				90AD1AD52CA514D80063DDC6 /* RecordDetailViewModel.swift */,
+			);
+			path = RecordDetail;
+			sourceTree = "<group>";
+		};
 		90E914402CA2CB130094162D = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +281,7 @@
 		90E914642CA2D24F0094162D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				90AD1AD22CA4AC0F0063DDC6 /* RecordDetail */,
 				90311D342CA4308000D2EAB7 /* Model */,
 				90311D2F2CA4301800D2EAB7 /* Record */,
 				90311D122CA320A300D2EAB7 /* Home */,
@@ -424,6 +441,8 @@
 				90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */,
 				90AD1ACB2CA498AF0063DDC6 /* UITableView+Reusable.swift in Sources */,
 				90AD1ACF2CA49BCC0063DDC6 /* RecordSectionViewModel.swift in Sources */,
+				90AD1AD62CA514D80063DDC6 /* RecordDetailViewModel.swift in Sources */,
+				90AD1AD42CA4AC1E0063DDC6 /* RecordDetailViewController.swift in Sources */,
 				90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */,
 				90311D162CA320C300D2EAB7 /* HomeViewController.swift in Sources */,
 				90AD1ACD2CA49B670063DDC6 /* RecordCellViewModel.swift in Sources */,
@@ -439,6 +458,7 @@
 				90311D562CA48FCB00D2EAB7 /* Record+.swift in Sources */,
 				90311D4E2CA48C6500D2EAB7 /* Record.swift in Sources */,
 				90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */,
+				90AD1AD12CA4ABFF0063DDC6 /* RecordDetailView.swift in Sources */,
 				90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */,
 				90311D202CA41F8600D2EAB7 /* UICollectionView+Reusable.swift in Sources */,
 				90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */,

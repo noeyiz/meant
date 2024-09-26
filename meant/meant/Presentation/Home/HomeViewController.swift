@@ -95,11 +95,18 @@ final class HomeViewController: BaseViewController<HomeView> {
             snapshot.appendItems(section.cellViewModels, toSection: section.month)
         }
         
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
+        let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
+        let recordDetailViewController = RecordDetailViewController(viewModel: recordDetailViewModel)
+        present(recordDetailViewController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.text = dataSource.snapshot().sectionIdentifiers[section]
