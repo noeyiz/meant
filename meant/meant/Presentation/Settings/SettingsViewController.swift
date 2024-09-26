@@ -83,7 +83,8 @@ extension SettingsViewController: UITableViewDelegate {
         generateHaptic()
         switch setting {
         case .name:
-            let nameViewController = NameViewController()
+            let nameViewModel = DIContainer.shared.makeNameViewModel()
+            let nameViewController = NameViewController(viewModel: nameViewModel)
             navigationController?.pushViewController(nameViewController, animated: true)
         case .instragram:
             InstragramLinkHandler.openInstagramProfile()

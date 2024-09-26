@@ -29,4 +29,8 @@ final class DIContainer {
     func makeSettingsViewModel() -> SettingsViewModel {
         return SettingsViewModel(userSettingsRepository: userSettingsRepository)
     }
+    
+    func makeNameViewModel() -> NameViewModel {
+        return NameViewModel(userSettingsRepository: userSettingsRepository)
+    }
 }

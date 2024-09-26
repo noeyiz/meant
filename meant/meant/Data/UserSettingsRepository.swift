@@ -8,7 +8,7 @@
 import Foundation
 
 final class UserSettingsRepository: UserSettingsRepositoryInterface {
-    @UserDefaultsData(key: "username", defaultValue: "")
+    @UserDefaultsData(key: "username", defaultValue: "지연")
     var username: String
     
     @UserDefaultsData(key: "notificationEnabled", defaultValue: false)
