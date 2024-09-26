@@ -16,7 +16,4 @@ final class UserSettingsRepository: UserSettingsRepositoryInterface {
     
     @UserDefaultsData(key: "notificatinTime", defaultValue: Date())
     var notificatinTime: Date
-    
-    @UserDefaultsData(key: "lockEnabled", defaultValue: false)
-    var lockEnabled: Bool
 }

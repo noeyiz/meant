@@ -72,14 +72,6 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
                 let notificationViewController = NotificationViewController()
                 navigationController?.pushViewController(notificationViewController, animated: true)
             }.store(in: &cancellables)
-        
-        viewModel.$lockEnabled
-            .dropFirst()
-            .sink { [weak self] isEnabled in
-                guard let self = self, isEnabled else { return }
-                let lockViewController = LockViewController()
-                navigationController?.pushViewController(lockViewController, animated: true)
-            }.store(in: &cancellables)
     }
 }
 
@@ -118,8 +110,6 @@ extension SettingsViewController: UITableViewDataSource {
         switch setting {
         case .notification:
             viewModel.setNotificationStatus(isOn: newValue)
-        case .lock:
-            viewModel.setLockStatus(isOn: newValue)
         default:
             break
         }

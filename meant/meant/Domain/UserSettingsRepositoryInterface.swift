@@ -11,5 +11,4 @@ protocol UserSettingsRepositoryInterface {
     var username: String { get set }
     var notificationEnabled: Bool { get set }
     var notificatinTime: Date { get set }
-    var lockEnabled: Bool { get set }
 }
