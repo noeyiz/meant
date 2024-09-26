@@ -8,6 +8,7 @@
 import Foundation
 
 protocol UserSettingsRepositoryInterface {
+    var onboardingCompleted: Bool { get set }
     var username: String { get set }
     var notificationEnabled: Bool { get set }
     var notificationTime: Date { get set }

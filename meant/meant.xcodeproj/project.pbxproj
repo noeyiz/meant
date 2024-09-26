@@ -77,6 +77,7 @@
 		90AD1AFD2CA5841C0063DDC6 /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AFC2CA5841C0063DDC6 /* SettingsCellViewModel.swift */; };
 		90AD1AFF2CA58AA20063DDC6 /* UserNotificationManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */; };
 		90AD1B012CA58AB20063DDC6 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */; };
+		90E689C82CA5B09C00D3B455 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E689C72CA5B09C00D3B455 /* OnboardingViewController.swift */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -150,6 +151,7 @@
 		90AD1AFC2CA5841C0063DDC6 /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
 		90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManaging.swift; sourceTree = "<group>"; };
 		90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
+		90E689C72CA5B09C00D3B455 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		90311CFF2CA2FF0F00D2EAB7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				90AD1AE22CA5369F0063DDC6 /* NameView.swift */,
 				90311D002CA2FF1A00D2EAB7 /* BaseViewController.swift */,
 				90311D022CA2FF2300D2EAB7 /* NavigationBarStyle.swift */,
 				90311D042CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift */,
@@ -275,7 +278,6 @@
 				90AD1ADA2CA525FC0063DDC6 /* SettingsView.swift */,
 				90AD1ADC2CA5260F0063DDC6 /* SettingsViewController.swift */,
 				90AD1ADE2CA527DC0063DDC6 /* SettingsCell.swift */,
-				90AD1AE22CA5369F0063DDC6 /* NameView.swift */,
 				90AD1AE42CA536AF0063DDC6 /* NameViewController.swift */,
 				90AD1AE82CA53CB80063DDC6 /* SettingsViewModel.swift */,
 				90AD1AF02CA5447B0063DDC6 /* NotificationView.swift */,
@@ -284,6 +286,14 @@
 				90AD1AFA2CA57BE90063DDC6 /* NotificationViewModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		90E689C62CA5B07F00D3B455 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				90E689C72CA5B09C00D3B455 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		90E914402CA2CB130094162D = {
@@ -338,6 +348,7 @@
 		90E914642CA2D24F0094162D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				90E689C62CA5B07F00D3B455 /* Onboarding */,
 				90AD1AD92CA525F30063DDC6 /* Settings */,
 				90AD1AD22CA4AC0F0063DDC6 /* RecordDetail */,
 				90311D342CA4308000D2EAB7 /* Model */,
@@ -513,6 +524,7 @@
 				90AD1ACB2CA498AF0063DDC6 /* UITableView+Reusable.swift in Sources */,
 				90AD1ACF2CA49BCC0063DDC6 /* RecordSectionViewModel.swift in Sources */,
 				90AD1AEB2CA541D50063DDC6 /* UserSettingsRepositoryInterface.swift in Sources */,
+				90E689C82CA5B09C00D3B455 /* OnboardingViewController.swift in Sources */,
 				90AD1AD62CA514D80063DDC6 /* RecordDetailViewModel.swift in Sources */,
 				90AD1AD42CA4AC1E0063DDC6 /* RecordDetailViewController.swift in Sources */,
 				90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */,
