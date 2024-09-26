@@ -63,12 +63,15 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
                     textView.isUserInteractionEnabled = true
                     textView.becomeFirstResponder()
                 case .viewing:
-                    setNavigationBarRightButtonIcon("pencil.line")
                     textView.isUserInteractionEnabled = false
                     if textView.text.isEmpty {
-                        viewModel.toggleMode()
-                        showAlert(message: "내용이 없으면 저장할 수 없어요.", actionText: "계속 작성하기")
+                        showAlert(
+                            message: "내용이 없으면 저장할 수 없어요.",
+                            actionText: "계속 작성하기",
+                            actionCompletion: { self.viewModel.toggleMode() }
+                        )
                     } else {
+                        setNavigationBarRightButtonIcon("pencil.line")
                         viewModel.updateRecord(content: textView.text)
                     }
                 }
