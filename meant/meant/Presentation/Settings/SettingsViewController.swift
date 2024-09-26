@@ -34,6 +34,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
     }
     
     private func setupTableView() {
+        tableView.delegate = self
         tableView.dataSource = self
     }
     
@@ -41,6 +42,21 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
     
     @objc private func handleBackButtonTap() {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension SettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let setting = settings[indexPath.row]
+        switch setting {
+        case .name:
+            let nameViewController = NameViewController()
+            navigationController?.pushViewController(nameViewController, animated: true)
+        case .instragram:
+            InstragramLinkHandler.openInstagramProfile()
+        default:
+            break
+        }
     }
 }
 
