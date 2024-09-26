@@ -12,7 +12,6 @@ final class SettingsViewModel {
     private var userSettingsRepository: UserSettingsRepositoryInterface
     @Published var settings = [SettingsCellViewModel]()
     @Published var showNotificationSettings: Bool = false
-    @Published var showSettingsApp: Bool = false
     
     init(userSettingsRepository: UserSettingsRepositoryInterface) {
         self.userSettingsRepository = userSettingsRepository
@@ -29,14 +28,7 @@ final class SettingsViewModel {
     
     func setNotificationStatus(isOn: Bool) {
         if isOn {
-            UserNotificationManager.shared.checkNotificationAuthorization { [weak self] isAuthorized in
-                guard let self = self else { return }
-                if isAuthorized {
-                    showNotificationSettings = true
-                } else {
-                    showSettingsApp = true
-                }
-            }
+            showNotificationSettings = true
         } else {
             userSettingsRepository.notificationEnabled = false
             UserNotificationManager.shared.disableNotification()

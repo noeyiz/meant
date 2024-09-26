@@ -82,22 +82,6 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
                 navigationController?.pushViewController(notificationViewController, animated: true)
             }.store(in: &cancellables)
         
-        viewModel.$showSettingsApp
-            .sink { [weak self] show in
-                guard let self = self, show else { return }
-                showAlert(
-                    message: "알림 설정을 위해 권한이 필요합니다.\n언제든지 이를 변경할 수 있어요.",
-                    leftActionText: "그만두기",
-                    rightActionText: "이동하기",
-                    leftActionCompletion: {
-                        self.viewModel.fetchSettings()
-                    },
-                    rightActionCompletion: {
-                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-                    }
-                )
-            }.store(in: &cancellables)
-        
         viewModel.$settings
             .sink { [weak self] settings in
                 guard let self = self else { return }

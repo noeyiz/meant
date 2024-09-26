@@ -25,12 +25,18 @@ final class NotificationViewController: BaseViewController<NotificationView>, UI
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        removeNotificationObserver()
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        checkNotification()
         setupNavigationBar()
+        setupNotificationObserver()
         setupAction()
         bind()
     }
@@ -46,11 +52,41 @@ final class NotificationViewController: BaseViewController<NotificationView>, UI
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
+    private func setupNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleWillEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
+    }
+    
+    private func removeNotificationObserver(){
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     private func setupAction() {
         leftButton.addTarget(self, action: #selector(handleBackButtonTap), for: .touchUpInside)
         rightButton.addTarget(self, action: #selector(handleSaveButtonTap), for: .touchUpInside)
         messageTextField.addTarget(self, action: #selector(handleMessageUpdate), for: .editingChanged)
         timePicker.addTarget(self, action: #selector(handleTimeUpdate), for: .valueChanged)
+    }
+    
+    private func checkNotification() {
+        UserNotificationManager.shared.checkNotificationAuthorization { [weak self] isAuthorized in
+            guard let self = self, !isAuthorized else { return }
+            showAlert(
+                message: "알림 설정을 위해 권한이 필요합니다.\n언제든지 이를 변경할 수 있어요.",
+                leftActionText: "그만두기",
+                rightActionText: "이동하기",
+                leftActionCompletion: {
+                    self.navigationController?.popViewController(animated: true)
+                },
+                rightActionCompletion: {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }
+            )
+        }
     }
     
     // MARK: - Bind
@@ -74,6 +110,10 @@ final class NotificationViewController: BaseViewController<NotificationView>, UI
     }
     
     // MARK: - Action Methods
+    
+    @objc private func handleWillEnterForeground() {
+        checkNotification()
+    }
     
     @objc private func handleBackButtonTap() {
         generateHaptic()
