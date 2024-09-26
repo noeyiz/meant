@@ -22,8 +22,7 @@ final class HomeView: UIView {
         return collectionView
     }()
     
-    // TODO: "나" 사용자 이름으로 변경하기
-    private lazy var myRecordLabel = createTitleLabel(with: "나의 기록")
+    lazy var myRecordLabel = createTitleLabel()
     
     let myRecordView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -37,10 +36,8 @@ final class HomeView: UIView {
         return tableView
     }()
     
-    // TODO: "사용자" 사용자 이름으로 변경하기
     lazy var emptyLabel = {
         let label = UILabel()
-        label.text = "사용자님의 기록을 기다리고 있어요"
         label.font = .nanumSquareNeo(ofSize: 10.0)
         label.textColor = .gray02
         return label
@@ -114,7 +111,7 @@ final class HomeView: UIView {
 // MARK: - Private Methods
 
 private extension HomeView {
-    func createTitleLabel(with text: String) -> UILabel {
+    func createTitleLabel(with text: String? = nil) -> UILabel {
         let label = UILabel()
         label.text = text
         label.textColor = .gray03

@@ -9,4 +9,5 @@ import Foundation
 
 extension Notification.Name {
     static let recordsDidUpdate = Notification.Name("recordsDidUpdate")
+    static let usernameDidUpdate = Notification.Name("usernameDidUpdate")
 }

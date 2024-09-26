@@ -17,11 +17,4 @@ enum RecordType: String, CaseIterable {
         case .gather:   "조각 모으기"
         }
     }
-    
-    var message: String {
-        switch self {
-        case .confide:  "오늘 하루는 어땠나요?\n사용자님의 이야기를 들려주세요."
-        case .gather:   "사용자님이 만난 반짝이는 문장,\n마음을 울린 순간을 기록해보세요."
-        }
-    }
 }

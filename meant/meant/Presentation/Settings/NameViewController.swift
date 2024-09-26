@@ -58,7 +58,9 @@ final class NameViewController: BaseViewController<NameView>, UIGestureRecognize
     
     private func bind() {
         textField.text = viewModel.username
-        indicatorLabel.text = "\(viewModel.username.count)/\(maxLength)"
+        let count = viewModel.username.count
+        indicatorLabel.text = "\(count)/\(maxLength)"
+        rightButton.isEnabled = count <= maxLength && count > 0
     }
     
     // MARK: - Action Methods
@@ -70,18 +72,19 @@ final class NameViewController: BaseViewController<NameView>, UIGestureRecognize
     
     @objc private func handleSaveButtonTap() {
         generateHaptic()
+        viewModel.saveName(name: textField.text!)
         navigationController?.popViewController(animated: true)
     }
     
     @objc private func handleTextFieldUpdate() {
         guard let username = textField.text else { return }
-        indicatorLabel.text = "\(username.count)/\(maxLength)"
-        rightButton.isEnabled = username.count <= maxLength
+        let count = username.count
+        indicatorLabel.text = "\(count)/\(maxLength)"
+        rightButton.isEnabled = count <= maxLength && count > 0
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         textField.endEditing(true)
-        viewModel.saveName(name: textField.text!)
     }
 }
 

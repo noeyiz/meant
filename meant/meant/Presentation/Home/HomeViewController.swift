@@ -65,6 +65,13 @@ final class HomeViewController: BaseViewController<HomeView> {
             name: .recordsDidUpdate,
             object: nil
         )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleUsernameDidUpdate),
+            name: .usernameDidUpdate,
+            object: nil
+        )
     }
     
     private func removeNotificationObserver() {
@@ -99,6 +106,13 @@ final class HomeViewController: BaseViewController<HomeView> {
     // MARK: - Bind
     
     private func bind() {
+        viewModel.$username
+            .sink { [weak self] username in
+                guard let self = self else { return }
+                myRecordLabel.text = "\(username)의 기록"
+                emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
+            }.store(in: &cancellables)
+        
         viewModel.$records
             .sink { [weak self] records in
                 guard let self = self else { return }
@@ -127,6 +141,10 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.fetchRecords()
     }
     
+    @objc private func handleUsernameDidUpdate() {
+        viewModel.updateUsername()
+    }
+    
     @objc private func handleSettingsButtonTap() {
         generateHaptic()
         let settingsViewModel = DIContainer.shared.makeSettingsViewModel()
@@ -140,7 +158,10 @@ extension HomeViewController: UITableViewDelegate {
         generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
         let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
-        let recordDetailViewController = RecordDetailViewController(viewModel: recordDetailViewModel)
+        let recordDetailViewController = RecordDetailViewController(
+            viewModel: recordDetailViewModel,
+            username: viewModel.username
+        )
         present(recordDetailViewController, animated: true)
     }
     
@@ -179,7 +200,8 @@ extension HomeViewController: UICollectionViewDelegate {
         let type = recordCellViewModels[indexPath.row]
         let recordViewController = RecordViewController(
             viewModel: recordViewModel,
-            recordType: type
+            recordType: type,
+            username: viewModel.username
         )
         generateHaptic()
         navigationController?.pushViewController(recordViewController, animated: true)
@@ -209,11 +231,15 @@ private extension HomeViewController {
         contentView.recordCardView
     }
     
+    var myRecordLabel: UILabel {
+        contentView.myRecordLabel
+    }
+    
     var myRecordView: UITableView {
         contentView.myRecordView
     }
     
-    var emptyLabel: UIView {
+    var emptyLabel: UILabel {
         contentView.emptyLabel
     }
 }

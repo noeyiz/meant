@@ -18,5 +18,6 @@ final class NameViewModel {
     
     func saveName(name: String) {
         userSettingsRepository.username = name
+        NotificationCenter.default.post(name: .usernameDidUpdate, object: nil)
     }
 }
