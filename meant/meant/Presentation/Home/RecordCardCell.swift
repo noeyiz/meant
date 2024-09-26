@@ -30,6 +30,7 @@ final class RecordCardCell: BaseCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupCell()
         setupLayout()
     }
     
@@ -39,6 +40,10 @@ final class RecordCardCell: BaseCollectionViewCell {
     }
     
     // MARK: - Setup Methods
+    
+    private func setupCell() {
+        backgroundColor = .clear
+    }
     
     private func setupLayout() {
         contentView.addSubview(backgroundImageView)

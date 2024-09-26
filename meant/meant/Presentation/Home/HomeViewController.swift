@@ -27,12 +27,17 @@ final class HomeViewController: BaseViewController<HomeView> {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        removeNotificationObserver()
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
+        setupNotificationObserver()
         setupRecordCardView()
         setupMyRecordView()
         bind()
@@ -50,6 +55,19 @@ final class HomeViewController: BaseViewController<HomeView> {
         setNavigationBarStyle(.largeTitleWithRightButton)
         setNavigationBarTitle("meant")
         setNavigationBarRightButtonIcon("gearshape")
+    }
+    
+    private func setupNotificationObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleRecordsDidUpdate),
+            name: .recordsDidUpdate,
+            object: nil
+        )
+    }
+    
+    private func removeNotificationObserver() {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func setupRecordCardView() {
@@ -95,11 +113,25 @@ final class HomeViewController: BaseViewController<HomeView> {
             snapshot.appendItems(section.cellViewModels, toSection: section.month)
         }
         
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    // MARK: - Action Methods
+    
+    @objc private func handleRecordsDidUpdate() {
+        viewModel.fetchRecords()
     }
 }
 
 extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        generateHaptic()
+        let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
+        let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
+        let recordDetailViewController = RecordDetailViewController(viewModel: recordDetailViewModel)
+        present(recordDetailViewController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.text = dataSource.snapshot().sectionIdentifiers[section]
