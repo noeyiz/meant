@@ -60,10 +60,10 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
                 switch mode {
                 case .editing:
                     setNavigationBarRightButtonIcon("checkmark")
-                    textView.isUserInteractionEnabled = true
+                    textView.isEditable = true
                     textView.becomeFirstResponder()
                 case .viewing:
-                    textView.isUserInteractionEnabled = false
+                    textView.isEditable = false
                     if textView.text.isEmpty {
                         showAlert(
                             message: "내용이 없으면 저장할 수 없어요.",
