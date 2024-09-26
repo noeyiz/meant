@@ -38,6 +38,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         
         setupNavigationBar()
         setupNotificationObserver()
+        setupAction()
         setupRecordCardView()
         setupMyRecordView()
         bind()
@@ -68,6 +69,10 @@ final class HomeViewController: BaseViewController<HomeView> {
     
     private func removeNotificationObserver() {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    private func setupAction() {
+        rightButton.addTarget(self, action: #selector(handleSettingsButtonTap), for: .touchUpInside)
     }
     
     private func setupRecordCardView() {
@@ -120,6 +125,11 @@ final class HomeViewController: BaseViewController<HomeView> {
     
     @objc private func handleRecordsDidUpdate() {
         viewModel.fetchRecords()
+    }
+    
+    @objc private func handleSettingsButtonTap() {
+        let settingsViewController = SettingsViewController()
+        navigationController?.pushViewController(settingsViewController, animated: true)
     }
 }
 
