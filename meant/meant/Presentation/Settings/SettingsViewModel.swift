@@ -26,7 +26,7 @@ final class SettingsViewModel {
                 isOn: userSettingsRepository.notificationEnabled
             ),
             SettingsCellViewModel(type: .reset),
-            SettingsCellViewModel(type: .instragram),
+//            SettingsCellViewModel(type: .instragram),
         ]
     }
     

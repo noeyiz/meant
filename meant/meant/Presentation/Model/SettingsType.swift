@@ -25,14 +25,16 @@ enum SettingsType: String, CaseIterable {
 
 extension SettingsType {
     enum Mode {
-        case description
+        case none
+        case chevron
         case switchControl
     }
     
     var mode: Mode {
         switch self {
-        case .name, .reset, .instragram:    .description
-        case .notification:                 .switchControl
+        case .name:                 .chevron
+        case .notification:         .switchControl
+        case .reset, .instragram:   .none
         }
     }
 }

@@ -94,7 +94,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setting = settings[indexPath.row]
-        guard setting.type.mode == .description else { return }
+        guard setting.type.mode != .switchControl else { return }
         
         generateHaptic()
         switch setting.type {
@@ -112,8 +112,8 @@ extension SettingsViewController: UITableViewDelegate {
                     self.navigationController?.popViewController(animated: true)
                 }
             )
-        case .instragram:
-            InstragramLinkHandler.openInstagramProfile()
+//        case .instragram:
+//            InstragramLinkHandler.openInstagramProfile()
         default:
             break
         }
