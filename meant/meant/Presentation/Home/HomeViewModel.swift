@@ -52,6 +52,15 @@ final class HomeViewModel {
         self.records = sectionedRecords.sorted { $0.month > $1.month }
     }
     
+    func resetRecords() {
+        do {
+            try recordRepository.resetRecords()
+            fetchRecords()
+        } catch {
+            print("초기화 실패")
+        }
+    }
+    
     func updateUsername() {
         username = userSettingsRepository.username
     }

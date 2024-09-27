@@ -94,7 +94,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let setting = settings[indexPath.row]
-        guard setting.type.mode == .description else { return }
+        guard setting.type.mode != .switchControl else { return }
         
         generateHaptic()
         switch setting.type {
@@ -102,8 +102,18 @@ extension SettingsViewController: UITableViewDelegate {
             let nameViewModel = DIContainer.shared.makeNameViewModel()
             let nameViewController = NameViewController(viewModel: nameViewModel)
             navigationController?.pushViewController(nameViewController, animated: true)
-        case .instragram:
-            InstragramLinkHandler.openInstagramProfile()
+        case .reset:
+            showAlert(
+                message: "모든 기록이 영원히 사라져요.\n정말 삭제하시겠어요?",
+                leftActionText: "돌아가기",
+                rightActionText: "삭제하기",
+                rightActionCompletion: {
+                    NotificationCenter.default.post(name: .recordsDidReset, object: nil)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            )
+//        case .instragram:
+//            InstragramLinkHandler.openInstagramProfile()
         default:
             break
         }

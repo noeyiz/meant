@@ -84,7 +84,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
     @objc private func handleDeleteButtonTap() {
         generateHaptic()
         showAlert(
-            message: "정말로 삭제하시겠어요?",
+            message: "정말 삭제하시겠어요?",
             leftActionText: "돌아가기",
             rightActionText: "삭제하기",
             rightActionCompletion: { [weak self] in

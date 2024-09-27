@@ -12,4 +12,5 @@ protocol RecordRepositoryInterface {
     func saveRecord(_ record: Record) throws
     func updateRecord(_ record: Record) throws
     func deleteRecord(_ record: Record) throws
+    func resetRecords() throws
 }

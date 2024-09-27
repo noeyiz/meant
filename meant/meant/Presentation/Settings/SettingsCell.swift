@@ -93,7 +93,10 @@ final class SettingsCell: UITableViewCell, Reusable {
     func configure(with viewModel: SettingsCellViewModel) {
         titleLabel.text = viewModel.type.title
         switch viewModel.type.mode {
-        case .description:
+        case .none:
+            chevronImageView.isHidden = true
+            switchControl.isHidden = true
+        case .chevron:
             switchControl.isHidden = true
         case .switchControl:
             chevronImageView.isHidden = true

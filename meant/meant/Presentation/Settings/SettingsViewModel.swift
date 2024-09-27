@@ -21,8 +21,12 @@ final class SettingsViewModel {
     func fetchSettings() {
         settings = [
             SettingsCellViewModel(type: .name),
-            SettingsCellViewModel(type: .notification, isOn: userSettingsRepository.notificationEnabled),
-            SettingsCellViewModel(type: .instragram),
+            SettingsCellViewModel(
+                type: .notification,
+                isOn: userSettingsRepository.notificationEnabled
+            ),
+            SettingsCellViewModel(type: .reset),
+//            SettingsCellViewModel(type: .instragram),
         ]
     }
     

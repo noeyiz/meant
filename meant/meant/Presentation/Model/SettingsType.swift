@@ -10,12 +10,14 @@ import UIKit
 enum SettingsType: String, CaseIterable {
     case name
     case notification
+    case reset
     case instragram
     
     var title: String {
         switch self {
         case .name:         "이름 설정"
         case .notification: "알림 설정"
+        case .reset:        "데이터 초기화"
         case .instragram:   "인스타그램"
         }
     }
@@ -23,14 +25,16 @@ enum SettingsType: String, CaseIterable {
 
 extension SettingsType {
     enum Mode {
-        case description
+        case none
+        case chevron
         case switchControl
     }
     
     var mode: Mode {
         switch self {
-        case .name, .instragram:    .description
+        case .name:                 .chevron
         case .notification:         .switchControl
+        case .reset, .instragram:   .none
         }
     }
 }
