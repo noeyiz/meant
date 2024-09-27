@@ -27,8 +27,6 @@
 		90311D1C2CA41F2200D2EAB7 /* RecordCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D1B2CA41F2200D2EAB7 /* RecordCardCell.swift */; };
 		90311D1E2CA41F5D00D2EAB7 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D1D2CA41F5D00D2EAB7 /* Reusable.swift */; };
 		90311D202CA41F8600D2EAB7 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D1F2CA41F8600D2EAB7 /* UICollectionView+Reusable.swift */; };
-		90311D232CA420FF00D2EAB7 /* gather.png in Resources */ = {isa = PBXBuildFile; fileRef = 90311D212CA420FF00D2EAB7 /* gather.png */; };
-		90311D242CA420FF00D2EAB7 /* confide.png in Resources */ = {isa = PBXBuildFile; fileRef = 90311D222CA420FF00D2EAB7 /* confide.png */; };
 		90311D262CA4216200D2EAB7 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D252CA4216200D2EAB7 /* BaseCollectionViewCell.swift */; };
 		90311D282CA4253100D2EAB7 /* RecordType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D272CA4253100D2EAB7 /* RecordType.swift */; };
 		90311D312CA4302A00D2EAB7 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D302CA4302A00D2EAB7 /* RecordView.swift */; };
@@ -78,6 +76,9 @@
 		90AD1AFF2CA58AA20063DDC6 /* UserNotificationManaging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */; };
 		90AD1B012CA58AB20063DDC6 /* UserNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */; };
 		90E689C82CA5B09C00D3B455 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E689C72CA5B09C00D3B455 /* OnboardingViewController.swift */; };
+		90E689CC2CA5C15200D3B455 /* meant.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E689CB2CA5C15200D3B455 /* meant.png */; };
+		90E689CF2CA689A200D3B455 /* gather.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E689CD2CA689A200D3B455 /* gather.png */; };
+		90E689D02CA689A200D3B455 /* confide.png in Resources */ = {isa = PBXBuildFile; fileRef = 90E689CE2CA689A200D3B455 /* confide.png */; };
 		90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144C2CA2CB130094162D /* AppDelegate.swift */; };
 		90E9144F2CA2CB130094162D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E9144E2CA2CB130094162D /* SceneDelegate.swift */; };
 		90E914562CA2CB150094162D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90E914552CA2CB150094162D /* Assets.xcassets */; };
@@ -103,8 +104,6 @@
 		90311D1B2CA41F2200D2EAB7 /* RecordCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordCardCell.swift; sourceTree = "<group>"; };
 		90311D1D2CA41F5D00D2EAB7 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		90311D1F2CA41F8600D2EAB7 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
-		90311D212CA420FF00D2EAB7 /* gather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gather.png; sourceTree = "<group>"; };
-		90311D222CA420FF00D2EAB7 /* confide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confide.png; sourceTree = "<group>"; };
 		90311D252CA4216200D2EAB7 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		90311D272CA4253100D2EAB7 /* RecordType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordType.swift; sourceTree = "<group>"; };
 		90311D302CA4302A00D2EAB7 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
@@ -152,6 +151,9 @@
 		90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManaging.swift; sourceTree = "<group>"; };
 		90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationManager.swift; sourceTree = "<group>"; };
 		90E689C72CA5B09C00D3B455 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		90E689CB2CA5C15200D3B455 /* meant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meant.png; sourceTree = "<group>"; };
+		90E689CD2CA689A200D3B455 /* gather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gather.png; sourceTree = "<group>"; };
+		90E689CE2CA689A200D3B455 /* confide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = confide.png; sourceTree = "<group>"; };
 		90E914492CA2CB130094162D /* meant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90E9144C2CA2CB130094162D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		90E9144E2CA2CB130094162D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -221,8 +223,9 @@
 		90311D0B2CA304F300D2EAB7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				90311D222CA420FF00D2EAB7 /* confide.png */,
-				90311D212CA420FF00D2EAB7 /* gather.png */,
+				90E689CB2CA5C15200D3B455 /* meant.png */,
+				90E689CE2CA689A200D3B455 /* confide.png */,
+				90E689CD2CA689A200D3B455 /* gather.png */,
 				90311D102CA3073300D2EAB7 /* texture.png */,
 			);
 			path = Images;
@@ -487,15 +490,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E689CF2CA689A200D3B455 /* gather.png in Resources */,
 				90311CF42CA2EC3D00D2EAB7 /* NanumSquareNeo-dEb.otf in Resources */,
 				90E914562CA2CB150094162D /* Assets.xcassets in Resources */,
-				90311D242CA420FF00D2EAB7 /* confide.png in Resources */,
 				90311CEC2CA2EC1300D2EAB7 /* NanumMyeongjoOTFExtraBold.otf in Resources */,
 				90311CEB2CA2EC1300D2EAB7 /* NanumMyeongjoOTFBold.otf in Resources */,
 				90311CF32CA2EC3D00D2EAB7 /* NanumSquareNeo-eHv.otf in Resources */,
 				90311D112CA3073300D2EAB7 /* texture.png in Resources */,
+				90E689CC2CA5C15200D3B455 /* meant.png in Resources */,
 				90311CF72CA2EC3D00D2EAB7 /* NanumSquareNeo-bRg.otf in Resources */,
-				90311D232CA420FF00D2EAB7 /* gather.png in Resources */,
+				90E689D02CA689A200D3B455 /* confide.png in Resources */,
 				90311CF82CA2F2A200D2EAB7 /* NanumSquareNeo-cBd.otf in Resources */,
 				90311CEA2CA2EC1300D2EAB7 /* NanumMyeongjoOTF.otf in Resources */,
 				90311CF62CA2EC3D00D2EAB7 /* NanumSquareNeo-aLt.otf in Resources */,

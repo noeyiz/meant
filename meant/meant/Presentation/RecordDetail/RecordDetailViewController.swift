@@ -67,8 +67,8 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
                     textView.isEditable = false
                     if textView.text.isEmpty {
                         showAlert(
-                            message: "내용이 없으면 저장할 수 없어요.",
-                            actionText: "계속 작성하기",
+                            message: "빈 페이지엔 아무것도 남지 않아요.\n무언가를 남겨주세요.",
+                            actionText: "계속 쓰기",
                             actionCompletion: { self.viewModel.toggleMode() }
                         )
                     } else {
@@ -85,7 +85,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
         generateHaptic()
         showAlert(
             message: "정말로 삭제하시겠어요?",
-            leftActionText: "그만두기",
+            leftActionText: "돌아가기",
             rightActionText: "삭제하기",
             rightActionCompletion: { [weak self] in
                 guard let self = self else { return }

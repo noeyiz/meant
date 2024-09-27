@@ -56,8 +56,8 @@ final class RecordViewController: BaseViewController<RecordView> {
         generateHaptic()
         showAlert(
             message: recordType == .confide ?
-            "오늘의 이야기가 아직 끝나지 않은 것 같아요.\n정말로 나가시겠어요?" :
-            "조각을 모아두지 않으면 잊혀질지도 몰라요.\n정말로 나가시겠어요?",
+            "아직 다 적지 않은 이야기가 있어요.\n정말 나가시겠어요?" :
+            "소중한 조각들이 잊혀질지도 몰라요.\n정말 나가시겠어요?",
             leftActionText: "머무르기",
             rightActionText: "나가기",
             rightActionCompletion: { [weak self] in
@@ -69,7 +69,7 @@ final class RecordViewController: BaseViewController<RecordView> {
     @objc private func handleDoneButtonTap() {
         generateHaptic()
         if textView.text.isEmpty {
-            showAlert(message: "내용이 없으면 저장할 수 없어요.", actionText: "계속 작성하기")
+            showAlert(message: "빈 페이지엔 아무것도 남지 않아요.\n무언가를 남겨주세요.", actionText: "계속 쓰기")
         } else {
             viewModel.saveRecord(content: textView.text, recordType: recordType)
             navigationController?.popViewController(animated: true)

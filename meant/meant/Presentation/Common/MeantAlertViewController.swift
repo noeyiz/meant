@@ -24,7 +24,7 @@ final class MeantAlertViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .white
         view.clipsToBounds = true
-        view.layer.cornerRadius = 15
+        view.layer.cornerRadius = 12
         return view
     }()
     

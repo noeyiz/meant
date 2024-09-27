@@ -15,6 +15,8 @@ final class RecordCardCell: BaseCollectionViewCell {
     private let backgroundImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 12
         return imageView
     }()
     
