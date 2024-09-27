@@ -9,32 +9,21 @@ import UIKit
 
 extension UILabel {
     func setTextWithLineHeight(_ text: String, lineHeight: CGFloat = 20.0) {
-        let attributedString = NSMutableAttributedString(string: text)
+        let style = NSMutableParagraphStyle()
+        style.minimumLineHeight = lineHeight
+        style.maximumLineHeight = lineHeight
+        style.alignment = textAlignment
         
-        // 첫 번째 줄 이후의 텍스트에 대해서만 라인 높이 적용
-        if let firstLineRange = text.range(of: "\n") {
-            let firstLineEndIndex = text.distance(
-                from: text.startIndex,
-                to: firstLineRange.lowerBound
-            )
-            let customLineHeightRange = NSRange(
-                location: firstLineEndIndex + 1,
-                length: text.count - firstLineEndIndex - 1
-            )
-            
-            let paragraphStyle = NSMutableParagraphStyle()
-            paragraphStyle.minimumLineHeight = lineHeight
-            paragraphStyle.maximumLineHeight = lineHeight
-            paragraphStyle.alignment = textAlignment
-            
-            attributedString.addAttribute(
-                .paragraphStyle,
-                value: paragraphStyle,
-                range: customLineHeightRange
-            )
-        }
+        let attributes: [NSAttributedString.Key: Any] = [
+            .paragraphStyle: style
+        ]
         
-        self.attributedText = attributedString
+        let attrString = NSAttributedString(
+            string: text,
+            attributes: attributes
+        )
+        
+        self.attributedText = attrString
         self.numberOfLines = 0
     }
 }

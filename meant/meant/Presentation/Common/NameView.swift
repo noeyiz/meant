@@ -23,9 +23,7 @@ final class NameView: UIView {
     private let descriptionLabel = {
         let label = UILabel()
         label.setTextWithLineHeight(
-            "이름은 당신만의 의미있는 공간을 만들어줄 거예요.\n언제든 바꿀 수 있어요.",
-            lineHeight: 15.0
-        )
+            "이름은 당신만의 의미있는 공간을 만들어줄 거예요.\n언제든 바꿀 수 있어요.")
         label.font = .nanumSquareNeo(ofSize: 10.5)
         label.textColor = .gray02
         return label
