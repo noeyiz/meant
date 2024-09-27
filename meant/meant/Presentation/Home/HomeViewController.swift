@@ -68,6 +68,13 @@ final class HomeViewController: BaseViewController<HomeView> {
         
         NotificationCenter.default.addObserver(
             self,
+            selector: #selector(handleRecordsDidReset),
+            name: .recordsDidReset,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
             selector: #selector(handleUsernameDidUpdate),
             name: .usernameDidUpdate,
             object: nil
@@ -139,6 +146,10 @@ final class HomeViewController: BaseViewController<HomeView> {
     
     @objc private func handleRecordsDidUpdate() {
         viewModel.fetchRecords()
+    }
+    
+    @objc private func handleRecordsDidReset() {
+        viewModel.resetRecords()
     }
     
     @objc private func handleUsernameDidUpdate() {
