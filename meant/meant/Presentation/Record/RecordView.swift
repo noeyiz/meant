@@ -18,7 +18,7 @@ final class RecordView: UIView {
     private let messageContainer = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 30
+        view.layer.cornerRadius = 25
         return view
     }()
     

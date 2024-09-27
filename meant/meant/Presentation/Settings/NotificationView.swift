@@ -14,18 +14,21 @@ final class NotificationView: UIView {
     
     private let previewContainerView = {
         let view = UIView()
-        view.backgroundColor = .gray01.withAlphaComponent(0.7)
+        view.backgroundColor = .tertiarySystemGroupedBackground
         view.clipsToBounds = true
         view.layer.cornerRadius = 25
+        view.overrideUserInterfaceStyle = .light
         return view
     }()
     
     private let appIconImageView = {
-        let view = UIView()
-        view.backgroundColor = .gray03
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 20
-        return view
+        let imageView = UIImageView()
+        let image = UIImage(named: "meant")
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 20
+        return imageView
     }()
     
     private let appNameLabel = {
@@ -60,6 +63,7 @@ final class NotificationView: UIView {
         picker.locale = Locale(identifier: "ko_KR")
         picker.minuteInterval = 15
         picker.preferredDatePickerStyle = .wheels
+        picker.overrideUserInterfaceStyle = .light
         picker.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         return picker
     }()

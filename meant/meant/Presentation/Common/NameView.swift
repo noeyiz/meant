@@ -101,7 +101,7 @@ final class NameView: UIView {
         
         addSubview(indicatorLabel)
         indicatorLabel.snp.makeConstraints { make in
-            make.top.equalTo(line.snp.bottom).inset(-5)
+            make.top.equalTo(line.snp.bottom).offset(5)
             make.right.equalToSuperview().inset(30)
         }
     }

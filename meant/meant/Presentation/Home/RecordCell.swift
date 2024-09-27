@@ -15,7 +15,7 @@ final class RecordCell: UITableViewCell, Reusable {
     private let containerView = {
         let view = UIView()
         view.clipsToBounds = true
-        view.layer.cornerRadius = 15
+        view.layer.cornerRadius = 12
         return view
     }()
     
