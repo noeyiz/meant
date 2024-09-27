@@ -135,7 +135,7 @@ final class RecordView: UIView {
         var message: String?
         switch type {
         case .confide:  message = "오늘 하루는 어땠나요?\n\(username)님의 이야기를 들려주세요."
-        case .gather:   message = "\(username)님이 만난 반짝이는 문장,\n마음을 울린 순간을 기록해보세요."
+        case .gather:   message = "책 속 문장, 마음에 와닿은 말 한마디...\n\(username)님의 반짝이는 조각들을 이곳에 모아보세요."
         }
         messageLabel.setTextWithLineHeight(message!)
         textView.tintColor = type.color02

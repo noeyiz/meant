@@ -14,7 +14,7 @@ final class NameView: UIView {
     
     private let titleLabel = {
         let label = UILabel()
-        label.text = "meant에서 당신을 어떻게 부를까요?"
+        label.text = "meant에서 당신을 어떻게 부르면 좋을까요?"
         label.font = .nanumSquareNeo(ofSize: 13.0, weight: .bold)
         label.textColor = .gray03
         return label
@@ -23,7 +23,7 @@ final class NameView: UIView {
     private let descriptionLabel = {
         let label = UILabel()
         label.setTextWithLineHeight(
-            "곳곳에서 당신의 이름을 발견할 수 있을 거예요 :)\n언제든 변경할 수 있어요.",
+            "이름은 당신만의 의미있는 공간을 만들어줄 거예요.\n언제든 바꿀 수 있어요.",
             lineHeight: 15.0
         )
         label.font = .nanumSquareNeo(ofSize: 10.5)

@@ -73,7 +73,7 @@ final class NotificationView: UIView {
     let messageTextfield = {
         let textField = UITextField()
         textField.font = .nanumSquareNeo(ofSize: 12.0)
-        textField.placeholder = "매일 어떤 문장으로 알려드릴까요?"
+        textField.placeholder = "하루의 의미를 찾는 시간, 어떤 문장으로 알려드릴까요?"
         textField.textColor = .gray03
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no

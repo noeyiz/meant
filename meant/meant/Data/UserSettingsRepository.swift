@@ -20,6 +20,6 @@ final class UserSettingsRepository: UserSettingsRepositoryInterface {
     @UserDefaultsData(key: "notificationTime", defaultValue: Date().date(from: "21:00"))
     var notificationTime: Date
     
-    @UserDefaultsData(key: "notificationMessage", defaultValue: "하루를 마무리할 시간이에요. 🍃")
+    @UserDefaultsData(key: "notificationMessage", defaultValue: "하루의 의미를 찾을 시간이에요. 🍃")
     var notificationMessage: String
 }
