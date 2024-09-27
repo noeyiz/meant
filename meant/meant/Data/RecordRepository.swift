@@ -64,4 +64,15 @@ class RecordRepository: RecordRepositoryInterface {
             throw RecordError.failedToDelete
         }
     }
+    
+    func resetRecords() throws {
+        guard let realm = realm else { throw RecordError.realmNotInitialized }
+        do {
+            try realm.write {
+                realm.deleteAll()
+            }
+        } catch {
+            throw RecordError.failedToDelete
+        }
+    }
 }
