@@ -52,6 +52,13 @@ final class MyRecordView: UIView {
         return stackView
     }()
     
+    let emptyLabel = {
+        let label = UILabel()
+        label.font = .nanumSquareNeo(ofSize: 10.0)
+        label.textColor = .gray02
+        return label
+    }()
+    
     let randomRecordView = RandomRecordView()
     
     let allRecordView = AllRecordView()
@@ -115,6 +122,12 @@ final class MyRecordView: UIView {
         contentView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.height.equalTo(scrollView)
+        }
+        
+        addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleContainer.snp.bottom).offset(40)
+            make.centerX.equalToSuperview()
         }
     }
     

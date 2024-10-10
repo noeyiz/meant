@@ -113,17 +113,16 @@ final class HomeViewController: BaseViewController<HomeView> {
     // MARK: - Bind
     
     private func bind() {
-//        viewModel.$username
-//            .sink { [weak self] username in
-//                guard let self = self else { return }
-//                myRecordLabel.text = "\(username)의 기록"
-//                emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
-//            }.store(in: &cancellables)
-//        
+        viewModel.$username
+            .sink { [weak self] username in
+                guard let self = self else { return }
+                emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
+            }.store(in: &cancellables)
+        
         viewModel.$records
             .sink { [weak self] records in
                 guard let self = self else { return }
-//                emptyLabel.isHidden = !records.isEmpty
+                emptyLabel.isHidden = !records.isEmpty
                 applySnapshot(with: records)
             }
             .store(in: &cancellables)
@@ -240,6 +239,10 @@ extension HomeViewController: UICollectionViewDataSource {
 private extension HomeViewController {
     var recordCardView: UICollectionView {
         contentView.recordCardView
+    }
+    
+    var emptyLabel: UILabel {
+        contentView.myRecordView.emptyLabel
     }
     
     var allRecordTableView: UITableView {
