@@ -28,9 +28,7 @@ final class HomeViewModel {
     func fetchRecords() {
         let fetchedRecords = recordRepository.fetchRecords()
         
-        if !fetchedRecords.isEmpty {
-            randomRecord = fetchedRecords[0]
-        }
+        randomRecord = fetchedRecords.isEmpty ? nil : fetchedRecords[0]
         
         // 날짜별로 내림차순 정렬
         let sortedRecords = fetchedRecords.sorted { $0.date > $1.date }
@@ -55,6 +53,16 @@ final class HomeViewModel {
         
         // 월별로 정렬 (내림차순)
         self.records = sectionedRecords.sorted { $0.month < $1.month }
+    }
+    
+    func deleteRandomRecord() {
+        guard let record = randomRecord else { return }
+        do {
+            try recordRepository.deleteRecord(record)
+            fetchRecords()
+        } catch {
+            print("삭제 실패")
+        }
     }
     
     func resetRecords() {

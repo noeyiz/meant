@@ -25,8 +25,8 @@ final class DIContainer {
         return RecordViewModel(recordRepository: recordRepository)
     }
     
-    func makeRecordDetailViewModel(for id: UUID) -> RecordDetailViewModelX {
-        return RecordDetailViewModelX(recordRepository: recordRepository, recordID: id)
+    func makeEditViewModel(for id: UUID) -> EditViewModel {
+        return EditViewModel(recordRepository: recordRepository, recordID: id)
     }
     
     func makeSettingsViewModel() -> SettingsViewModel {

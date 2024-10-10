@@ -125,20 +125,21 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.$username
             .sink { [weak self] username in
                 guard let self = self else { return }
-                emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
+                allRecordEmptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
+                randomRecordEmptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
             }.store(in: &cancellables)
         
         viewModel.$records
             .sink { [weak self] records in
                 guard let self = self else { return }
-                emptyLabel.isHidden = !records.isEmpty
+                allRecordEmptyLabel.isHidden = !records.isEmpty
                 applySnapshot(with: records)
             }
             .store(in: &cancellables)
         
         viewModel.$randomRecord
             .sink { [weak self] record in
-                guard let self = self, let record = record else { return }
+                guard let self = self else { return }
                 randomRecordView.configure(with: record)
             }.store(in: &cancellables)
     }
@@ -178,7 +179,10 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     @objc private func handleEllipsisButtonTap() {
+        generateHaptic()
+        
         let recordMenuViewController = RecordMenuViewController()
+        recordMenuViewController.delegate = self
         recordMenuViewController.modalPresentationStyle = .popover
         
         if let popoverController = recordMenuViewController.popoverPresentationController {
@@ -201,13 +205,6 @@ final class HomeViewController: BaseViewController<HomeView> {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         generateHaptic()
-        let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
-        let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
-        let recordDetailViewController = RecordDetailViewControllerX(
-            viewModel: recordDetailViewModel,
-            username: viewModel.username
-        )
-        present(recordDetailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -277,6 +274,33 @@ extension HomeViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
+extension HomeViewController: RecordMenuViewDelegate {
+    func didRecordMenuTap(_ recordMenu: RecordMenu) {
+        switch recordMenu {
+        case .edit:
+            guard let record = viewModel.randomRecord else { return }
+            let editViewModel = DIContainer.shared.makeEditViewModel(for: record.id)
+            let editViewController = EditViewController(viewModel: editViewModel)
+            present(editViewController, animated: true)
+        case .reminisce:
+            break
+        case .other:
+            break
+        case .delete:
+            showAlert(
+                message: "정말 삭제하시겠어요?",
+                leftActionText: "돌아가기",
+                rightActionText: "삭제하기",
+                rightActionCompletion: { [weak self] in
+                    guard let self = self else { return }
+                    viewModel.deleteRandomRecord()
+                    dismiss(animated: true)
+                }
+            )
+        }
+    }
+}
+
 private extension HomeViewController {
     var recordCardView: UICollectionView {
         contentView.recordCardView
@@ -290,7 +314,11 @@ private extension HomeViewController {
         contentView.myRecordView.randomRecordView.ellipsisButton
     }
     
-    var emptyLabel: UILabel {
+    var randomRecordEmptyLabel: UILabel {
+        contentView.myRecordView.randomRecordView.emptyLabel
+    }
+    
+    var allRecordEmptyLabel: UILabel {
         contentView.myRecordView.allRecordView.emptyLabel
     }
     

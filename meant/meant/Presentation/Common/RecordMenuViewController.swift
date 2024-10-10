@@ -9,8 +9,13 @@ import UIKit
 
 import SnapKit
 
+protocol RecordMenuViewDelegate: AnyObject {
+    func didRecordMenuTap(_ recordMenu: RecordMenu)
+}
+
 final class RecordMenuViewController: UIViewController {
     private let recordMenus = RecordMenu.allCases
+    weak var delegate: RecordMenuViewDelegate?
     
     // MARK: - UI Components
     
@@ -52,6 +57,14 @@ final class RecordMenuViewController: UIViewController {
 extension RecordMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        generateHaptic()
+        dismiss(animated: true, completion: { [weak self] in
+            guard let self = self else { return }
+            delegate?.didRecordMenuTap(recordMenus[indexPath.row])
+        })
     }
 }
 

@@ -44,6 +44,13 @@ final class RecordDetailView: UIView {
         return label
     }()
     
+    let emptyLabel = {
+        let label = UILabel()
+        label.font = .nanumSquareNeo(ofSize: 10.0)
+        label.textColor = .gray02
+        return label
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -83,13 +90,26 @@ final class RecordDetailView: UIView {
             make.top.bottom.equalToSuperview().inset(20)
             make.left.right.equalToSuperview().inset(25)
         }
+        
+        addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(40)
+            make.centerX.equalToSuperview()
+        }
     }
     
     // MARK: - Configure
     
-    func configure(with record: Record) {
-        dateLabel.text = record.date.formatAsFullDate()
-        contentLabel.setTextWithLineHeight(record.content, lineHeight: 17.0)
-        containerView.backgroundColor = RecordType(rawValue: record.type)!.color01
+    func configure(with record: Record?) {
+        if let record = record {
+            dateLabel.text = record.date.formatAsFullDate()
+            contentLabel.setTextWithLineHeight(record.content, lineHeight: 17.0)
+            containerView.backgroundColor = RecordType(rawValue: record.type)!.color01
+            emptyLabel.isHidden = true
+            [dateLabel, ellipsisButton, containerView].forEach { $0.isHidden = false }
+        } else {
+            emptyLabel.isHidden = false
+            [dateLabel, ellipsisButton, containerView].forEach { $0.isHidden = true }
+        }
     }
 }
