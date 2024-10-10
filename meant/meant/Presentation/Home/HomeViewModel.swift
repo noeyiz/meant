@@ -49,7 +49,7 @@ final class HomeViewModel {
         }
         
         // 월별로 정렬 (내림차순)
-        self.records = sectionedRecords.sorted { $0.month > $1.month }
+        self.records = sectionedRecords.sorted { $0.month < $1.month }
     }
     
     func resetRecords() {
