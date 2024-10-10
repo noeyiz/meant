@@ -89,7 +89,7 @@ final class RecordDetailView: UIView {
     
     func configure(with record: Record) {
         dateLabel.text = record.date.formatAsFullDate()
-        contentLabel.text = record.content
+        contentLabel.setTextWithLineHeight(record.content, lineHeight: 17.0)
         containerView.backgroundColor = RecordType(rawValue: record.type)!.color01
     }
 }

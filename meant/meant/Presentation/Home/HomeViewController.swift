@@ -86,7 +86,16 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     private func setupAction() {
-        rightButton.addTarget(self, action: #selector(handleSettingsButtonTap), for: .touchUpInside)
+        rightButton.addTarget(
+            self,
+            action: #selector(handleSettingsButtonTap),
+            for: .touchUpInside
+        )
+        ellipsisButton.addTarget(
+            self,
+            action: #selector(handleEllipsisButtonTap),
+            for: .touchUpInside
+        )
     }
     
     private func setupRecordCardView() {
@@ -167,6 +176,26 @@ final class HomeViewController: BaseViewController<HomeView> {
         let settingsViewController = SettingsViewController(viewModel: settingsViewModel)
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
+    
+    @objc private func handleEllipsisButtonTap() {
+        let recordMenuViewController = RecordMenuViewController()
+        recordMenuViewController.modalPresentationStyle = .popover
+        
+        if let popoverController = recordMenuViewController.popoverPresentationController {
+            popoverController.sourceView = ellipsisButton
+            popoverController.sourceRect = CGRect(
+                x: ellipsisButton.bounds.midX,
+                y: ellipsisButton.bounds.midY + 100,
+                width: 0,
+                height: 0
+            )
+            popoverController.permittedArrowDirections = []
+            popoverController.delegate = self
+        }
+        
+        present(recordMenuViewController, animated: true)
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -242,6 +271,12 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 }
 
+extension HomeViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+}
+
 private extension HomeViewController {
     var recordCardView: UICollectionView {
         contentView.recordCardView
@@ -249,6 +284,10 @@ private extension HomeViewController {
     
     var randomRecordView: RecordDetailView {
         contentView.myRecordView.randomRecordView
+    }
+    
+    var ellipsisButton: UIButton {
+        contentView.myRecordView.randomRecordView.ellipsisButton
     }
     
     var emptyLabel: UILabel {

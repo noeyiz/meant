@@ -48,6 +48,9 @@
 		90A343AE2CB826CA0060CD61 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343AD2CB826CA0060CD61 /* MyRecordView.swift */; };
 		90A343B22CB8296C0060CD61 /* AllRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343B12CB8296C0060CD61 /* AllRecordView.swift */; };
 		90A343B52CB83D3B0060CD61 /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343B42CB83D3B0060CD61 /* RecordDetailView.swift */; };
+		90A343B92CB845C80060CD61 /* RecordMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343B82CB845C80060CD61 /* RecordMenu.swift */; };
+		90A343BB2CB847C50060CD61 /* RecordMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343BA2CB847C50060CD61 /* RecordMenuCell.swift */; };
+		90A343BD2CB848D30060CD61 /* RecordMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343BC2CB848D30060CD61 /* RecordMenuViewController.swift */; };
 		90AD1ABF2CA4922B0063DDC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1ABE2CA4922B0063DDC6 /* Realm */; };
 		90AD1AC12CA4922B0063DDC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1AC02CA4922B0063DDC6 /* RealmSwift */; };
 		90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */; };
@@ -129,6 +132,9 @@
 		90A343AD2CB826CA0060CD61 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
 		90A343B12CB8296C0060CD61 /* AllRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordView.swift; sourceTree = "<group>"; };
 		90A343B42CB83D3B0060CD61 /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
+		90A343B82CB845C80060CD61 /* RecordMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenu.swift; sourceTree = "<group>"; };
+		90A343BA2CB847C50060CD61 /* RecordMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenuCell.swift; sourceTree = "<group>"; };
+		90A343BC2CB848D30060CD61 /* RecordMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenuViewController.swift; sourceTree = "<group>"; };
 		90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		90AD1AC42CA493C00063DDC6 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		90AD1AC62CA494650063DDC6 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
@@ -225,6 +231,8 @@
 				90311D252CA4216200D2EAB7 /* BaseCollectionViewCell.swift */,
 				90311D3F2CA4487A00D2EAB7 /* MeantTextView.swift */,
 				90311D412CA4616700D2EAB7 /* MeantAlertViewController.swift */,
+				90A343BA2CB847C50060CD61 /* RecordMenuCell.swift */,
+				90A343BC2CB848D30060CD61 /* RecordMenuViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -273,6 +281,7 @@
 				90AD1AE02CA5307C0063DDC6 /* SettingsType.swift */,
 				90AD1AFC2CA5841C0063DDC6 /* SettingsCellViewModel.swift */,
 				90A343AB2CB81DAC0060CD61 /* HomeTab.swift */,
+				90A343B82CB845C80060CD61 /* RecordMenu.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -561,9 +570,11 @@
 				90311D1C2CA41F2200D2EAB7 /* RecordCardCell.swift in Sources */,
 				90AD1AF92CA5719C0063DDC6 /* NameViewModel.swift in Sources */,
 				90311CFC2CA2F52A00D2EAB7 /* MeantFontWeight.swift in Sources */,
+				90A343BB2CB847C50060CD61 /* RecordMenuCell.swift in Sources */,
 				90AD1AFF2CA58AA20063DDC6 /* UserNotificationManaging.swift in Sources */,
 				90311D382CA4387900D2EAB7 /* Date+.swift in Sources */,
 				90311D332CA4303C00D2EAB7 /* RecordViewController.swift in Sources */,
+				90A343B92CB845C80060CD61 /* RecordMenu.swift in Sources */,
 				90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */,
 				90311D032CA2FF2300D2EAB7 /* NavigationBarStyle.swift in Sources */,
 				90AD1ADF2CA527DC0063DDC6 /* SettingsCell.swift in Sources */,
@@ -575,6 +586,7 @@
 				90311D4E2CA48C6500D2EAB7 /* Record.swift in Sources */,
 				90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */,
 				90AD1AEF2CA542F40063DDC6 /* UserSettingsRepository.swift in Sources */,
+				90A343BD2CB848D30060CD61 /* RecordMenuViewController.swift in Sources */,
 				90AD1AD12CA4ABFF0063DDC6 /* RecordDetailViewX.swift in Sources */,
 				90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */,
 				90311D202CA41F8600D2EAB7 /* UICollectionView+Reusable.swift in Sources */,
