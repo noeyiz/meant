@@ -24,6 +24,13 @@ final class AllRecordView: UIView {
         return tableView
     }()
     
+    let emptyLabel = {
+        let label = UILabel()
+        label.font = .nanumSquareNeo(ofSize: 10.0)
+        label.textColor = .gray02
+        return label
+    }()
+    
     // MARK: - Init
     
     override init(frame: CGRect) {
@@ -42,9 +49,15 @@ final class AllRecordView: UIView {
     private func setupLayout() {
         addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
+            make.top.equalToSuperview().inset(25)
             make.left.right.equalToSuperview().inset(30)
             make.bottom.equalToSuperview()
+        }
+        
+        addSubview(emptyLabel)
+        emptyLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(40)
+            make.centerX.equalToSuperview()
         }
     }
 }

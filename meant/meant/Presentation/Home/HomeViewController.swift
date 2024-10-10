@@ -126,6 +126,12 @@ final class HomeViewController: BaseViewController<HomeView> {
                 applySnapshot(with: records)
             }
             .store(in: &cancellables)
+        
+        viewModel.$randomRecord
+            .sink { [weak self] record in
+                guard let self = self, let record = record else { return }
+                randomRecordView.configure(with: record)
+            }.store(in: &cancellables)
     }
     
     // MARK: - Snapshot Application
@@ -168,7 +174,7 @@ extension HomeViewController: UITableViewDelegate {
         generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
         let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
-        let recordDetailViewController = RecordDetailViewController(
+        let recordDetailViewController = RecordDetailViewControllerX(
             viewModel: recordDetailViewModel,
             username: viewModel.username
         )
@@ -241,8 +247,12 @@ private extension HomeViewController {
         contentView.recordCardView
     }
     
+    var randomRecordView: RecordDetailView {
+        contentView.myRecordView.randomRecordView
+    }
+    
     var emptyLabel: UILabel {
-        contentView.myRecordView.emptyLabel
+        contentView.myRecordView.allRecordView.emptyLabel
     }
     
     var allRecordTableView: UITableView {

@@ -58,8 +58,8 @@ final class RecordCell: UITableViewCell, Reusable {
     private func setupLayout() {
         contentView.addSubview(containerView)
         containerView.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview().inset(5)
-            make.horizontalEdges.equalToSuperview()
+            make.top.bottom.equalToSuperview().inset(5)
+            make.left.right.equalToSuperview()
         }
         
         containerView.addSubview(dateLabel)
