@@ -11,6 +11,8 @@ import Foundation
 final class HomeViewModel {
     private let recordRepository: RecordRepositoryInterface
     private let userSettingsRepository: UserSettingsRepositoryInterface
+    private var recentlyFetchedRecordIds: [UUID] = []
+    private let maxCacheSize = 3
     @Published var username = ""
     @Published var records = [RecordSectionViewModel]()
     @Published var randomRecord: Record?
@@ -23,12 +25,11 @@ final class HomeViewModel {
         self.userSettingsRepository = userSettingsRepository
         updateUsername()
         fetchRecords()
+        fetchRandomRecord()
     }
     
     func fetchRecords() {
         let fetchedRecords = recordRepository.fetchRecords()
-        
-        randomRecord = fetchedRecords.isEmpty ? nil : fetchedRecords[0]
         
         // 날짜별로 내림차순 정렬
         let sortedRecords = fetchedRecords.sorted { $0.date > $1.date }
@@ -55,11 +56,42 @@ final class HomeViewModel {
         self.records = sectionedRecords.sorted { $0.month < $1.month }
     }
     
+    func fetchRandomRecord() {
+        let fetchedRecords = recordRepository.fetchRecords()
+        
+        // 가져올 수 있는 레코드가 없으면 nil 반환
+        if fetchedRecords.isEmpty {
+            randomRecord = nil
+            return
+        }
+        
+        // 최근에 가져온 레코드를 제외한 레코드들
+        let availableRecords = fetchedRecords.filter { !recentlyFetchedRecordIds.contains($0.id) }
+        
+        // 모든 레코드가 최근에 가져온 것들이라면 전체 레코드에서 선택
+        let recordsToChooseFrom = availableRecords.isEmpty ? fetchedRecords : availableRecords
+        
+        // 랜덤하게 레코드 선택
+        let randomIndex = Int.random(in: 0..<recordsToChooseFrom.count)
+        let selectedRecord = recordsToChooseFrom[randomIndex]
+        
+        // 선택된 레코드를 최근 가져온 레코드 목록에 추가
+        recentlyFetchedRecordIds.append(selectedRecord.id)
+        
+        // 최근 가져온 레코드 목록이 최대 크기를 초과하면 가장 오래된 것 제거
+        if recentlyFetchedRecordIds.count > maxCacheSize {
+            recentlyFetchedRecordIds.removeFirst()
+        }
+        
+        randomRecord = selectedRecord
+    }
+    
     func deleteRandomRecord() {
         guard let record = randomRecord else { return }
         do {
             try recordRepository.deleteRecord(record)
             fetchRecords()
+            fetchRandomRecord()
         } catch {
             print("삭제 실패")
         }
@@ -69,6 +101,7 @@ final class HomeViewModel {
         do {
             try recordRepository.resetRecords()
             fetchRecords()
+            fetchRandomRecord()
         } catch {
             print("초기화 실패")
         }

@@ -285,7 +285,7 @@ extension HomeViewController: RecordMenuViewDelegate {
         case .reminisce:
             break
         case .other:
-            break
+            viewModel.fetchRandomRecord()
         case .delete:
             showAlert(
                 message: "정말 삭제하시겠어요?",
