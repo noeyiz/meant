@@ -12,8 +12,6 @@ import SnapKit
 final class HomeView: UIView {
     // MARK: - UI Components
     
-    private lazy var recordLabel = createTitleLabel(with: "기록하기")
-    
     lazy var recordCardView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -22,26 +20,7 @@ final class HomeView: UIView {
         return collectionView
     }()
     
-    lazy var myRecordLabel = createTitleLabel()
-    
-    let myRecordView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(cellType: RecordCell.self)
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = .clear
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.sectionHeaderTopPadding = 0
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
-        tableView.showsVerticalScrollIndicator = false
-        return tableView
-    }()
-    
-    lazy var emptyLabel = {
-        let label = UILabel()
-        label.font = .nanumSquareNeo(ofSize: 10.0)
-        label.textColor = .gray02
-        return label
-    }()
+    let myRecordView = MyRecordView()
     
     private let gradientView = UIView()
     
@@ -68,35 +47,17 @@ final class HomeView: UIView {
     // MARK: - Setup Methods
     
     private func setupLayout() {
-        addSubview(recordLabel)
-        recordLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(15)
-            make.left.equalToSuperview().inset(30)
-        }
-        
         addSubview(recordCardView)
         recordCardView.snp.makeConstraints { make in
-            make.top.equalTo(recordLabel.snp.bottom).offset(10)
+            make.top.equalToSuperview().inset(15)
             make.left.right.equalToSuperview().inset(30)
             make.height.equalTo(70)
         }
         
-        addSubview(myRecordLabel)
-        myRecordLabel.snp.makeConstraints { make in
-            make.top.equalTo(recordCardView.snp.bottom).offset(25)
-            make.left.equalToSuperview().inset(30)
-        }
-        
-        addSubview(emptyLabel)
-        emptyLabel.snp.makeConstraints { make in
-            make.top.equalTo(myRecordLabel.snp.bottom).offset(40)
-            make.centerX.equalToSuperview()
-        }
-        
         addSubview(myRecordView)
         myRecordView.snp.makeConstraints { make in
-            make.top.equalTo(myRecordLabel.snp.bottom).offset(10)
-            make.left.right.equalToSuperview().inset(30)
+            make.top.equalTo(recordCardView.snp.bottom).offset(25)
+            make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
         }
         
@@ -111,14 +72,6 @@ final class HomeView: UIView {
 // MARK: - Private Methods
 
 private extension HomeView {
-    func createTitleLabel(with text: String? = nil) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.textColor = .gray03
-        label.font = .nanumSquareNeo(ofSize: 14.0, weight: .bold)
-        return label
-    }
-    
     func setGradientView() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.white.withAlphaComponent(0.0).cgColor,

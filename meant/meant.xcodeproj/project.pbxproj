@@ -44,6 +44,10 @@
 		90311D542CA48F1B00D2EAB7 /* RecordRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D532CA48F1B00D2EAB7 /* RecordRepositoryInterface.swift */; };
 		90311D562CA48FCB00D2EAB7 /* Record+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D552CA48FCB00D2EAB7 /* Record+.swift */; };
 		90311D582CA4901B00D2EAB7 /* RecordError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90311D572CA4901B00D2EAB7 /* RecordError.swift */; };
+		90A343AC2CB81DAC0060CD61 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343AB2CB81DAC0060CD61 /* HomeTab.swift */; };
+		90A343AE2CB826CA0060CD61 /* MyRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343AD2CB826CA0060CD61 /* MyRecordView.swift */; };
+		90A343B02CB829660060CD61 /* RandomRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343AF2CB829660060CD61 /* RandomRecordView.swift */; };
+		90A343B22CB8296C0060CD61 /* AllRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343B12CB8296C0060CD61 /* AllRecordView.swift */; };
 		90AD1ABF2CA4922B0063DDC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1ABE2CA4922B0063DDC6 /* Realm */; };
 		90AD1AC12CA4922B0063DDC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1AC02CA4922B0063DDC6 /* RealmSwift */; };
 		90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */; };
@@ -121,6 +125,10 @@
 		90311D532CA48F1B00D2EAB7 /* RecordRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRepositoryInterface.swift; sourceTree = "<group>"; };
 		90311D552CA48FCB00D2EAB7 /* Record+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Record+.swift"; sourceTree = "<group>"; };
 		90311D572CA4901B00D2EAB7 /* RecordError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordError.swift; sourceTree = "<group>"; };
+		90A343AB2CB81DAC0060CD61 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
+		90A343AD2CB826CA0060CD61 /* MyRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRecordView.swift; sourceTree = "<group>"; };
+		90A343AF2CB829660060CD61 /* RandomRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomRecordView.swift; sourceTree = "<group>"; };
+		90A343B12CB8296C0060CD61 /* AllRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllRecordView.swift; sourceTree = "<group>"; };
 		90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		90AD1AC42CA493C00063DDC6 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		90AD1AC62CA494650063DDC6 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
@@ -239,6 +247,9 @@
 				90311D1B2CA41F2200D2EAB7 /* RecordCardCell.swift */,
 				90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */,
 				90AD1AC82CA4989F0063DDC6 /* RecordCell.swift */,
+				90A343AD2CB826CA0060CD61 /* MyRecordView.swift */,
+				90A343AF2CB829660060CD61 /* RandomRecordView.swift */,
+				90A343B12CB8296C0060CD61 /* AllRecordView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -261,6 +272,7 @@
 				90AD1ACE2CA49BCC0063DDC6 /* RecordSectionViewModel.swift */,
 				90AD1AE02CA5307C0063DDC6 /* SettingsType.swift */,
 				90AD1AFC2CA5841C0063DDC6 /* SettingsCellViewModel.swift */,
+				90A343AB2CB81DAC0060CD61 /* HomeTab.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -529,6 +541,7 @@
 				90AD1ACF2CA49BCC0063DDC6 /* RecordSectionViewModel.swift in Sources */,
 				90AD1AEB2CA541D50063DDC6 /* UserSettingsRepositoryInterface.swift in Sources */,
 				90E689C82CA5B09C00D3B455 /* OnboardingViewController.swift in Sources */,
+				90A343B02CB829660060CD61 /* RandomRecordView.swift in Sources */,
 				90AD1AD62CA514D80063DDC6 /* RecordDetailViewModel.swift in Sources */,
 				90AD1AD42CA4AC1E0063DDC6 /* RecordDetailViewController.swift in Sources */,
 				90311D142CA320AE00D2EAB7 /* HomeView.swift in Sources */,
@@ -549,6 +562,7 @@
 				90AD1ADF2CA527DC0063DDC6 /* SettingsCell.swift in Sources */,
 				90AD1AC92CA4989F0063DDC6 /* RecordCell.swift in Sources */,
 				90AD1ADD2CA5260F0063DDC6 /* SettingsViewController.swift in Sources */,
+				90A343B22CB8296C0060CD61 /* AllRecordView.swift in Sources */,
 				90AD1AE52CA536AF0063DDC6 /* NameViewController.swift in Sources */,
 				90311D562CA48FCB00D2EAB7 /* Record+.swift in Sources */,
 				90311D4E2CA48C6500D2EAB7 /* Record.swift in Sources */,
@@ -561,6 +575,7 @@
 				90AD1AD82CA51F080063DDC6 /* NotificationName+.swift in Sources */,
 				90311D582CA4901B00D2EAB7 /* RecordError.swift in Sources */,
 				90311D402CA4487A00D2EAB7 /* MeantTextView.swift in Sources */,
+				90A343AC2CB81DAC0060CD61 /* HomeTab.swift in Sources */,
 				90311D262CA4216200D2EAB7 /* BaseCollectionViewCell.swift in Sources */,
 				90311D522CA48D7800D2EAB7 /* RecordRepository.swift in Sources */,
 				90311D282CA4253100D2EAB7 /* RecordType.swift in Sources */,
@@ -570,6 +585,7 @@
 				90AD1AFD2CA5841C0063DDC6 /* SettingsCellViewModel.swift in Sources */,
 				90AD1AF52CA544990063DDC6 /* NotificationViewController.swift in Sources */,
 				90311D502CA48D4800D2EAB7 /* RealmManager.swift in Sources */,
+				90A343AE2CB826CA0060CD61 /* MyRecordView.swift in Sources */,
 				90311D012CA2FF1A00D2EAB7 /* BaseViewController.swift in Sources */,
 				90311D4C2CA48A5D00D2EAB7 /* RecordEntity.swift in Sources */,
 			);

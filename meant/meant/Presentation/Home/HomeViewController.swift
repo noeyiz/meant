@@ -40,7 +40,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         setupNotificationObserver()
         setupAction()
         setupRecordCardView()
-        setupMyRecordView()
+        setupAllRecordView()
         bind()
     }
     
@@ -94,14 +94,14 @@ final class HomeViewController: BaseViewController<HomeView> {
         recordCardView.dataSource = self
     }
     
-    private func setupMyRecordView() {
+    private func setupAllRecordView() {
         configureDataSource()
-        myRecordView.delegate = self
+        allRecordTableView.delegate = self
     }
     
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<String, RecordCellViewModel>(
-            tableView: myRecordView,
+            tableView: allRecordTableView,
             cellProvider: { (tableView, indexPath, cellViewModel) -> UITableViewCell? in
                 let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RecordCell.self)
                 cell.configure(with: cellViewModel)
@@ -113,17 +113,17 @@ final class HomeViewController: BaseViewController<HomeView> {
     // MARK: - Bind
     
     private func bind() {
-        viewModel.$username
-            .sink { [weak self] username in
-                guard let self = self else { return }
-                myRecordLabel.text = "\(username)의 기록"
-                emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
-            }.store(in: &cancellables)
-        
+//        viewModel.$username
+//            .sink { [weak self] username in
+//                guard let self = self else { return }
+//                myRecordLabel.text = "\(username)의 기록"
+//                emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
+//            }.store(in: &cancellables)
+//        
         viewModel.$records
             .sink { [weak self] records in
                 guard let self = self else { return }
-                emptyLabel.isHidden = !records.isEmpty
+//                emptyLabel.isHidden = !records.isEmpty
                 applySnapshot(with: records)
             }
             .store(in: &cancellables)
@@ -242,15 +242,7 @@ private extension HomeViewController {
         contentView.recordCardView
     }
     
-    var myRecordLabel: UILabel {
-        contentView.myRecordLabel
-    }
-    
-    var myRecordView: UITableView {
-        contentView.myRecordView
-    }
-    
-    var emptyLabel: UILabel {
-        contentView.emptyLabel
+    var allRecordTableView: UITableView {
+        contentView.myRecordView.allRecordView.tableView
     }
 }
