@@ -22,4 +22,7 @@ final class UserSettingsRepository: UserSettingsRepositoryInterface {
     
     @UserDefaultsData(key: "notificationMessage", defaultValue: "하루의 의미를 찾을 시간이에요. 🍃")
     var notificationMessage: String
+    
+    @UserDefaultsData(key: "recentlyFetchedRecordIds", defaultValue: [])
+    var recentlyFetchedRecordIds: Set<UUID>
 }

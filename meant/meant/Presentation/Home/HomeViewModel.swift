@@ -10,8 +10,7 @@ import Foundation
 
 final class HomeViewModel {
     private let recordRepository: RecordRepositoryInterface
-    private let userSettingsRepository: UserSettingsRepositoryInterface
-    private var recentlyFetchedRecordIds: [UUID] = []
+    private var userSettingsRepository: UserSettingsRepositoryInterface
     private let maxCacheSize = 3
     @Published var username = ""
     @Published var records = [RecordSectionViewModel]()
@@ -66,7 +65,9 @@ final class HomeViewModel {
         }
         
         // 최근에 가져온 레코드를 제외한 레코드들
-        let availableRecords = fetchedRecords.filter { !recentlyFetchedRecordIds.contains($0.id) }
+        let availableRecords = fetchedRecords.filter {
+            !userSettingsRepository.recentlyFetchedRecordIds.contains($0.id)
+        }
         
         // 모든 레코드가 최근에 가져온 것들이라면 전체 레코드에서 선택
         let recordsToChooseFrom = availableRecords.isEmpty ? fetchedRecords : availableRecords
@@ -76,11 +77,11 @@ final class HomeViewModel {
         let selectedRecord = recordsToChooseFrom[randomIndex]
         
         // 선택된 레코드를 최근 가져온 레코드 목록에 추가
-        recentlyFetchedRecordIds.append(selectedRecord.id)
+        userSettingsRepository.recentlyFetchedRecordIds.insert(selectedRecord.id)
         
         // 최근 가져온 레코드 목록이 최대 크기를 초과하면 가장 오래된 것 제거
-        if recentlyFetchedRecordIds.count > maxCacheSize {
-            recentlyFetchedRecordIds.removeFirst()
+        if userSettingsRepository.recentlyFetchedRecordIds.count > maxCacheSize {
+            userSettingsRepository.recentlyFetchedRecordIds.removeFirst()
         }
         
         randomRecord = selectedRecord

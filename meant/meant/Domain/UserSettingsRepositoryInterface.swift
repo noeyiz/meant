@@ -13,4 +13,5 @@ protocol UserSettingsRepositoryInterface {
     var notificationEnabled: Bool { get set }
     var notificationTime: Date { get set }
     var notificationMessage: String { get set }
+    var recentlyFetchedRecordIds: Set<UUID> { get set }
 }
