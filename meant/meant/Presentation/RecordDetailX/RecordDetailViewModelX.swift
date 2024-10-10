@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class RecordDetailViewModel {
+final class RecordDetailViewModelX {
     enum RecordDetailMode {
         case editing
         case viewing

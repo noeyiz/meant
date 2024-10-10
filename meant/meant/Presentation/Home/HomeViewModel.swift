@@ -13,6 +13,7 @@ final class HomeViewModel {
     private let userSettingsRepository: UserSettingsRepositoryInterface
     @Published var username = ""
     @Published var records = [RecordSectionViewModel]()
+    @Published var randomRecord: Record?
     
     init(
         recordRepository: RecordRepositoryInterface,
@@ -26,6 +27,10 @@ final class HomeViewModel {
     
     func fetchRecords() {
         let fetchedRecords = recordRepository.fetchRecords()
+        
+        if !fetchedRecords.isEmpty {
+            randomRecord = fetchedRecords[0]
+        }
         
         // 날짜별로 내림차순 정렬
         let sortedRecords = fetchedRecords.sorted { $0.date > $1.date }

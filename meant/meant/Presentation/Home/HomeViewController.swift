@@ -40,7 +40,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         setupNotificationObserver()
         setupAction()
         setupRecordCardView()
-        setupMyRecordView()
+        setupAllRecordView()
         bind()
     }
     
@@ -94,14 +94,14 @@ final class HomeViewController: BaseViewController<HomeView> {
         recordCardView.dataSource = self
     }
     
-    private func setupMyRecordView() {
+    private func setupAllRecordView() {
         configureDataSource()
-        myRecordView.delegate = self
+        allRecordTableView.delegate = self
     }
     
     private func configureDataSource() {
         dataSource = UITableViewDiffableDataSource<String, RecordCellViewModel>(
-            tableView: myRecordView,
+            tableView: allRecordTableView,
             cellProvider: { (tableView, indexPath, cellViewModel) -> UITableViewCell? in
                 let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RecordCell.self)
                 cell.configure(with: cellViewModel)
@@ -116,7 +116,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.$username
             .sink { [weak self] username in
                 guard let self = self else { return }
-                myRecordLabel.text = "\(username)의 기록"
                 emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
             }.store(in: &cancellables)
         
@@ -127,6 +126,12 @@ final class HomeViewController: BaseViewController<HomeView> {
                 applySnapshot(with: records)
             }
             .store(in: &cancellables)
+        
+        viewModel.$randomRecord
+            .sink { [weak self] record in
+                guard let self = self, let record = record else { return }
+                randomRecordView.configure(with: record)
+            }.store(in: &cancellables)
     }
     
     // MARK: - Snapshot Application
@@ -169,7 +174,7 @@ extension HomeViewController: UITableViewDelegate {
         generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
         let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
-        let recordDetailViewController = RecordDetailViewController(
+        let recordDetailViewController = RecordDetailViewControllerX(
             viewModel: recordDetailViewModel,
             username: viewModel.username
         )
@@ -242,15 +247,15 @@ private extension HomeViewController {
         contentView.recordCardView
     }
     
-    var myRecordLabel: UILabel {
-        contentView.myRecordLabel
-    }
-    
-    var myRecordView: UITableView {
-        contentView.myRecordView
+    var randomRecordView: RecordDetailView {
+        contentView.myRecordView.randomRecordView
     }
     
     var emptyLabel: UILabel {
-        contentView.emptyLabel
+        contentView.myRecordView.allRecordView.emptyLabel
+    }
+    
+    var allRecordTableView: UITableView {
+        contentView.myRecordView.allRecordView.tableView
     }
 }

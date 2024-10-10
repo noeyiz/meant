@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class RecordDetailView: UIView {
+final class RecordDetailViewX: UIView {
     private var textViewBottomConstraint: Constraint?
     
     // MARK: - UI Components

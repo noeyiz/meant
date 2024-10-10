@@ -8,14 +8,14 @@
 import Combine
 import UIKit
 
-final class RecordDetailViewController: BaseViewController<RecordDetailView> {
-    private let viewModel: RecordDetailViewModel
+final class RecordDetailViewControllerX: BaseViewController<RecordDetailViewX> {
+    private let viewModel: RecordDetailViewModelX
     private let username: String
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
-    init(viewModel: RecordDetailViewModel, username: String) {
+    init(viewModel: RecordDetailViewModelX, username: String) {
         self.viewModel = viewModel
         self.username = username
         
@@ -101,7 +101,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView> {
     }
 }
 
-private extension RecordDetailViewController {
+private extension RecordDetailViewControllerX {
     var textView: MeantTextView {
         contentView.textView
     }
