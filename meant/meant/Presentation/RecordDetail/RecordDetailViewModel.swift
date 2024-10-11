@@ -2,38 +2,22 @@
 //  RecordDetailViewModel.swift
 //  meant
 //
-//  Created by 지연 on 9/26/24.
+//  Created by 지연 on 10/11/24.
 //
 
 import Foundation
 
-final class RecordDetailViewModelX {
-    enum RecordDetailMode {
-        case editing
-        case viewing
-    }
-    
+final class RecordDetailViewModel {
     private let recordRepository: RecordRepositoryInterface
-    var record: Record
-    @Published var mode: RecordDetailMode = .viewing
+    @Published var record: Record
     
     init(recordRepository: RecordRepositoryInterface, recordID: UUID) {
         self.recordRepository = recordRepository
         self.record = recordRepository.fetchRecords().first(where: { $0.id == recordID })!
     }
     
-    func toggleMode() {
-        mode = mode == .editing ? .viewing : .editing
-    }
-    
-    func updateRecord(content: String) {
-        record.content = content
-        do {
-            try recordRepository.updateRecord(record)
-            NotificationCenter.default.post(name: .recordsDidUpdate, object: nil)
-        } catch {
-            print("수정 실패")
-        }
+    func updateRecord() {
+        record = recordRepository.fetchRecords().first(where: { $0.id == record.id })!
     }
     
     func deleteRecord() {

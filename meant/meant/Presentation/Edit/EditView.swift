@@ -1,5 +1,5 @@
 //
-//  RecordDetailView.swift
+//  EditView.swift
 //  meant
 //
 //  Created by 지연 on 9/26/24.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class RecordDetailViewX: UIView {
+final class EditView: UIView {
     private var textViewBottomConstraint: Constraint?
     
     // MARK: - UI Components

@@ -44,12 +44,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         bind()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        viewModel.fetchRecords()
-    }
-    
     // MARK: - Setup Methods
     
     private func setupNavigationBar() {
@@ -86,7 +80,16 @@ final class HomeViewController: BaseViewController<HomeView> {
     }
     
     private func setupAction() {
-        rightButton.addTarget(self, action: #selector(handleSettingsButtonTap), for: .touchUpInside)
+        rightButton.addTarget(
+            self,
+            action: #selector(handleSettingsButtonTap),
+            for: .touchUpInside
+        )
+        ellipsisButton.addTarget(
+            self,
+            action: #selector(handleEllipsisButtonTap),
+            for: .touchUpInside
+        )
     }
     
     private func setupRecordCardView() {
@@ -116,20 +119,21 @@ final class HomeViewController: BaseViewController<HomeView> {
         viewModel.$username
             .sink { [weak self] username in
                 guard let self = self else { return }
-                emptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
+                allRecordEmptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
+                randomRecordEmptyLabel.text = "\(username)님의 기록을 기다리고 있어요."
             }.store(in: &cancellables)
         
         viewModel.$records
             .sink { [weak self] records in
                 guard let self = self else { return }
-                emptyLabel.isHidden = !records.isEmpty
+                allRecordEmptyLabel.isHidden = !records.isEmpty
                 applySnapshot(with: records)
             }
             .store(in: &cancellables)
         
         viewModel.$randomRecord
             .sink { [weak self] record in
-                guard let self = self, let record = record else { return }
+                guard let self = self else { return }
                 randomRecordView.configure(with: record)
             }.store(in: &cancellables)
     }
@@ -150,7 +154,7 @@ final class HomeViewController: BaseViewController<HomeView> {
     // MARK: - Action Methods
     
     @objc private func handleRecordsDidUpdate() {
-        viewModel.fetchRecords()
+        viewModel.updateRecords()
     }
     
     @objc private func handleRecordsDidReset() {
@@ -167,18 +171,40 @@ final class HomeViewController: BaseViewController<HomeView> {
         let settingsViewController = SettingsViewController(viewModel: settingsViewModel)
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
+    
+    @objc private func handleEllipsisButtonTap() {
+        generateHaptic()
+        
+        let recordMenuViewController = RecordMenuViewController(otherFlag: true)
+        recordMenuViewController.delegate = self
+        recordMenuViewController.modalPresentationStyle = .popover
+        
+        if let popoverController = recordMenuViewController.popoverPresentationController {
+            popoverController.sourceView = ellipsisButton
+            popoverController.sourceRect = CGRect(
+                x: ellipsisButton.bounds.midX,
+                y: ellipsisButton.bounds.midY + 100,
+                width: 0,
+                height: 0
+            )
+            popoverController.permittedArrowDirections = []
+            popoverController.delegate = self
+        }
+        
+        present(recordMenuViewController, animated: true)
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
-        let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(for: record.id)
-        let recordDetailViewController = RecordDetailViewControllerX(
+        let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(recordID: record.id)
+        let recordDetailViewController = RecordDetailViewController(
             viewModel: recordDetailViewModel,
             username: viewModel.username
         )
-        present(recordDetailViewController, animated: true)
+        navigationController?.pushViewController(recordDetailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -242,6 +268,42 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 }
 
+extension HomeViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+}
+
+extension HomeViewController: RecordMenuViewDelegate {
+    func didRecordMenuTap(_ recordMenu: RecordMenu) {
+        switch recordMenu {
+        case .edit:
+            guard let record = viewModel.randomRecord else { return }
+            let editViewModel = DIContainer.shared.makeEditViewModel(for: record.id)
+            let editViewController = EditViewController(
+                viewModel: editViewModel,
+                username: viewModel.username
+            )
+            present(editViewController, animated: true)
+        case .reminisce:
+            break
+        case .other:
+            viewModel.refreshRandomRecord()
+        case .delete:
+            showAlert(
+                message: "정말 삭제하시겠어요?",
+                leftActionText: "돌아가기",
+                rightActionText: "삭제하기",
+                rightActionCompletion: { [weak self] in
+                    guard let self = self else { return }
+                    viewModel.deleteRandomRecord()
+                    dismiss(animated: true)
+                }
+            )
+        }
+    }
+}
+
 private extension HomeViewController {
     var recordCardView: UICollectionView {
         contentView.recordCardView
@@ -251,7 +313,15 @@ private extension HomeViewController {
         contentView.myRecordView.randomRecordView
     }
     
-    var emptyLabel: UILabel {
+    var ellipsisButton: UIButton {
+        contentView.myRecordView.randomRecordView.ellipsisButton
+    }
+    
+    var randomRecordEmptyLabel: UILabel {
+        contentView.myRecordView.randomRecordView.emptyLabel
+    }
+    
+    var allRecordEmptyLabel: UILabel {
         contentView.myRecordView.allRecordView.emptyLabel
     }
     
