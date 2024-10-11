@@ -38,7 +38,7 @@ final class NameView: UIView {
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
         textField.clearButtonMode = .always
-        textField.tintColor = .blue03
+        textField.tintColor = .meant02
         return textField
     }()
     

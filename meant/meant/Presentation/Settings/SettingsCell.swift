@@ -32,7 +32,7 @@ final class SettingsCell: UITableViewCell, Reusable {
     
     let switchControl = {
         let view = UISwitch()
-        view.onTintColor = .blue03
+        view.onTintColor = .meant02
         view.contentMode = .scaleAspectFit
         return view
     }()

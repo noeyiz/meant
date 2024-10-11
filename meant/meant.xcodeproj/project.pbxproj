@@ -59,6 +59,8 @@
 		90A343CB2CB912410060CD61 /* ReminiscenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343CA2CB912410060CD61 /* ReminiscenceView.swift */; };
 		90A343CD2CB9140D0060CD61 /* ReminiscenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343CC2CB9140D0060CD61 /* ReminiscenceViewModel.swift */; };
 		90A343CF2CB9195F0060CD61 /* ReminiscenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343CE2CB9195F0060CD61 /* ReminiscenceCell.swift */; };
+		90A343D22CB93F200060CD61 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343D12CB93F200060CD61 /* LicenseViewController.swift */; };
+		90A343D42CB93F260060CD61 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343D32CB93F260060CD61 /* LicenseView.swift */; };
 		90AD1ABF2CA4922B0063DDC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1ABE2CA4922B0063DDC6 /* Realm */; };
 		90AD1AC12CA4922B0063DDC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1AC02CA4922B0063DDC6 /* RealmSwift */; };
 		90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */; };
@@ -151,6 +153,8 @@
 		90A343CA2CB912410060CD61 /* ReminiscenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminiscenceView.swift; sourceTree = "<group>"; };
 		90A343CC2CB9140D0060CD61 /* ReminiscenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminiscenceViewModel.swift; sourceTree = "<group>"; };
 		90A343CE2CB9195F0060CD61 /* ReminiscenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminiscenceCell.swift; sourceTree = "<group>"; };
+		90A343D12CB93F200060CD61 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		90A343D32CB93F260060CD61 /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
 		90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		90AD1AC42CA493C00063DDC6 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		90AD1AC62CA494650063DDC6 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
@@ -329,6 +333,15 @@
 			path = Reminiscence;
 			sourceTree = "<group>";
 		};
+		90A343D02CB93F130060CD61 /* License */ = {
+			isa = PBXGroup;
+			children = (
+				90A343D12CB93F200060CD61 /* LicenseViewController.swift */,
+				90A343D32CB93F260060CD61 /* LicenseView.swift */,
+			);
+			path = License;
+			sourceTree = "<group>";
+		};
 		90AD1AD22CA4AC0F0063DDC6 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +428,7 @@
 		90E914642CA2D24F0094162D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				90A343D02CB93F130060CD61 /* License */,
 				90A343C92CB9120C0060CD61 /* Reminiscence */,
 				90A343C02CB8E6610060CD61 /* RecordMenu */,
 				90A343B32CB83D2B0060CD61 /* RecordDetail */,
@@ -584,6 +598,7 @@
 			files = (
 				90AD1AED2CA542160063DDC6 /* UserDefaultsData.swift in Sources */,
 				90AD1AFB2CA57BE90063DDC6 /* NotificationViewModel.swift in Sources */,
+				90A343D42CB93F260060CD61 /* LicenseView.swift in Sources */,
 				90311CFA2CA2F43800D2EAB7 /* UIFont+.swift in Sources */,
 				90AD1AC52CA493C00063DDC6 /* DIContainer.swift in Sources */,
 				90AD1AF12CA5447B0063DDC6 /* NotificationView.swift in Sources */,
@@ -628,6 +643,7 @@
 				90A343B22CB8296C0060CD61 /* AllRecordView.swift in Sources */,
 				90AD1AE52CA536AF0063DDC6 /* NameViewController.swift in Sources */,
 				90311D562CA48FCB00D2EAB7 /* RecordType+.swift in Sources */,
+				90A343D22CB93F200060CD61 /* LicenseViewController.swift in Sources */,
 				90311D4E2CA48C6500D2EAB7 /* Record.swift in Sources */,
 				90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */,
 				90AD1AEF2CA542F40063DDC6 /* UserSettingsRepository.swift in Sources */,
