@@ -160,7 +160,7 @@ final class HomeViewController: BaseViewController<HomeView> {
     // MARK: - Action Methods
     
     @objc private func handleRecordsDidUpdate() {
-        viewModel.fetchRecords()
+        viewModel.updateRecords()
     }
     
     @objc private func handleRecordsDidReset() {
@@ -285,7 +285,7 @@ extension HomeViewController: RecordMenuViewDelegate {
         case .reminisce:
             break
         case .other:
-            viewModel.fetchRandomRecord()
+            viewModel.refreshRandomRecord()
         case .delete:
             showAlert(
                 message: "정말 삭제하시겠어요?",

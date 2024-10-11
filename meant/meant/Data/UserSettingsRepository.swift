@@ -23,6 +23,12 @@ final class UserSettingsRepository: UserSettingsRepositoryInterface {
     @UserDefaultsData(key: "notificationMessage", defaultValue: "하루의 의미를 찾을 시간이에요. 🍃")
     var notificationMessage: String
     
-    @UserDefaultsData(key: "recentlyFetchedRecordIds", defaultValue: [])
-    var recentlyFetchedRecordIds: Set<UUID>
+    @UserDefaultsData(key: "lastAccessDate", defaultValue: Date())
+    var lastAccessDate: Date
+    
+    @UserDefaultsData(key: "cachedRecordId", defaultValue: nil)
+    var cachedRecordId: UUID?
+    
+    @UserDefaultsData(key: "cachedRecordIds", defaultValue: [])
+    var cachedRecordIds: Set<UUID>
 }
