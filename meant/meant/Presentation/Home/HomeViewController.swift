@@ -181,7 +181,7 @@ final class HomeViewController: BaseViewController<HomeView> {
     @objc private func handleEllipsisButtonTap() {
         generateHaptic()
         
-        let recordMenuViewController = RecordMenuViewController()
+        let recordMenuViewController = RecordMenuViewController(otherFlag: true)
         recordMenuViewController.delegate = self
         recordMenuViewController.modalPresentationStyle = .popover
         
@@ -199,12 +199,15 @@ final class HomeViewController: BaseViewController<HomeView> {
         
         present(recordMenuViewController, animated: true)
     }
-    
 }
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         generateHaptic()
+        let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
+        let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(recordID: record.id)
+        let recordDetailViewController = RecordDetailViewController(viewModel: recordDetailViewModel)
+        navigationController?.pushViewController(recordDetailViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

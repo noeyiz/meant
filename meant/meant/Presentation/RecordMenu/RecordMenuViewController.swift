@@ -14,7 +14,7 @@ protocol RecordMenuViewDelegate: AnyObject {
 }
 
 final class RecordMenuViewController: UIViewController {
-    private let recordMenus = RecordMenu.allCases
+    private var recordMenus = RecordMenu.allCases
     weak var delegate: RecordMenuViewDelegate?
     
     // MARK: - UI Components
@@ -29,6 +29,21 @@ final class RecordMenuViewController: UIViewController {
         return tableView
     }()
     
+    // MARK: - Init
+    
+    init(otherFlag: Bool) {
+        if !otherFlag {
+            recordMenus = recordMenus.filter { $0 != .other }
+        }
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -40,7 +55,10 @@ final class RecordMenuViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        preferredContentSize = CGSize(width: 140.0, height: 160.0)
+        let width = 140.0
+        let height = 40.0 * Double(recordMenus.count)
+        
+        preferredContentSize = CGSize(width: width, height: height)
     }
     
     // MARK: - Setup Methods
