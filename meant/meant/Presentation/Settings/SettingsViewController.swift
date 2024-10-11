@@ -112,6 +112,9 @@ extension SettingsViewController: UITableViewDelegate {
                     self.navigationController?.popViewController(animated: true)
                 }
             )
+        case .lisence:
+            let licenseViewController = LicenseViewController()
+            navigationController?.pushViewController(licenseViewController, animated: true)
         default:
             break
         }
