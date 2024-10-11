@@ -44,6 +44,18 @@ final class RecordDetailView: UIView {
         return label
     }()
     
+    let tableView = {
+        let tableView = UITableView()
+        tableView.register(cellType: ReminiscenceCell.self)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderTopPadding = 0
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        tableView.showsVerticalScrollIndicator = false
+        return tableView
+    }()
+    
     let emptyLabel = {
         let label = UILabel()
         label.font = .nanumSquareNeo(ofSize: 10.0)
@@ -89,6 +101,13 @@ final class RecordDetailView: UIView {
         contentLabel.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(20)
             make.left.right.equalToSuperview().inset(25)
+        }
+        
+        addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.bottom).offset(5)
+            make.left.right.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview()
         }
         
         addSubview(emptyLabel)

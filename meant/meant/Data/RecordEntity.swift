@@ -14,6 +14,7 @@ class RecordEntity: Object {
     @Persisted var date: Date
     @Persisted var type: String
     @Persisted var content: String
+    @Persisted var reminiscences: List<ReminiscenceEntity>
     
     convenience init(_ record: Record) {
         self.init()
@@ -21,11 +22,21 @@ class RecordEntity: Object {
         date = record.date
         type = record.type
         content = record.content
+        reminiscences = List<ReminiscenceEntity>()
+        record.reminiscences.forEach { reminiscence in
+            reminiscences.append(ReminiscenceEntity(reminiscence))
+        }
     }
 }
 
 extension RecordEntity {
     func toDomain() -> Record {
-        return Record(id: id, date: date, type: type, content: content)
+        return Record(
+            id: id,
+            date: date,
+            type: type,
+            content: content,
+            reminiscences: reminiscences.map { $0.toDomain() }
+        )
     }
 }

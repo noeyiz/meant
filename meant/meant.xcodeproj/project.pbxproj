@@ -53,6 +53,12 @@
 		90A343BD2CB848D30060CD61 /* RecordMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343BC2CB848D30060CD61 /* RecordMenuViewController.swift */; };
 		90A343BF2CB8E6200060CD61 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343BE2CB8E6200060CD61 /* RecordDetailViewController.swift */; };
 		90A343C22CB8EAC70060CD61 /* RecordDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343C12CB8EAC70060CD61 /* RecordDetailViewModel.swift */; };
+		90A343C42CB908F70060CD61 /* Reminiscence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343C32CB908F70060CD61 /* Reminiscence.swift */; };
+		90A343C62CB90A1F0060CD61 /* ReminiscenceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343C52CB90A1F0060CD61 /* ReminiscenceEntity.swift */; };
+		90A343C82CB912070060CD61 /* ReminisceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343C72CB912070060CD61 /* ReminisceneViewController.swift */; };
+		90A343CB2CB912410060CD61 /* ReminiscenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343CA2CB912410060CD61 /* ReminiscenceView.swift */; };
+		90A343CD2CB9140D0060CD61 /* ReminiscenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343CC2CB9140D0060CD61 /* ReminiscenceViewModel.swift */; };
+		90A343CF2CB9195F0060CD61 /* ReminiscenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A343CE2CB9195F0060CD61 /* ReminiscenceCell.swift */; };
 		90AD1ABF2CA4922B0063DDC6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1ABE2CA4922B0063DDC6 /* Realm */; };
 		90AD1AC12CA4922B0063DDC6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 90AD1AC02CA4922B0063DDC6 /* RealmSwift */; };
 		90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */; };
@@ -139,6 +145,12 @@
 		90A343BC2CB848D30060CD61 /* RecordMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordMenuViewController.swift; sourceTree = "<group>"; };
 		90A343BE2CB8E6200060CD61 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		90A343C12CB8EAC70060CD61 /* RecordDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewModel.swift; sourceTree = "<group>"; };
+		90A343C32CB908F70060CD61 /* Reminiscence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminiscence.swift; sourceTree = "<group>"; };
+		90A343C52CB90A1F0060CD61 /* ReminiscenceEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminiscenceEntity.swift; sourceTree = "<group>"; };
+		90A343C72CB912070060CD61 /* ReminisceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminisceneViewController.swift; sourceTree = "<group>"; };
+		90A343CA2CB912410060CD61 /* ReminiscenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminiscenceView.swift; sourceTree = "<group>"; };
+		90A343CC2CB9140D0060CD61 /* ReminiscenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminiscenceViewModel.swift; sourceTree = "<group>"; };
+		90A343CE2CB9195F0060CD61 /* ReminiscenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminiscenceCell.swift; sourceTree = "<group>"; };
 		90AD1AC22CA492850063DDC6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		90AD1AC42CA493C00063DDC6 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		90AD1AC62CA494650063DDC6 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
@@ -235,6 +247,7 @@
 				90311D252CA4216200D2EAB7 /* BaseCollectionViewCell.swift */,
 				90311D3F2CA4487A00D2EAB7 /* MeantTextView.swift */,
 				90311D412CA4616700D2EAB7 /* MeantAlertViewController.swift */,
+				90A343CE2CB9195F0060CD61 /* ReminiscenceCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -304,6 +317,16 @@
 				90A343BA2CB847C50060CD61 /* RecordMenuCell.swift */,
 			);
 			path = RecordMenu;
+			sourceTree = "<group>";
+		};
+		90A343C92CB9120C0060CD61 /* Reminiscence */ = {
+			isa = PBXGroup;
+			children = (
+				90A343C72CB912070060CD61 /* ReminisceneViewController.swift */,
+				90A343CA2CB912410060CD61 /* ReminiscenceView.swift */,
+				90A343CC2CB9140D0060CD61 /* ReminiscenceViewModel.swift */,
+			);
+			path = Reminiscence;
 			sourceTree = "<group>";
 		};
 		90AD1AD22CA4AC0F0063DDC6 /* Edit */ = {
@@ -392,6 +415,7 @@
 		90E914642CA2D24F0094162D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				90A343C92CB9120C0060CD61 /* Reminiscence */,
 				90A343C02CB8E6610060CD61 /* RecordMenu */,
 				90A343B32CB83D2B0060CD61 /* RecordDetail */,
 				90E689C62CA5B07F00D3B455 /* Onboarding */,
@@ -414,6 +438,7 @@
 				90311D572CA4901B00D2EAB7 /* RecordError.swift */,
 				90AD1AEA2CA541D50063DDC6 /* UserSettingsRepositoryInterface.swift */,
 				90AD1AFE2CA58AA20063DDC6 /* UserNotificationManaging.swift */,
+				90A343C32CB908F70060CD61 /* Reminiscence.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -427,6 +452,7 @@
 				90311D512CA48D7800D2EAB7 /* RecordRepository.swift */,
 				90AD1AEE2CA542F40063DDC6 /* UserSettingsRepository.swift */,
 				90AD1B002CA58AB20063DDC6 /* UserNotificationManager.swift */,
+				90A343C52CB90A1F0060CD61 /* ReminiscenceEntity.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -565,6 +591,7 @@
 				90AD1AE32CA5369F0063DDC6 /* NameView.swift in Sources */,
 				90311D3A2CA441D400D2EAB7 /* HapticFeedbackable.swift in Sources */,
 				90311D1E2CA41F5D00D2EAB7 /* Reusable.swift in Sources */,
+				90A343C82CB912070060CD61 /* ReminisceneViewController.swift in Sources */,
 				90311D422CA4616700D2EAB7 /* MeantAlertViewController.swift in Sources */,
 				90AD1ADB2CA525FD0063DDC6 /* SettingsView.swift in Sources */,
 				90E9144D2CA2CB130094162D /* AppDelegate.swift in Sources */,
@@ -578,7 +605,9 @@
 				90AD1AE12CA5307C0063DDC6 /* SettingsType.swift in Sources */,
 				90311D162CA320C300D2EAB7 /* HomeViewController.swift in Sources */,
 				90AD1ACD2CA49B670063DDC6 /* RecordCellViewModel.swift in Sources */,
+				90A343C42CB908F70060CD61 /* Reminiscence.swift in Sources */,
 				90311D312CA4302A00D2EAB7 /* RecordView.swift in Sources */,
+				90A343CB2CB912410060CD61 /* ReminiscenceView.swift in Sources */,
 				90311D362CA4344300D2EAB7 /* UILabel+.swift in Sources */,
 				90AD1AE72CA5389D0063DDC6 /* InstagramLinkHandler.swift in Sources */,
 				90311D1C2CA41F2200D2EAB7 /* RecordCardCell.swift in Sources */,
@@ -592,6 +621,7 @@
 				90A343B92CB845C80060CD61 /* RecordMenu.swift in Sources */,
 				90AD1AC32CA492850063DDC6 /* HomeViewModel.swift in Sources */,
 				90311D032CA2FF2300D2EAB7 /* NavigationBarStyle.swift in Sources */,
+				90A343C62CB90A1F0060CD61 /* ReminiscenceEntity.swift in Sources */,
 				90AD1ADF2CA527DC0063DDC6 /* SettingsCell.swift in Sources */,
 				90AD1AC92CA4989F0063DDC6 /* RecordCell.swift in Sources */,
 				90AD1ADD2CA5260F0063DDC6 /* SettingsViewController.swift in Sources */,
@@ -602,6 +632,7 @@
 				90311D3E2CA4420700D2EAB7 /* UIViewController+.swift in Sources */,
 				90AD1AEF2CA542F40063DDC6 /* UserSettingsRepository.swift in Sources */,
 				90A343BD2CB848D30060CD61 /* RecordMenuViewController.swift in Sources */,
+				90A343CF2CB9195F0060CD61 /* ReminiscenceCell.swift in Sources */,
 				90A343BF2CB8E6200060CD61 /* RecordDetailViewController.swift in Sources */,
 				90AD1AD12CA4ABFF0063DDC6 /* EditView.swift in Sources */,
 				90311D052CA2FF5B00D2EAB7 /* NavigationBarProtocol.swift in Sources */,
@@ -622,6 +653,7 @@
 				90311D502CA48D4800D2EAB7 /* RealmManager.swift in Sources */,
 				90A343AE2CB826CA0060CD61 /* MyRecordView.swift in Sources */,
 				90311D012CA2FF1A00D2EAB7 /* BaseViewController.swift in Sources */,
+				90A343CD2CB9140D0060CD61 /* ReminiscenceViewModel.swift in Sources */,
 				90A343B52CB83D3B0060CD61 /* RecordDetailView.swift in Sources */,
 				90311D4C2CA48A5D00D2EAB7 /* RecordEntity.swift in Sources */,
 			);

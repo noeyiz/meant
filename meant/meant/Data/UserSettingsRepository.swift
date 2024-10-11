@@ -26,9 +26,9 @@ final class UserSettingsRepository: UserSettingsRepositoryInterface {
     @UserDefaultsData(key: "lastAccessDate", defaultValue: Date())
     var lastAccessDate: Date
     
-    @UserDefaultsData(key: "cachedRecordId", defaultValue: nil)
-    var cachedRecordId: UUID?
+    @UserDefaultsData(key: "cachedRecordID", defaultValue: nil)
+    var cachedRecordID: UUID?
     
-    @UserDefaultsData(key: "cachedRecordIds", defaultValue: [])
-    var cachedRecordIds: Set<UUID>
+    @UserDefaultsData(key: "cachedRecordIDs", defaultValue: [])
+    var cachedRecordIDs: Set<UUID>
 }

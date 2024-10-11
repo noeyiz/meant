@@ -29,6 +29,10 @@ final class DIContainer {
         return RecordDetailViewModel(recordRepository: recordRepository, recordID: recordID)
     }
     
+    func makeReminiscenceViewModel(recordID: UUID) -> ReminiscenceViewModel {
+        return ReminiscenceViewModel(recordRepository: recordRepository, recordID: recordID)
+    }
+    
     func makeEditViewModel(for id: UUID) -> EditViewModel {
         return EditViewModel(recordRepository: recordRepository, recordID: id)
     }
