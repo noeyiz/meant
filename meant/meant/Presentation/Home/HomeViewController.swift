@@ -331,8 +331,12 @@ extension HomeViewController: RecordMenuViewDelegate {
             present(editViewController, animated: true)
         case .reminisce:
             guard let record = viewModel.randomRecord else { return }
-            let reminiscenceViewModel = DIContainer.shared.makeReminiscenceViewModel(recordID: record.id)
-            let reminiscenceViewController = ReminisceneViewController(viewModel: reminiscenceViewModel)
+            let reminiscenceViewModel = DIContainer.shared.makeReminiscenceViewModel(
+                recordID: record.id
+            )
+            let reminiscenceViewController = ReminisceneViewController(
+                viewModel: reminiscenceViewModel
+            )
             present(reminiscenceViewController, animated: true)
         case .other:
             viewModel.refreshRandomRecord()

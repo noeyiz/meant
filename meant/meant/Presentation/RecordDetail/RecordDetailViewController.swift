@@ -12,6 +12,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView>, UI
     private let viewModel: RecordDetailViewModel
     private let username: String
     private var cancellables = Set<AnyCancellable>()
+    private var reminiscenceDataSource: UITableViewDiffableDataSource<Int, Reminiscence>!
     
     // MARK: - Init
     
@@ -39,6 +40,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView>, UI
         setupNavigationBar()
         setupNotificationObserver()
         setupAction()
+        setupDelegate()
         bind()
     }
     
@@ -78,6 +80,22 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView>, UI
         )
     }
     
+    private func setupDelegate() {
+        configureDataSource()
+        reminiscenceTableView.delegate = self
+    }
+    
+    private func configureDataSource() {
+        reminiscenceDataSource = UITableViewDiffableDataSource<Int, Reminiscence>(
+            tableView: reminiscenceTableView,
+            cellProvider: { (tableView, indexPath, reminiscence) -> UITableViewCell? in
+                let cell = tableView.dequeueReusableCell(for: indexPath, cellType: ReminiscenceCell.self)
+                cell.configure(with: reminiscence)
+                return cell
+            }
+        )
+    }
+    
     // MARK: - Bind
     
     private func bind() {
@@ -85,7 +103,17 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView>, UI
             .sink { [weak self] record in
                 guard let self = self else { return }
                 contentView.configure(with: record)
+                applySnapshot(with: record.reminiscences)
             }.store(in: &cancellables)
+    }
+    
+    // MARK: - Snapshot Application
+    
+    private func applySnapshot(with reminiscences: [Reminiscence]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Reminiscence>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(reminiscences, toSection: 0)
+        reminiscenceDataSource.apply(snapshot, animatingDifferences: false)
     }
     
     // MARK: - Action Methods
@@ -122,6 +150,30 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView>, UI
     }
 }
 
+extension RecordDetailViewController: UITableViewDelegate {
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard tableView == reminiscenceTableView else { return nil}
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "") { (_, _, _) in
+            self.generateHaptic()
+            self.viewModel.deleteReminiscence(for: indexPath.row)
+        }
+        deleteAction.backgroundColor = .white
+        
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
+        let image = UIImage(systemName: "trash", withConfiguration: imageConfig)?.withTintColor(.alertWarning, renderingMode: .alwaysOriginal)
+        deleteAction.image = image
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        
+        return configuration
+    }
+}
+
 extension RecordDetailViewController: UIPopoverPresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
@@ -139,7 +191,13 @@ extension RecordDetailViewController: RecordMenuViewDelegate {
             )
             present(editViewController, animated: true)
         case .reminisce:
-            break
+            let reminiscenceViewModel = DIContainer.shared.makeReminiscenceViewModel(
+                recordID: viewModel.record.id
+            )
+            let reminiscenceViewController = ReminisceneViewController(
+                viewModel: reminiscenceViewModel
+            )
+            present(reminiscenceViewController, animated: true)
         case .delete:
             showAlert(
                 message: "정말 삭제하시겠어요?",
@@ -161,5 +219,9 @@ extension RecordDetailViewController: RecordMenuViewDelegate {
 private extension RecordDetailViewController {
     var ellipsisButton: UIButton {
         contentView.ellipsisButton
+    }
+    
+    var reminiscenceTableView: UITableView {
+        contentView.tableView
     }
 }
