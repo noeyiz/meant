@@ -44,6 +44,20 @@ final class RecordDetailView: UIView {
         return label
     }()
     
+    private let gradientView = UIView()
+    
+    let tableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(cellType: ReminiscenceCell.self)
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.sectionHeaderTopPadding = 0
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        tableView.showsVerticalScrollIndicator = false
+        return tableView
+    }()
+    
     let emptyLabel = {
         let label = UILabel()
         label.font = .nanumSquareNeo(ofSize: 10.0)
@@ -62,6 +76,13 @@ final class RecordDetailView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // gradientView의 레이아웃이 잡힌 후 gradientLayer의 frame을 정할 수 있음
+        setGradientView()
     }
     
     // MARK: - Setup Methods
@@ -91,6 +112,20 @@ final class RecordDetailView: UIView {
             make.left.right.equalToSuperview().inset(25)
         }
         
+        addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.bottom)
+            make.left.right.equalToSuperview().inset(30)
+            make.bottom.equalToSuperview()
+        }
+        
+        addSubview(gradientView)
+        gradientView.snp.makeConstraints { make in
+            make.top.equalTo(containerView.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.height.equalTo(30)
+        }
+        
         addSubview(emptyLabel)
         emptyLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
@@ -111,5 +146,18 @@ final class RecordDetailView: UIView {
             emptyLabel.isHidden = false
             [dateLabel, ellipsisButton, containerView].forEach { $0.isHidden = true }
         }
+    }
+}
+
+private extension RecordDetailView {
+    func setGradientView() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [UIColor.white.withAlphaComponent(1.0).cgColor,
+                                UIColor.white.withAlphaComponent(0.0).cgColor]
+        gradientLayer.frame = gradientView.bounds
+        gradientLayer.locations = [0.0, 0.5]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradientView.layer.addSublayer(gradientLayer)
     }
 }

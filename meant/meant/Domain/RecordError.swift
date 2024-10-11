@@ -14,6 +14,7 @@ enum RecordError: Error {
     case failedToUpdate
     case failedToDelete
     case recordNotFound
+    case reminiscenceNotFound
     
     var errorDescription: String {
         switch self {
@@ -27,6 +28,8 @@ enum RecordError: Error {
             return "Failed to delete the record"
         case .recordNotFound:
             return "Record not found in Realm"
+        case .reminiscenceNotFound:
+            return "Reminiscence not founc in Realm"
         }
     }
 }

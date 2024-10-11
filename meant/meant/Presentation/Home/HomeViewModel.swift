@@ -58,11 +58,11 @@ final class HomeViewModel {
         let today = Calendar.current.startOfDay(for: Date())
         let lastAccessDate = Calendar.current.startOfDay(for: userSettingsRepository.lastAccessDate)
         
-        if today > lastAccessDate || userSettingsRepository.cachedRecordId == nil || forceRefresh {
+        if today > lastAccessDate || userSettingsRepository.cachedRecordID == nil || forceRefresh {
             // 새로운 랜덤 레코드를 가져와야 하는 경우
             fetchNewRandomRecord(today: today)
         } else {
-            if let cachedId = userSettingsRepository.cachedRecordId,
+            if let cachedId = userSettingsRepository.cachedRecordID,
                let record = recordRepository.fetchRecords().first(where: { $0.id == cachedId }) {
                 // 캐시된 레코드 사용
                 randomRecord = record
@@ -84,7 +84,7 @@ final class HomeViewModel {
         
         // 최근에 가져온 레코드를 제외한 레코드들
         let availableRecords = fetchedRecords.filter {
-            !userSettingsRepository.cachedRecordIds.contains($0.id)
+            !userSettingsRepository.cachedRecordIDs.contains($0.id)
         }
         
         // 모든 레코드가 최근에 가져온 것들이라면 전체 레코드에서 선택
@@ -95,15 +95,15 @@ final class HomeViewModel {
         let selectedRecord = recordsToChooseFrom[randomIndex]
         
         // 선택된 레코드를 최근 가져온 레코드 목록에 추가
-        userSettingsRepository.cachedRecordIds.insert(selectedRecord.id)
+        userSettingsRepository.cachedRecordIDs.insert(selectedRecord.id)
         
         // 최근 가져온 레코드 목록이 최대 크기를 초과하면 가장 오래된 것 제거
-        if userSettingsRepository.cachedRecordIds.count > maxCacheSize {
-            userSettingsRepository.cachedRecordIds.removeFirst()
+        if userSettingsRepository.cachedRecordIDs.count > maxCacheSize {
+            userSettingsRepository.cachedRecordIDs.removeFirst()
         }
         
         // 새로운 랜덤 레코드 캐시
-        userSettingsRepository.cachedRecordId = selectedRecord.id
+        userSettingsRepository.cachedRecordID = selectedRecord.id
         userSettingsRepository.lastAccessDate = today
         
         randomRecord = selectedRecord
@@ -122,7 +122,18 @@ final class HomeViewModel {
         guard let record = randomRecord else { return }
         do {
             try recordRepository.deleteRecord(record)
-            userSettingsRepository.cachedRecordId = nil
+            userSettingsRepository.cachedRecordID = nil
+            updateRecords()
+        } catch {
+            print("삭제 실패")
+        }
+    }
+    
+    func deleteReminiscence(for index: Int) {
+        guard let record = randomRecord else { return }
+        let reminiscence = record.reminiscences[index]
+        do {
+            try recordRepository.deleteReminiscence(for: record.id, reminiscenceID: reminiscence.id)
             updateRecords()
         } catch {
             print("삭제 실패")
@@ -132,7 +143,7 @@ final class HomeViewModel {
     func resetRecords() {
         do {
             try recordRepository.resetRecords()
-            userSettingsRepository.cachedRecordId = nil
+            userSettingsRepository.cachedRecordID = nil
             updateRecords()
         } catch {
             print("초기화 실패")

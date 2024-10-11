@@ -28,4 +28,14 @@ final class RecordDetailViewModel {
             print("삭제 실패")
         }
     }
+    
+    func deleteReminiscence(for index: Int) {
+        let reminiscence = record.reminiscences[index]
+        do {
+            try recordRepository.deleteReminiscence(for: record.id, reminiscenceID: reminiscence.id)
+            updateRecord()
+        } catch {
+            print("삭제 실패")
+        }
+    }
 }

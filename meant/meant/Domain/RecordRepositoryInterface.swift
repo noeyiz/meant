@@ -13,4 +13,6 @@ protocol RecordRepositoryInterface {
     func updateRecord(_ record: Record) throws
     func deleteRecord(_ record: Record) throws
     func resetRecords() throws
+    func saveReminiscence(for recordID: UUID, _ reminiscence: Reminiscence) throws
+    func deleteReminiscence(for recordID: UUID, reminiscenceID: UUID) throws
 }

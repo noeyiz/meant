@@ -75,4 +75,43 @@ class RecordRepository: RecordRepositoryInterface {
             throw RecordError.failedToDelete
         }
     }
+    
+    func saveReminiscence(for recordID: UUID, _ reminiscence: Reminiscence) throws {
+        guard let realm = realm else { throw RecordError.realmNotInitialized }
+        do {
+            try realm.write {
+                guard let record = realm.object(
+                    ofType: RecordEntity.self,
+                    forPrimaryKey: recordID
+                ) else {
+                    throw RecordError.recordNotFound
+                }
+                let reminiscenceEntity = ReminiscenceEntity(reminiscence)
+                record.reminiscences.append(reminiscenceEntity)
+            }
+        } catch {
+            throw RecordError.failedToSave
+        }
+    }
+    
+    func deleteReminiscence(for recordID: UUID, reminiscenceID: UUID) throws {
+        guard let realm = realm else { throw RecordError.realmNotInitialized }
+        do {
+            try realm.write {
+                guard let record = realm.object(
+                    ofType: RecordEntity.self,
+                    forPrimaryKey: recordID
+                ) else {
+                    throw RecordError.recordNotFound
+                }
+                if let index = record.reminiscences.firstIndex(where: { $0.id == reminiscenceID }) {
+                    record.reminiscences.remove(at: index)
+                } else {
+                    throw RecordError.reminiscenceNotFound
+                }
+            }
+        } catch {
+            throw RecordError.failedToDelete
+        }
+    }
 }

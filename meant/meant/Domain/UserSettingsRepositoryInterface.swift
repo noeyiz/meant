@@ -14,6 +14,6 @@ protocol UserSettingsRepositoryInterface {
     var notificationTime: Date { get set }
     var notificationMessage: String { get set }
     var lastAccessDate: Date { get set }
-    var cachedRecordId: UUID? { get set }
-    var cachedRecordIds: Set<UUID> { get set }
+    var cachedRecordID: UUID? { get set }
+    var cachedRecordIDs: Set<UUID> { get set }
 }

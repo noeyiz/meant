@@ -12,7 +12,8 @@ final class HomeViewController: BaseViewController<HomeView> {
     private let viewModel: HomeViewModel
     private let recordCellViewModels = RecordType.allCases
     private var cancellables = Set<AnyCancellable>()
-    private var dataSource: UITableViewDiffableDataSource<String, RecordCellViewModel>!
+    private var allRecordDataSource: UITableViewDiffableDataSource<String, RecordCellViewModel>!
+    private var reminiscenceDataSource: UITableViewDiffableDataSource<Int, Reminiscence>!
     
     // MARK: - Init
     
@@ -39,8 +40,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         setupNavigationBar()
         setupNotificationObserver()
         setupAction()
-        setupRecordCardView()
-        setupAllRecordView()
+        setupDelegate()
         bind()
     }
     
@@ -92,22 +92,30 @@ final class HomeViewController: BaseViewController<HomeView> {
         )
     }
     
-    private func setupRecordCardView() {
+    private func setupDelegate() {
         recordCardView.delegate = self
         recordCardView.dataSource = self
-    }
-    
-    private func setupAllRecordView() {
+        
         configureDataSource()
         allRecordTableView.delegate = self
+        reminiscenceTableView.delegate = self
     }
     
     private func configureDataSource() {
-        dataSource = UITableViewDiffableDataSource<String, RecordCellViewModel>(
+        allRecordDataSource = UITableViewDiffableDataSource<String, RecordCellViewModel>(
             tableView: allRecordTableView,
             cellProvider: { (tableView, indexPath, cellViewModel) -> UITableViewCell? in
                 let cell = tableView.dequeueReusableCell(for: indexPath, cellType: RecordCell.self)
                 cell.configure(with: cellViewModel)
+                return cell
+            }
+        )
+        
+        reminiscenceDataSource = UITableViewDiffableDataSource<Int, Reminiscence>(
+            tableView: reminiscenceTableView,
+            cellProvider: { (tableView, indexPath, reminiscence) -> UITableViewCell? in
+                let cell = tableView.dequeueReusableCell(for: indexPath, cellType: ReminiscenceCell.self)
+                cell.configure(with: reminiscence)
                 return cell
             }
         )
@@ -135,6 +143,9 @@ final class HomeViewController: BaseViewController<HomeView> {
             .sink { [weak self] record in
                 guard let self = self else { return }
                 randomRecordView.configure(with: record)
+                if let record = record {
+                    applySnapshot(with: record.reminiscences)
+                }
             }.store(in: &cancellables)
     }
     
@@ -148,7 +159,14 @@ final class HomeViewController: BaseViewController<HomeView> {
             snapshot.appendItems(section.cellViewModels, toSection: section.month)
         }
         
-        dataSource.apply(snapshot, animatingDifferences: false)
+        allRecordDataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    private func applySnapshot(with reminiscences: [Reminiscence]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Reminiscence>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(reminiscences, toSection: 0)
+        reminiscenceDataSource.apply(snapshot, animatingDifferences: false)
     }
     
     // MARK: - Action Methods
@@ -197,6 +215,8 @@ final class HomeViewController: BaseViewController<HomeView> {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView == allRecordTableView else { return }
+        
         generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
         let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(recordID: record.id)
@@ -208,8 +228,10 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard tableView == allRecordTableView else { return nil }
+        
         let label = UILabel()
-        label.text = dataSource.snapshot().sectionIdentifiers[section]
+        label.text = allRecordDataSource.snapshot().sectionIdentifiers[section]
         label.font = .nanumSquareNeo(ofSize: 12.0, weight: .bold)
         label.textColor = .gray02
         let view = UIView()
@@ -218,6 +240,28 @@ extension HomeViewController: UITableViewDelegate {
             make.edges.equalToSuperview().inset(5)
         }
         return view
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard tableView == reminiscenceTableView else { return nil}
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "") { (_, _, _) in
+            self.generateHaptic()
+            self.viewModel.deleteReminiscence(for: indexPath.row)
+        }
+        deleteAction.backgroundColor = .white
+        
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
+        let image = UIImage(systemName: "trash", withConfiguration: imageConfig)?.withTintColor(.alertWarning, renderingMode: .alwaysOriginal)
+        deleteAction.image = image
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        
+        return configuration
     }
 }
 
@@ -286,7 +330,14 @@ extension HomeViewController: RecordMenuViewDelegate {
             )
             present(editViewController, animated: true)
         case .reminisce:
-            break
+            guard let record = viewModel.randomRecord else { return }
+            let reminiscenceViewModel = DIContainer.shared.makeReminiscenceViewModel(
+                recordID: record.id
+            )
+            let reminiscenceViewController = ReminisceneViewController(
+                viewModel: reminiscenceViewModel
+            )
+            present(reminiscenceViewController, animated: true)
         case .other:
             viewModel.refreshRandomRecord()
         case .delete:
@@ -319,6 +370,10 @@ private extension HomeViewController {
     
     var randomRecordEmptyLabel: UILabel {
         contentView.myRecordView.randomRecordView.emptyLabel
+    }
+    
+    var reminiscenceTableView: UITableView {
+        contentView.myRecordView.randomRecordView.tableView
     }
     
     var allRecordEmptyLabel: UILabel {

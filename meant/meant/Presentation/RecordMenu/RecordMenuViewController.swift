@@ -21,7 +21,7 @@ final class RecordMenuViewController: UIViewController {
     
     private lazy var menuTableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = .white
         tableView.register(cellType: RecordMenuCell.self)
         tableView.delegate = self
         tableView.dataSource = self
