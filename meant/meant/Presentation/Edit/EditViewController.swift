@@ -10,12 +10,14 @@ import UIKit
 
 final class EditViewController: BaseViewController<EditView> {
     private let viewModel: EditViewModel
+    private let username: String
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
-    init(viewModel: EditViewModel) {
+    init(viewModel: EditViewModel, username: String) {
         self.viewModel = viewModel
+        self.username = username
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,7 +41,7 @@ final class EditViewController: BaseViewController<EditView> {
     
     private func setupNavigationBar() {
         setNavigationBarStyle(.normalTitleWithBothButtons)
-        setNavigationBarTitle(viewModel.record.date.formatAsFullDate())
+        setNavigationBarTitle("\(username)의 기록")
         setNavigationBarLeftButtonIcon("xmark")
         setNavigationBarRightButtonIcon("checkmark")
     }

@@ -35,7 +35,7 @@ enum RecordMenu: CaseIterable {
 extension RecordMenu {
     var color: UIColor {
         switch self {
-        case .delete:   .warning
+        case .delete:   .alertWarning
         default:        .gray03
         }
     }

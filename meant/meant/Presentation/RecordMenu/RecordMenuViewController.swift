@@ -69,7 +69,6 @@ final class RecordMenuViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-    
 }
 
 extension RecordMenuViewController: UITableViewDelegate {

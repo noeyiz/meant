@@ -10,12 +10,14 @@ import UIKit
 
 final class RecordDetailViewController: BaseViewController<RecordDetailView>, UIGestureRecognizerDelegate {
     private let viewModel: RecordDetailViewModel
+    private let username: String
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
-    init(viewModel: RecordDetailViewModel) {
+    init(viewModel: RecordDetailViewModel, username: String) {
         self.viewModel = viewModel
+        self.username = username
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,6 +46,7 @@ final class RecordDetailViewController: BaseViewController<RecordDetailView>, UI
     
     private func setupNavigationBar() {
         setNavigationBarStyle(.normalTitleWithBothButtons)
+        setNavigationBarTitle("\(username)의 기록")
         setNavigationBarLeftButtonIcon("chevron.left")
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
@@ -130,7 +133,10 @@ extension RecordDetailViewController: RecordMenuViewDelegate {
         switch recordMenu {
         case .edit:
             let editViewModel = DIContainer.shared.makeEditViewModel(for: viewModel.record.id)
-            let editViewController = EditViewController(viewModel: editViewModel)
+            let editViewController = EditViewController(
+                viewModel: editViewModel,
+                username: username
+            )
             present(editViewController, animated: true)
         case .reminisce:
             break

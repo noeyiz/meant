@@ -200,7 +200,10 @@ extension HomeViewController: UITableViewDelegate {
         generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
         let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(recordID: record.id)
-        let recordDetailViewController = RecordDetailViewController(viewModel: recordDetailViewModel)
+        let recordDetailViewController = RecordDetailViewController(
+            viewModel: recordDetailViewModel,
+            username: viewModel.username
+        )
         navigationController?.pushViewController(recordDetailViewController, animated: true)
     }
     
@@ -277,7 +280,10 @@ extension HomeViewController: RecordMenuViewDelegate {
         case .edit:
             guard let record = viewModel.randomRecord else { return }
             let editViewModel = DIContainer.shared.makeEditViewModel(for: record.id)
-            let editViewController = EditViewController(viewModel: editViewModel)
+            let editViewController = EditViewController(
+                viewModel: editViewModel,
+                username: viewModel.username
+            )
             present(editViewController, animated: true)
         case .reminisce:
             break
