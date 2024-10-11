@@ -17,26 +17,26 @@ final class MyRecordView: UIView {
     
     // MARK: - UI Components
     
-    let titleContainer: UIStackView = {
+    let titleContainer = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.spacing = 10
         return stackView
     }()
     
-    let line: UIView = {
+    let line = {
         let view = UIView()
         view.backgroundColor = .gray01
         return view
     }()
     
-    let indicator: UIView = {
+    let indicator = {
         let view = UIView()
         view.backgroundColor = .gray03
         return view
     }()
     
-    lazy var scrollView: UIScrollView = {
+    lazy var scrollView = {
         let scrollView = UIScrollView()
         scrollView.bounces = false
         scrollView.isPagingEnabled = true
@@ -45,7 +45,7 @@ final class MyRecordView: UIView {
         return scrollView
     }()
     
-    lazy var contentView: UIStackView = {
+    lazy var contentView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
@@ -122,7 +122,10 @@ final class MyRecordView: UIView {
         for (index, tab) in homeTabs.enumerated() {
             let label = createTitleLabel(with: tab.title)
             label.isUserInteractionEnabled = true
-            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(titleTapped))
+            let tapGesture = UITapGestureRecognizer(
+                target: self,
+                action: #selector(handleTitleLabelTap)
+            )
             label.addGestureRecognizer(tapGesture)
             label.tag = index
             titleContainer.addArrangedSubview(label)
@@ -164,7 +167,7 @@ final class MyRecordView: UIView {
         }
     }
     
-    @objc private func titleTapped(_ gesture: UITapGestureRecognizer) {
+    @objc private func handleTitleLabelTap(_ gesture: UITapGestureRecognizer) {
         guard let label = gesture.view as? UILabel else { return }
         let index = label.tag
         

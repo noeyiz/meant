@@ -40,8 +40,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         setupNavigationBar()
         setupNotificationObserver()
         setupAction()
-        setupRecordCardView()
-        setupAllRecordView()
+        setupDelegate()
         bind()
     }
     
@@ -93,14 +92,13 @@ final class HomeViewController: BaseViewController<HomeView> {
         )
     }
     
-    private func setupRecordCardView() {
+    private func setupDelegate() {
         recordCardView.delegate = self
         recordCardView.dataSource = self
-    }
-    
-    private func setupAllRecordView() {
+        
         configureDataSource()
         allRecordTableView.delegate = self
+        reminiscenceTableView.delegate = self
     }
     
     private func configureDataSource() {
@@ -169,7 +167,7 @@ final class HomeViewController: BaseViewController<HomeView> {
         snapshot.appendSections([0])
         snapshot.appendItems(reminiscences, toSection: 0)
         reminiscenceDataSource.apply(snapshot, animatingDifferences: false)
-}
+    }
     
     // MARK: - Action Methods
     
@@ -217,6 +215,8 @@ final class HomeViewController: BaseViewController<HomeView> {
 
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard tableView == allRecordTableView else { return }
+        
         generateHaptic()
         let record = viewModel.records[indexPath.section].cellViewModels[indexPath.row]
         let recordDetailViewModel = DIContainer.shared.makeRecordDetailViewModel(recordID: record.id)
@@ -228,6 +228,8 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard tableView == allRecordTableView else { return nil }
+        
         let label = UILabel()
         label.text = allRecordDataSource.snapshot().sectionIdentifiers[section]
         label.font = .nanumSquareNeo(ofSize: 12.0, weight: .bold)
@@ -238,6 +240,29 @@ extension HomeViewController: UITableViewDelegate {
             make.edges.equalToSuperview().inset(5)
         }
         return view
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard tableView == reminiscenceTableView else { return nil}
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "") {(action, view, completionHandler) in
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = .white
+        
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
+        let image = UIImage(systemName: "trash", withConfiguration: imageConfig)?.withTintColor(.alertWarning, renderingMode: .alwaysOriginal)
+        deleteAction.image = image
+        
+        // 스와이프 액션 구성
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        // 완전히 스와이프했을 때 첫 번째 액션이 자동으로 실행되는 것을 막음
+        configuration.performsFirstActionWithFullSwipe = false
+        
+        return configuration
     }
 }
 

@@ -119,6 +119,7 @@ final class ReminiscenceCell: UITableViewCell, Reusable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
+        backgroundColor = .clear
         setupLayout()
     }
     

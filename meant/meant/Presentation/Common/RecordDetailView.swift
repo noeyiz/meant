@@ -45,7 +45,7 @@ final class RecordDetailView: UIView {
     }()
     
     let tableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(cellType: ReminiscenceCell.self)
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
@@ -105,7 +105,7 @@ final class RecordDetailView: UIView {
         
         addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(containerView.snp.bottom).offset(5)
+            make.top.equalTo(containerView.snp.bottom)
             make.left.right.equalToSuperview().inset(30)
             make.bottom.equalToSuperview()
         }

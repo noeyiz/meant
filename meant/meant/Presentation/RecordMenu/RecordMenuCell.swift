@@ -30,6 +30,7 @@ final class RecordMenuCell: UITableViewCell, Reusable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         selectionStyle = .none
+        backgroundColor = .clear
         setupLayout()
     }
     
