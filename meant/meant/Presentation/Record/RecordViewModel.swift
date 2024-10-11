@@ -23,6 +23,7 @@ final class RecordViewModel {
         )
         do {
             try recordRepository.saveRecord(newRecord)
+            NotificationCenter.default.post(name: .recordsDidUpdate, object: nil)
         } catch {
             print("저장 실패")
         }

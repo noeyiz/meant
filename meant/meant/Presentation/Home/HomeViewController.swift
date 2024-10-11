@@ -44,12 +44,6 @@ final class HomeViewController: BaseViewController<HomeView> {
         bind()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        viewModel.fetchRecords()
-    }
-    
     // MARK: - Setup Methods
     
     private func setupNavigationBar() {
