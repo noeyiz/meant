@@ -10,7 +10,7 @@ import Foundation
 
 final class SettingsViewModel {
     private var userSettingsRepository: UserSettingsRepositoryInterface
-    @Published var settings = [SettingsCellViewModel]()
+    @Published var settings = [[SettingsCellViewModel]]()
     @Published var showNotificationSettings: Bool = false
     
     init(userSettingsRepository: UserSettingsRepositoryInterface) {
@@ -20,12 +20,17 @@ final class SettingsViewModel {
     
     func fetchSettings() {
         settings = [
-            SettingsCellViewModel(type: .name),
-            SettingsCellViewModel(
-                type: .notification,
-                isOn: userSettingsRepository.notificationEnabled
-            ),
-            SettingsCellViewModel(type: .reset)
+            [
+                SettingsCellViewModel(type: .name),
+                SettingsCellViewModel(
+                    type: .notification,
+                    isOn: userSettingsRepository.notificationEnabled
+                )
+            ],
+            [
+                SettingsCellViewModel(type: .lisence),
+                SettingsCellViewModel(type: .reset)
+            ]
         ]
     }
     

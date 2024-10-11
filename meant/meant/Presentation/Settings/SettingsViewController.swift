@@ -10,7 +10,7 @@ import UIKit
 
 final class SettingsViewController: BaseViewController<SettingsView>, UIGestureRecognizerDelegate {
     private let viewModel: SettingsViewModel
-    private var settings: [SettingsCellViewModel] = []
+    private var settings: [[SettingsCellViewModel]] = [[], []]
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
@@ -93,7 +93,7 @@ final class SettingsViewController: BaseViewController<SettingsView>, UIGestureR
 
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let setting = settings[indexPath.row]
+        let setting = settings[indexPath.section][indexPath.row]
         guard setting.type.mode != .switchControl else { return }
         
         generateHaptic()
@@ -112,22 +112,34 @@ extension SettingsViewController: UITableViewDelegate {
                     self.navigationController?.popViewController(animated: true)
                 }
             )
-//        case .instragram:
-//            InstragramLinkHandler.openInstagramProfile()
         default:
             break
         }
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = .clear
+        return footerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 20
+    }
 }
 
 extension SettingsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return settings.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settings[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(for: indexPath, cellType: SettingsCell.self)
-        let setting = settings[indexPath.row]
+        let setting = settings[indexPath.section][indexPath.row]
         cell.configure(with: setting)
         cell.switchValueChangedHandler = { [weak self] newValue in
             self?.handleSwitchValueChange(for: setting.type, newValue: newValue)
