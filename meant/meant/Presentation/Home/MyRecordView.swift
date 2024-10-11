@@ -40,8 +40,8 @@ final class MyRecordView: UIView {
         let scrollView = UIScrollView()
         scrollView.bounces = false
         scrollView.isPagingEnabled = true
+        scrollView.isScrollEnabled = false
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.delegate = self
         return scrollView
     }()
     
@@ -173,28 +173,18 @@ final class MyRecordView: UIView {
         
         let xOffset = CGFloat(index) * scrollView.bounds.width
         scrollView.setContentOffset(CGPoint(x: xOffset, y: 0), animated: true)
+        
+        updateIndicatorPosition(toIndex: index)
     }
     
-    private func updateIndicatorPosition(scrollProgress: CGFloat) {
-        let fromIndex = Int(scrollProgress)
-        let toIndex = min(fromIndex + 1, homeTabs.count - 1)
-        let progress = scrollProgress - CGFloat(fromIndex)
+    private func updateIndicatorPosition(toIndex: Int) {
+        guard let toLabel = titleContainer.arrangedSubviews[toIndex] as? UILabel else { return }
         
-        guard let fromLabel = titleContainer.arrangedSubviews[fromIndex] as? UILabel,
-              let toLabel = titleContainer.arrangedSubviews[toIndex] as? UILabel else {
-            return
+        UIView.animate(withDuration: 0.3) {
+            self.indicatorLeadingConstraint?.update(offset: toLabel.frame.minX)
+            self.indicatorWidthConstraint?.update(offset: toLabel.frame.width)
+            self.layoutIfNeeded()
         }
-        
-        let fromFrame = fromLabel.frame
-        let toFrame = toLabel.frame
-        
-        let newWidth = fromFrame.width + (toFrame.width - fromFrame.width) * progress
-        let newLeading = fromFrame.minX + (toFrame.minX - fromFrame.minX) * progress
-        
-        indicatorLeadingConstraint?.update(offset: newLeading)
-        indicatorWidthConstraint?.update(offset: newWidth)
-        
-        layoutIfNeeded()
     }
 }
 
@@ -205,12 +195,5 @@ private extension MyRecordView {
         label.textColor = .gray03
         label.font = .nanumSquareNeo(ofSize: 14.0, weight: .bold)
         return label
-    }
-}
-
-extension MyRecordView: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let scrollProgress = scrollView.contentOffset.x / scrollView.bounds.width
-        updateIndicatorPosition(scrollProgress: scrollProgress)
     }
 }

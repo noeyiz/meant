@@ -129,6 +129,17 @@ final class HomeViewModel {
         }
     }
     
+    func deleteReminiscence(for index: Int) {
+        guard let record = randomRecord else { return }
+        let reminiscence = record.reminiscences[index]
+        do {
+            try recordRepository.deleteReminiscence(for: record.id, reminiscenceID: reminiscence.id)
+            updateRecords()
+        } catch {
+            print("삭제 실패")
+        }
+    }
+    
     func resetRecords() {
         do {
             try recordRepository.resetRecords()

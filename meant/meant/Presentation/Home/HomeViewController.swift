@@ -248,8 +248,9 @@ extension HomeViewController: UITableViewDelegate {
     ) -> UISwipeActionsConfiguration? {
         guard tableView == reminiscenceTableView else { return nil}
         
-        let deleteAction = UIContextualAction(style: .normal, title: "") {(action, view, completionHandler) in
-            completionHandler(true)
+        let deleteAction = UIContextualAction(style: .normal, title: "") { (_, _, _) in
+            self.generateHaptic()
+            self.viewModel.deleteReminiscence(for: indexPath.row)
         }
         deleteAction.backgroundColor = .white
         
@@ -257,9 +258,7 @@ extension HomeViewController: UITableViewDelegate {
         let image = UIImage(systemName: "trash", withConfiguration: imageConfig)?.withTintColor(.alertWarning, renderingMode: .alwaysOriginal)
         deleteAction.image = image
         
-        // 스와이프 액션 구성
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        // 완전히 스와이프했을 때 첫 번째 액션이 자동으로 실행되는 것을 막음
         configuration.performsFirstActionWithFullSwipe = false
         
         return configuration
