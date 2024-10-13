@@ -15,14 +15,16 @@ extension UIViewController {
         leftActionText: String,
         rightActionText: String,
         leftActionCompletion: (() -> Void)? = nil,
-        rightActionCompletion: (() -> Void)? = nil
+        rightActionCompletion: (() -> Void)? = nil,
+        isRightDangerous: Bool = false
     ) {
         let alertViewController = MeantAlertViewController(
             message: message,
             leftActionText: leftActionText,
             rightActionText: rightActionText,
             leftActionCompletion: leftActionCompletion,
-            rightActionCompletion: rightActionCompletion
+            rightActionCompletion: rightActionCompletion,
+            isRightDangerous: isRightDangerous
         )
         present(alertViewController, animated: false)
     }

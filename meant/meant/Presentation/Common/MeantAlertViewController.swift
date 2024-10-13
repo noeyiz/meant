@@ -55,7 +55,8 @@ final class MeantAlertViewController: UIViewController {
         leftActionText: String,
         rightActionText: String,
         leftActionCompletion: (() -> Void)? = nil,
-        rightActionCompletion: (() -> Void)? = nil
+        rightActionCompletion: (() -> Void)? = nil,
+        isRightDangerous: Bool = false
     ) {
         super.init(nibName: nil, bundle: nil)
         
@@ -69,6 +70,10 @@ final class MeantAlertViewController: UIViewController {
             leftActionCompletion: leftActionCompletion,
             rightActionCompletion: rightActionCompletion
         )
+        
+        if isRightDangerous {
+            rightButton.tintColor = .alertWarning
+        }
     }
     
     init(message: String, actionText: String, actionCompletion: (() -> Void)? = nil) {
@@ -163,6 +168,7 @@ final class MeantAlertViewController: UIViewController {
         let button = UIButton()
         button.configuration = .plain()
         button.backgroundColor = .clear
+        button.tintColor = .alertSuccess
         return button
     }
     

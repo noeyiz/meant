@@ -254,7 +254,7 @@ extension HomeViewController: UITableViewDelegate {
         }
         deleteAction.backgroundColor = .white
         
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 8, weight: .bold)
         let image = UIImage(systemName: "trash", withConfiguration: imageConfig)?.withTintColor(.alertWarning, renderingMode: .alwaysOriginal)
         deleteAction.image = image
         
@@ -349,7 +349,8 @@ extension HomeViewController: RecordMenuViewDelegate {
                     guard let self = self else { return }
                     viewModel.deleteRandomRecord()
                     dismiss(animated: true)
-                }
+                },
+                isRightDangerous: true
             )
         }
     }

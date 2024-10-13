@@ -163,7 +163,7 @@ extension RecordDetailViewController: UITableViewDelegate {
         }
         deleteAction.backgroundColor = .white
         
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .bold)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 8, weight: .bold)
         let image = UIImage(systemName: "trash", withConfiguration: imageConfig)?.withTintColor(.alertWarning, renderingMode: .alwaysOriginal)
         deleteAction.image = image
         
@@ -208,7 +208,8 @@ extension RecordDetailViewController: RecordMenuViewDelegate {
                     removeNotificationObserver()
                     viewModel.deleteRecord()
                     navigationController?.popViewController(animated: true)
-                }
+                },
+                isRightDangerous: true
             )
         default:
             break
