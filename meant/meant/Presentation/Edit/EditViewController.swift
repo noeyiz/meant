@@ -67,7 +67,8 @@ final class EditViewController: BaseViewController<EditView> {
             rightActionText: "취소하기",
             rightActionCompletion: { [weak self] in
                 self?.dismiss(animated: true)
-            }
+            },
+            isRightDangerous: true
         )
     }
     

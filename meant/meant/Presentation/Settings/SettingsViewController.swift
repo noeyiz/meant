@@ -110,7 +110,8 @@ extension SettingsViewController: UITableViewDelegate {
                 rightActionCompletion: {
                     NotificationCenter.default.post(name: .recordsDidReset, object: nil)
                     self.navigationController?.popViewController(animated: true)
-                }
+                },
+                isRightDangerous: true
             )
         case .lisence:
             let licenseViewController = LicenseViewController()

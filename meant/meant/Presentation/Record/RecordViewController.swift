@@ -54,16 +54,21 @@ final class RecordViewController: BaseViewController<RecordView> {
     
     @objc private func handleCancelButtonTap() {
         generateHaptic()
-        showAlert(
-            message: recordType == .confide ?
-            "아직 다 적지 않은 이야기가 있어요.\n정말 나가시겠어요?" :
-            "소중한 조각들이 잊혀질지도 몰라요.\n정말 나가시겠어요?",
-            leftActionText: "머무르기",
-            rightActionText: "나가기",
-            rightActionCompletion: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
-            }
-        )
+        if textView.text.isEmpty {
+            navigationController?.popViewController(animated: true)
+        } else {
+            showAlert(
+                message: recordType == .confide ?
+                "아직 다 적지 않은 이야기가 있어요.\n정말 나가시겠어요?" :
+                "소중한 조각들이 잊혀질지도 몰라요.\n정말 나가시겠어요?",
+                leftActionText: "머무르기",
+                rightActionText: "나가기",
+                rightActionCompletion: { [weak self] in
+                    self?.navigationController?.popViewController(animated: true)
+                },
+                isRightDangerous: true
+            )
+        }
     }
     
     @objc private func handleDoneButtonTap() {
